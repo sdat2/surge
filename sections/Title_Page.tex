@@ -1,0 +1,96 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+\AddToShipoutPicture*{\BackgroundIm}
+
+
+
+\begin{titlepage}
+   \begin{center}
+       \vspace{-3cm}
+
+       \Large{\textbf{\mytitle}}
+       \vspace{0.2cm}
+       %\vspace{0.5cm}
+
+       \large{
+    \begin{tikzpicture}
+    \node[fill=white, fill opacity=1]{\textbf{\penname}}
+    \end{tikzpicture}
+    \vspace{0.2cm}
+
+    {
+    \begin{tikzpicture}
+    \node[fill=white, fill opacity=1]{\textbf{Supervisor:}}
+    \end{tikzpicture}
+    %\vspace{-0.235cm}
+
+    \begin{tikzpicture}
+    \node[fill=white, fill opacity=1]{\textbf{Dr. Dan Jones}}
+    \end{tikzpicture}
+    %\vspace{-0.235cm}
+
+
+    \begin{tikzpicture}
+    \node[fill=white, fill opacity=1]{\textbf{British Antarctic Survey}}
+    \end{tikzpicture}
+    }
+
+    %\textbf{\supervisor}
+    \vspace{0.5cm}
+
+    \begin{tikzpicture}
+    \node[fill=white,fill opacity=1]{\normalsize{\today}}
+    \end{tikzpicture}
+        }
+
+       %\quickwordcount{main.tex}
+       %\detailtexcount{main}
+\end{center}
+
+   \vspace{10cm}
+\begin{center}
+       \normalsize{
+    \begin{tikzpicture}
+    \node[fill=white,fill opacity=1]{A thesis submitted for the degree of Master of Natural Science.}
+    \end{tikzpicture}
+        }
+
+       \vspace{0.4cm}
+
+
+           \begin{tikzpicture}
+    \node[fill=white,fill opacity=1] (a) {\large{
+       c. 5000 words}}
+    \end{tikzpicture}
+       \vspace{0.3cm}
+
+
+       \includegraphics[width=0.1\linewidth]{images/logos/UC.png}
+       \vspace{0.8cm}
+       % Cavendish Laboratory\\
+       % University of Cambridge\\
+   \end{center}
+\end{titlepage}
+
+\newpage
+    \addtocontents{toc}{\protect\thispagestyle{empty}}
+\twocolumn[
+  \begin{@twocolumnfalse}
+  {
+  \vspace{-50pt}
+  % \texit{Dedicated to Hugo de Balsham, who in 1284 founded something good}
+  \paragraph{Cover matter:} An image from Nullschool.net on 28/10/19. Sea Surface
+  temperature provides the colormap, and ocean currents provide the stripes.
+  \paragraph{Originality:} This is all my own original work
+                           unless otherwise highlighted.
+  }
+
+  \tableofcontents
+
+  \end{@twocolumnfalse}
+  \thispagestyle{empty}
+]
+
+\newpage
+\end{document}

@@ -1,0 +1,21 @@
+\usepackage{Theme/mystyle}
+\usepackage{Theme/globals}
+% Define some vital globals for the document.
+
+% Where I put the images to be imported.
+\graphicspath{{images/}{../images/}}
+%%%%%% This is where I add the bibliography to be used!
+
+\RequirePackage{xpatch}
+\RequirePackage{url}
+\input{references/references.tex}
+
+\setlength\headheight{26pt} %% just to make warning go away.
+
+\rhead{\thepage}  % left head
+% page number on right head
+\lfoot{\penname}  % text for left foot
+\cfoot{}
+\rfoot{%\includegraphics[height=1cm]{logos/BAS_LOGO.png}
+       }
+\pagestyle{fancy}  % use fancyhdr style

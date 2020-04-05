@@ -1,0 +1,23 @@
+%\documentclass[../main.tex]{subfiles}
+%\begin{document}
+
+\section{Using a Shallow Water Model to Explore Storm Surge Physics}
+\label{sec:2_Water_Model}
+
+The ORCA12 model uses the European NEMO ocean engine~\cite{madec2015nemo}, which
+uses curvilinear coordinates so that the poles of the coordinates are all over land.
+
+
+\begin{itemize}
+    \item The shallow water equations are simply:
+    \begin{eqnarray}
+     -\left(\frac{Du}{Dt} + \underline{f}\times\underline{u} \right) &=& g \underline{\nabla} \eta  \\
+ \frac{Dh}{Dt} + h \underline{\nabla}\cdot\underline{u} &=& 0\\
+\Leftrightarrow  \;\quad\quad\quad\quad \frac{\partial h}{\partial t} + \underline{\nabla}\cdot (h\underline{u})&=& 0 \\
+w. \;\quad\quad \eta(x, y, t) - \eta_{b}(x, y)  &=& h \\
+\& \quad\quad\quad\quad\quad\quad \frac{\partial}{\partial t} + \underline{u}\cdot\underline{\nabla}   &=& \frac{D}{Dt}
+    \end{eqnarray}
+\end{itemize}
+
+
+%\end{document}

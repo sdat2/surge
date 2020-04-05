@@ -1,0 +1,76 @@
+% Copyright 2019 Clara Eleonore Pavillet, Adapted 2020 by Simon Thomas (for Cambridge Colours etc.)
+
+% Authors: Clara Eleonore Pavillet & Simon Donald Alistair Thomas
+% Description: This is an unofficial Cambridge University Beamer Template I made from scratch.
+%  Feel free to use it, modify it, share it.
+% Version: 2.0\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{positioning, calc}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{fontawesome}
+\usepackage{appendixnumberbeamer}
+\usepackage{Theme/beamercolorthemeoxonian}
+\usepackage{Theme/beamerfontthemeoxonian}
+\usepackage{Theme/beamerinnerthemeoxonian}
+\usepackage{Theme/beamerouterthemeoxonian}
+\usepackage{Theme/beamerthemeoxonian}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+% Define Commands
+\newcommand*{\ClipSep}{0.06cm} %To adjust footer logo
+\newcommand{\E}{\mathrm{e}\,} %\def\I{e} % used to defined e for exp(x), see later what it should be
+\newcommand{\ud}{\mathrm{d}}
+\lstset{numbers=left,
+        numberstyle=\tiny,
+        stepnumber=1,
+        firstnumber=1,
+        breaklines=true,
+        numbersep=5pt,
+        language=Python,
+        stringstyle=\ttfamily,
+        basicstyle=\footnotesize,
+        showstringspaces=false
+}
+% Define Colours
+\definecolor{cambridgeblue}{RGB}{163, 193, 173}
+\definecolor{oxfordblue}{RGB}{0, 32, 68}
+\definecolor{glassgrey}{rgb}{220, 220, 220}
+
+\RequirePackage[
+  bibstyle=nature,
+  citestyle=numeric,
+  isbn=true,
+  doi=true,
+  sorting=none,
+  url=true,
+  urldate = long,
+  % defernumbers=true,
+  bibencoding=utf8,
+  backend=bibtex
+]{biblatex}
+\RequirePackage{xpatch}
+\RequirePackage{url}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=oxfordblue,
+    filecolor=BrickRed,
+    citecolor=BrickRed,
+    urlcolor=BrickRed,
+}
+
+\graphicspath{{images/}{../images/}}
+
+\addbibresource{references/surge.bib}
+\addbibresource{references/generic_references.bib}
+\addbibresource{references/references.bib}
+\addbibresource{references/fluid_dynamics.bib}
+\addbibresource{references/machine_learning.bib}
+\addbibresource{references/global_warming.bib}
+\addbibresource{references/programming.bib}
+\addbibresource{references/taleb.bib}
+\addbibresource{references/tebutt.bib}

@@ -1,0 +1,205 @@
+%\documentclass[../main.tex]{subfiles}
+%\begin{document}
+
+
+% \maketitle
+
+%\normalsize
+%\begin{abstract}
+%    Most of the following material will end up in an appendix of the report,
+%     and is here to clarify my thinking and collect references.
+% \end{abstract}
+
+\section{Introduction}
+\label{sec:1_Introduction}
+
+Machine Learning\footnote{The use of the term Machine Learning (ML) is unfortunate,
+I would prefer it if ``Learning Algorithms'' or ``Advanced Statistical Modelling''
+ were used by the field as I find these more descriptive.
+  Perhaps due to the pressures research grant proposals and IPOs,
+   the field tends to use the quite cryptic labels `AI' and `ML',
+   and I will do likewise for consistency.
+   I here define define Machine Learning as any algorithm applied to data
+    to extract information which is more advanced than classical statistics.
+    This may seem hopelessly broad, but I have not heard of one better. }
+algorithms are often directly inspired by physical processes (e.g.\
+stochastic differential equations (SDEs)) and concepts (e.g.\ transfer entropy).
+In the mathematics that follows, the reader may be strongly reminded of Quantum Mechanics.
+ This is no accident as both this and ML ultimately boil down to linear algebra and vector calculus.
+  Indeed the two may enjoy a combined future with the introduction of quantum computation~\cite{biamonte2017quantum}.
+
+This work follows in the footsteps of the late Professor Sir David MacKay
+in two respects: in its focus on the using a Bayesian framework for inference~\cite{ITILA, MacKay91},
+and in its ultimate goal to provide clear information about climate~\cite{mackay2008sustainable}.
+
+I should note that because of the rotation-induced symmetry of western ocean boundaries~\cite{hogg1995western},
+ any model that works here will generalise better to East Asia (Vietnam, Philippines,
+  and China) than it would to the United Kingdom.
+
+\subsection{Basic Oceanographic Equations}
+The Coriolis parameter $f$ is given by
+\begin{equation}
+f=2 \Omega \sin \varphi,
+\label{eq:coriolis}
+\end{equation}
+where $\varphi$ is the latitude of the position and $\Omega$ is the angular
+ frequency of the Earth's rotation.
+
+Fluid mechanics is based on three simple equations~\cite{landau1959course}:
+ The conservation of matter,
+\begin{equation}
+\frac{\partial \rho}{\partial t} + \boldsymbol{\nabla}(\rho \boldsymbol{u}) = 0,
+\tag{Matter}
+\label{eq:Matter}
+\end{equation}
+the conservation of momentum,
+\begin{equation}
+\rho\left (\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}(\boldsymbol{\nabla}\cdot \mathbf{u})\right) =  - \boldsymbol{\nabla}P + \boldsymbol{\nabla}\cdot \underline{\underline{\tau}} - \rho\boldsymbol{\nabla}\phi,
+\tag{Momentum}
+\end{equation}
+and the conservation of energy,
+\begin{equation}
+\begin{array}{l}
+\rho \left( \frac{\partial h}{\partial t} + \boldsymbol{\nabla}\cdot (h\mathbf{u})\right) = \\ \quad\quad- \left( \frac{\partial P}{\partial t} + \mathbf{u}\cdot (\boldsymbol{\nabla} P) \right) + \boldsymbol{\nabla}\cdot (k \boldsymbol{\nabla} T ) + (\underline{\underline{\tau}}\cdot\boldsymbol{\nabla})\mathbf{u}.\end{array}
+\tag{Energy}
+\end{equation}
+Where we have assumed that we are in an inertial frame and the variables are labelled as in Table~\ref{tab:fluid_variables}.
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{ll}
+        $\rho$ & Density. \\
+        $t$ & Time. \\
+        $\mathbf{u}$ & Velocity. \\
+        $P$ & Pressure. \\
+        $\underline{\underline{\tau}}$ & Deviatronic stress (2nd order tensor). \\
+        $\phi$ & Gravitational potential. \\
+         $h$ & Enthalpy.\\
+         $T$ & Temperature. \\
+         $k$ & Thermal conductivity.\\
+         $c_p$ & Heat capacity.\\
+         $\eta$ & Viscosity. \\
+         $H$ & Heat production density.\\
+    \end{tabular}
+    \caption{Symbols for fluid mechanical equations}
+    \label{tab:fluid_variables}
+\end{table}
+We can also normally assume that all density variations can be ignored that
+ are not on the gravitational term (the Boussenesq approximation),
+  which simplifies the equations considerably as Equation~\ref{eq:Matter} becomes
+\begin{equation}
+    \boldsymbol{\nabla}\cdot\mathbf{u} = 0, \tag{B-Matter}
+\end{equation}
+and we also could derive that
+\begin{equation}
+\rho\left (\frac{\partial \mathbf{u}}{\partial t}
++ \mathbf{u}(\boldsymbol{\nabla}\cdot \mathbf{u})\right)=
+-\nabla P+\eta \nabla^{2} \mathbf{u}-\rho \boldsymbol{\nabla}\phi, \tag{B-Momentum}
+\end{equation}
+\begin{equation}
+\rho c_{p}\left(\frac{\partial T}{\partial t}
++\mathbf{u} \cdot \nabla T\right)=k \nabla^{2} T+\rho H. \tag{B-Energy}
+\end{equation}
+However the surface of the Earth reference frames rotate,
+ which makes these equations less elegant.
+  The final form of the equations in an earth bound reference frame
+  is found by applying the identity
+\begin{equation}
+\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{A}=
+\left[\left(\frac{\mathrm{d}}{\mathrm{d} t}\right)_{r}
++\mathbf{\Omega} \times\right] \boldsymbol{A},
+\end{equation}
+for converting to a rotating reference frame to the previous equations.
+\begin{equation}
+\begin{array}{l}
+\rho \frac{D \mathbf{u}}{D t}=\\\quad\quad-\boldsymbol{\nabla} P+
+\eta \nabla^{2} \mathbf{u}+\frac{1}{3} \eta \nabla(\nabla \cdot \mathbf{u})
++\rho \mathbf{g}\\\quad\quad-\rho\left(2 \mathbf{\Omega} \times \mathbf{u}
++\mathbf{\Omega} \times(\mathbf{\Omega} \times \mathbf{x})
++\frac{d \mathbf{u}}{d t}\right)\end{array}.
+\tag{R-Momentum}
+\end{equation}
+
+
+
+\section{Simple Tropical Cyclone Models}
+
+One of the dominant controls on storm surge events on the Eastern Seaboard
+ of the US are the large tropical cyclones (Hurricanes).
+  These large vortices can be surprisingly well modelled by azimuthally
+   symmetric analytic pressure distributions, and the velocity distribution
+    that would be expected to result from them.
+
+The most prominent is the  Holland model~\cite{holland1980analytic,holland2010revised}
+ which elaborated on a class of functions initially proposed by Schloemer 1954~\cite{schloemer1954analysis}.
+  This model uses the dimensionless pressure \( P^{\prime}\) given by
+
+\begin{equation}
+    P^{\prime}=\dfrac{P-P_{c}}{P_{n}-P_{c}},
+\end{equation}
+where $P_c$ is the pressure at the centre of the storm, and $P_n$ is the ambient pressure, ideally at at an infinite distance from the storm. They then define the pressure relation
+\begin{equation}
+    r^{B}\ln(\frac{1}{P^{\prime}})=A,
+\end{equation}or in a more elegant form
+\begin{equation}
+P^{\prime}=\exp{(-\frac{A}{r^B})},
+\end{equation}
+where A and B are model parameters which must be found empirically.
+
+In steady state around this  pressure distribution generally yields a
+ velocity~\cite{roisin2010GFD} of:
+\begin{equation}
+    U_g = \sqrt{AB(P_{n} - P_{c})\frac{\exp{(-\frac{A}{r^{B}})}}{\rho r^{B}}
+     +\frac{r^2f^2}{4}}-\frac{rf}{2}.
+\end{equation}
+If we assume that the eye of the TC itself is small s.t. the Coriolis force
+ is much smaller than the centrifugal then we can approximate this as
+
+\begin{equation}
+U_c = \sqrt{AB(P_{n}-P_{c})\frac{\exp{(-A/r^{B})}}{\rho r^{B}}}.
+\end{equation}
+The maximum velocity
+\begin{equation}
+U_m = (\frac{B}{\rho e})^{0.5}(P_n-P_c)^{0.5},
+\end{equation}
+which occurs at
+\begin{equation}
+R_m = A^{1/B}.
+\end{equation}
+There are at least two degrees of freedom:
+B defines the height of the peak and A determines its relative position.
+ The difference between the ambient and central pressure of the vortex still
+ enter into the velocity expression, so there are four degrees of freedom when
+  those are included.
+
+
+\subsection{The Rankine Vortex}
+
+The Rankine vortex is
+\begin{equation}
+C=\left\{\begin{array}{ll}U \frac{R_m}{ r}& \text{ if } r < R_m,\\
+U\frac{r}{ R_m} & {\text { if } r>R_m},
+\end{array}\right.
+\end{equation}
+where C is a constant, and the two sections are joined together
+ so that the velocity is continuous at the boundary.
+   The two degrees of freedom are $R_m$ and C.
+This can be modified to a more general relation where $Ur^{x}=\text{constant}$
+where X is a new parameter to fit, which lies between 0.4 and 0.6~\cite{holland1980analytic}.
+
+
+
+\section{Stochastic Differential Equations}
+
+\cite{mazo2002brownian}\cite{solin2016stochastic}
+
+\begin{equation}
+\kappa(\tau)=\left\{\begin{array}{ll}
+{\mathbf{H} \mathbf{P}_{\infty} \mathbf{\Phi}(\tau)^{\top
+ \mathbf{H}^{\top},} & {\text { if } \tau \geq 0} \\
+{\mathbf{H} \mathbf{\Phi}(-\tau) \mathbf{P}_{\infty}
+ \mathbf{H}^{\top},} & {\text { if } \tau<0}
+\end{array}\right.
+\end{equation}
+% \printbibliography
+% \end{document}

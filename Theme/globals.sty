@@ -1,0 +1,47 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Theme/globals}
+\newcommand{\mytitle}{$\mathbf{\mathbb{P}(\mathrm{\mathbf{Surge}}|\mathrm{\mathbf{do}(\mathbf{CO}}_{2}))}$ - Towards a Probabilistic Model to Assess Storm Surge Risk under Climate Change}
+\newcommand{\penname}{Candidate 8205R}
+\newcommand{\supervisor}{\\Supervisor:\\  Dr. Dan Jones,\\ British Antarctic Survey}
+\newcommand{\quickwordcount}[1]{%
+  \immediate\write18{texcount -1 -sum -v0 -q -merge #1.tex > #1-words.sum }%
+  \input{#1-words.sum} words%
+}
+\newcommand{\detailtexcount}[1]{%
+  \immediate\write18{texcount -merge -sum #1.tex > #1.wcdetail }%
+  \verbatiminput{#1.wcdetail}%
+}
+\RequirePackage{caption}
+\RequirePackage{imakeidx}
+\RequirePackage{xstring}
+\newcommand{\tad}{$\Delta T_{\mathrm{ad}}$ }
+\newcommand{\teff}{$\Delta T_{\mathrm{eff}}$ }
+\newcommand{\sisot}{$\Delta S_{\mathrm{isot}}$ }
+\newcommand{\cur}{$T_c$ }
+\newcommand{\ZT}{$ZT$ }
+\newcommand{\contradiction}{%
+\begin{tikzpicture}[rotate=45,x=0.5ex,y=0.5ex]
+\draw[line width=.2ex] (0,2) -- (3,2) (0,1) -- (3,1) (1,3) -- (1,0) (2,3) -- (2,0);
+\end{tikzpicture}}
+\newcommand{\fom}{$\eta_{\mathrm{perc}}$}
+\newcommand{\fomm}{\eta_{\mathrm{perc}}}
+\newcommand{\COPcarnot}{$\mathrm{COP}_{\mathrm{carnot}}$ }
+\newcommand{\tspan}{$\Delta T_{\mathrm{span}}$ }
+\newcommand{\effpeltier}{10-15\% }
+\newcommand{\effvpc}{40-60\% }
+\newcommand{\effece}{50-60\% }
+\def\dunder#1{\underline{\underline{#1}}}
+\newcommand{\z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\effelc}{[unknown] }
+\RequirePackage{transparent}
+\RequirePackage{eso-pic}
+\newcommand\BackgroundIm{
+\put(0,0){\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+{\transparent{0.4}
+\includegraphics[width=0.7\paperwidth,keepaspectratio]{images/logos/Nullschool.png}%
+}
+\vfill
+}}}

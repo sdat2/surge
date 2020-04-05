@@ -1,0 +1,54 @@
+\documentclass[usenames, dvipsnames, twocolumn]{article}               % article class
+\usepackage[utf8]{inputenc}
+\input{Theme/main_theme.tex}
+\date{\today}
+\title{\vspace*{-100pt}\textbf{\mytitle}\vspace{-0pt}}
+\author{\penname \\  \supervisor }
+
+\usepackage{moreverb} % for verbatim ouput
+% Count of words
+\immediate\write18{texcount -nc -inc -merge -sum -q main.tex > wordcount/wordcount.tex}
+
+\newcommand\wordcount{ \verbatiminput{wordcount/wordcount.tex}}
+%%%%%%%%%%%Actual Document%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%TC:ignore
+ \subfile{sections/Title_Page}
+ \subfile{sections/0_Abstract}
+%%TC:endignore
+
+%%%%%%%%%%%%Real Report%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{sections/1_Introduction}
+%\FloatBarrier
+%\FloatBarrier
+ \input{sections/2_Water_Model}
+\FloatBarrier
+\input{sections/3_ORCA12_REG}
+\input{sections/4_OBS_Reg}
+%\FloatBarrier
+\input{sections/5_Transform}
+%\FloatBarrier
+\input{sections/6_Application}
+\input{sections/7_Discussion}
+%\FloatBarrier
+\input{sections/8_Conclusion}
+%\FloatBarrier
+%\FloatBarrier
+%%%%%%%%%%%%End Real Report%%%%%%%%%%%%%%%%%%%
+%%TC:ignore
+\FloatBarrier
+\footnotesize
+\printbibliography
+\normalsize
+%%%%%%%%%%%%%%Start Appendices%%%%%%%%%%%%%%%%%
+\appendix
+\subfile{sections/9_Acknowledgements}
+
+% \wordcount
+
+%%TC:endignore
+%%%%%%%%%%%%%End of Document%%%%%%%%%%%%%%%%%%%%
+\end{document}

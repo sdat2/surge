@@ -3,7 +3,8 @@
 % Authors: Clara Eleonore Pavillet & Simon Donald Alistair Thomas
 % Description: This is an unofficial Cambridge University Beamer Template I made from scratch.
 %  Feel free to use it, modify it, share it.
-% Version: 2.0\usepackage[utf8]{inputenc}
+% Version: 2.0
+\usepackage[utf8]{inputenc}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{tikz}
 \usetikzlibrary{positioning, calc}
@@ -64,13 +65,6 @@
 }
 
 \graphicspath{{images/}{../images/}}
+\input{algorithms/algorithm.tex}
 
-\addbibresource{references/surge.bib}
-\addbibresource{references/generic_references.bib}
-\addbibresource{references/references.bib}
-\addbibresource{references/fluid_dynamics.bib}
-\addbibresource{references/machine_learning.bib}
-\addbibresource{references/global_warming.bib}
-\addbibresource{references/programming.bib}
-\addbibresource{references/taleb.bib}
-\addbibresource{references/tebutt.bib}
+\input{references/references.tex}

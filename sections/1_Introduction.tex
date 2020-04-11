@@ -1,15 +1,3 @@
-%\documentclass[../main.tex]{subfiles}
-%\begin{document}
-
-
-% \maketitle
-
-%\normalsize
-%\begin{abstract}
-%    Most of the following material will end up in an appendix of the report,
-%     and is here to clarify my thinking and collect references.
-% \end{abstract}
-
 \section{Introduction}
 \label{sec:1_Introduction}
 
@@ -25,8 +13,8 @@ I would prefer it if ``Learning Algorithms'' or ``Advanced Statistical Modelling
 algorithms are often directly inspired by physical processes (e.g.\
 stochastic differential equations (SDEs)) and concepts (e.g.\ transfer entropy).
 In the mathematics that follows, the reader may be strongly reminded of Quantum Mechanics.
- This is no accident as both this and ML ultimately boil down to linear algebra and vector calculus.
-  Indeed the two may enjoy a combined future with the introduction of quantum computation~\cite{biamonte2017quantum}.
+This is no accident as both this and ML ultimately boil down to linear algebra and vector calculus.
+Indeed the two may enjoy a combined future with the introduction of quantum computation~\cite{biamonte2017quantum}.
 
 This work follows in the footsteps of the late Professor Sir David MacKay
 in two respects: in its focus on the using a Bayesian framework for inference~\cite{ITILA, MacKay91},
@@ -54,16 +42,24 @@ Fluid mechanics is based on three simple equations~\cite{landau1959course}:
 \end{equation}
 the conservation of momentum,
 \begin{equation}
-\rho\left (\frac{\partial \mathbf{u}}{\partial t} + \mathbf{u}(\boldsymbol{\nabla}\cdot \mathbf{u})\right) =  - \boldsymbol{\nabla}P + \boldsymbol{\nabla}\cdot \underline{\underline{\tau}} - \rho\boldsymbol{\nabla}\phi,
+\rho\left (\frac{\partial \mathbf{u}}{\partial t}
++ \mathbf{u}(\boldsymbol{\nabla}\cdot \mathbf{u})\right) =
+- \boldsymbol{\nabla}P + \boldsymbol{\nabla}\cdot \underline{\underline{\tau}}
+- \rho\boldsymbol{\nabla}\phi,
 \tag{Momentum}
 \end{equation}
 and the conservation of energy,
 \begin{equation}
 \begin{array}{l}
-\rho \left( \frac{\partial h}{\partial t} + \boldsymbol{\nabla}\cdot (h\mathbf{u})\right) = \\ \quad\quad- \left( \frac{\partial P}{\partial t} + \mathbf{u}\cdot (\boldsymbol{\nabla} P) \right) + \boldsymbol{\nabla}\cdot (k \boldsymbol{\nabla} T ) + (\underline{\underline{\tau}}\cdot\boldsymbol{\nabla})\mathbf{u}.\end{array}
+\rho \left( \frac{\partial h}{\partial t} + \boldsymbol{\nabla}
+\cdot (h\mathbf{u})\right) = \\ \quad\quad- \left( \frac{\partial P}{\partial t}
++ \mathbf{u}\cdot (\boldsymbol{\nabla} P) \right)
++ \boldsymbol{\nabla}\cdot (k \boldsymbol{\nabla} T )
++ (\underline{\underline{\tau}}\cdot\boldsymbol{\nabla})\mathbf{u}.\end{array}
 \tag{Energy}
 \end{equation}
-Where we have assumed that we are in an inertial frame and the variables are labelled as in Table~\ref{tab:fluid_variables}.
+Where we have assumed that we are in an inertial frame and the variables are
+labelled as in Table~\ref{tab:fluid_variables}.
 
 \begin{table}[h!]
     \centering
@@ -137,7 +133,9 @@ The most prominent is the  Holland model~\cite{holland1980analytic,holland2010re
 \begin{equation}
     P^{\prime}=\dfrac{P-P_{c}}{P_{n}-P_{c}},
 \end{equation}
-where $P_c$ is the pressure at the centre of the storm, and $P_n$ is the ambient pressure, ideally at at an infinite distance from the storm. They then define the pressure relation
+where $P_c$ is the pressure at the centre of the storm, and $P_n$ is
+the ambient pressure, ideally at at an infinite distance from the storm.
+They then define the pressure relation
 \begin{equation}
     r^{B}\ln(\frac{1}{P^{\prime}})=A,
 \end{equation}or in a more elegant form

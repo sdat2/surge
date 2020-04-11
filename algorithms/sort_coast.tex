@@ -1,0 +1,20 @@
+\begin{algorithm}[H]
+\dontprintsemicolon
+% \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\caption{Coastal Sort}
+\label{algo:Sort}
+\KwIn{Input\_List: Slimmed output of Algorithm~\ref{algo:Selection}}
+\KwIn{First\_Index\_Pair: Point at one end of the coast }
+\KwIn{Final\_Index\_Pair: Point at other end of the coast }
+
+\texttt{tmp} $\gets$ First\_Index\_Pair\;
+
+\Repeat{\texttt{tmp} = Final\_Index\_Pair}{
+ \textbf{append} \texttt{tmp} to Output\_List\;
+ \textbf{remove} \texttt{tmp} from Input\_List\;
+ \texttt{tmp} $\gets$ Input\_List[\textbf{min}$_{k}$(\textbf{distance}(\texttt{tmp}, Input\_List[k]))]\;
+}
+\textbf{append} Final\_Index\_Pair to Output\_List\;
+
+\KwOut{Output\_List: sorted list of indices}
+\end{algorithm}

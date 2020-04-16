@@ -1,27 +1,29 @@
+
+
+\newcommand{\mytitle}{Storm Surges}
+\newcommand{\penname}{Candidate 8205R}
+\newcommand{\supervisor}{\\Supervisor:\\  Dr. Dan Jones,\\ British Antarctic Survey}
+
+
 \usepackage{Theme/mystyle}
 \usepackage{Theme/globals}
-% Define some vital globals for the document.
+% Define some vital globals for the document etc.
 
 % Where I put the images to be imported.
 \graphicspath{{images/}{../images/}}
-%%%%%% This is where I add the bibliography to be used!
 
-\RequirePackage{xpatch}
-\RequirePackage{url}
-\input{references/references.tex}
+\input{references/references.tex}  % bibliography added here
 
-\usepackage{cleveref}
+\usepackage{cleveref} % I prefer the automatic § symbol when I'm referencing sections.
 \crefformat{section}{\S#2#1#3}
 \crefformat{subsection}{\S#2#1#3}
 \crefformat{subsubsection}{\S#2#1#3}
 
+\setlength\headheight{26pt} %% just to make a warning go away.
 
-\setlength\headheight{26pt} %% just to make warning go away.
-
-\rhead{\thepage}  % left head
+\rhead{\thepage}  % right head page number.
 % page number on right head
-\lfoot{\penname}  % text for left foot
+\lfoot{\penname}  % left foot author.
 \cfoot{}
-\rfoot{%\includegraphics[height=1cm]{logos/BAS_LOGO.png}
-       }
+\rfoot{}
 \pagestyle{fancy}  % use fancyhdr style

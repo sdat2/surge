@@ -2,6 +2,7 @@
 # file based on answer:
 # https://tex.stackexchange.com/questions/140845/how-can-i-ignore-latex-error-while-compiling
 
+# options: [main, proposal, presentation]
 filename=presentation
 
 mv aux/${filename}.lo* aux/${filename}.aux aux/${filename}.ilg .

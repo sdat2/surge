@@ -6,7 +6,7 @@ from pptx import Presentation
 from pptx.util import Inches
 from io import BytesIO
 
-pdf_file = sys.argv[1]
+pdf_file = 'output/presentation.pdf' # sys.argv[1] %
 print()
 print("Converting file: " + pdf_file)
 print()

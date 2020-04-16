@@ -51,14 +51,14 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
 \end{array}\right.
 \end{eqnarray}
 \item The Gumbel distribution is a special case ($\xi=0$)
-
-\begin{equation} \operatorname{GUM}(x ; \mu, \sigma)=e^{-\frac{x-\mu}{\sigma}-e^{-(x-\mu) / \sigma}}
+\begin{equation}
+\operatorname{GUM}(x ; \mu, \sigma)=e^{-\frac{x-\mu}{\sigma}-e^{-(x-\mu) / \sigma}}
 \end{equation}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Leiblein New Orleans}
+\begin{frame}{Leiblein (Gumbel Approximation) New Orleans}
 \vspace{-20pt}
     %\centering
  \begin{minipage}{1.0\textwidth}
@@ -73,9 +73,8 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
 \end{frame}
 
 
-\begin{frame}{Leiblein Miami}
+\begin{frame}{Leiblein (Gumbel Approximation) Miami}
 \vspace{-20pt}
-    %\centering
  \begin{minipage}{1.0\textwidth}
 \begin{figure}[htb!]
     \centering
@@ -88,7 +87,7 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
 \end{frame}
 
 
-\begin{frame}{Leiblein Along Coast}
+\begin{frame}{Leiblein (Gumbel Approximation) Along Coast}
 \vspace{-20pt}
     %\centering
  \begin{minipage}{1.0\textwidth}
@@ -111,7 +110,23 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
     \centering
     \includegraphics[width=1\linewidth]{../surge/plots/GEV_modelNO.pdf}
     \vspace{-15pt}
-   \caption{. }
+   \caption{Significant deviation from trend. }
+    \label{fig:}
+\end{figure}
+\end{minipage}
+\end{frame}
+
+
+\begin{frame}{GEV Point Near New Orleans}
+\vspace{-20pt}
+    %\centering
+ \begin{minipage}{1.0\textwidth}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=1\linewidth]{../surge/plots/GEV_modelPNO.pdf}
+    \vspace{-15pt}
+   \caption{c. identical winds to NO, but v. different
+     responsiveness. }
     \label{fig:}
 \end{figure}
 \end{minipage}
@@ -146,14 +161,14 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
 \end{frame}
 
 
-\begin{frame}{There is a physical maximum given the climatology.}
+\begin{frame}{There is a physical maximum, given the climatology.}
 
 \vspace{-30pt}
 \begin{figure}[htb!]
     \centering
     \includegraphics[width=0.8\linewidth]{images/hurricane-Emanuel-upper-bound.png}
     \vspace{-15pt}
-   \caption{\cite{emanuel1987dependence} }
+   \caption{From Emanuel, Nature (1987)~\cite{emanuel1987dependence}~\footnote{Automatically Updated Version: \url{http://wxmaps.org/pix/hurpot}.} }
     \label{fig:}
 \end{figure}
 \end{frame}
@@ -171,4 +186,38 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
     % \label{fig:}
 \end{figure}
 \end{minipage}
+\end{frame}
+
+\begin{frame}{Some Problems With Proposal}
+\begin{figure}
+\includegraphics[width=\linewidth]{images/NASA-KATRINA-SIDEON.jpg}\\
+\textit{Source: NASA}
+\end{figure}
+\begin{itemize}
+\item The minimum attainable TC central pressure varies between months and years.
+\item The translation of this into the maximum winds requires some hurricane model
+    (e.g. Holland~\cite{holland1980analytic, holland2010revised}).
+\item
+    The maximum velocity,
+    \begin{equation}
+    U_m = (\frac{B}{\rho e})^{0.5}(P_n-P_c)^{0.5}, \text{ is at }
+    R_m = A^{1/B}.
+    \end{equation}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Extratropical Cyclones (ECs) Limit Less Obvious}
+\begin{figure}[htb!]
+\includegraphics[width=0.4\linewidth]{images/ukstorm_tmo_2014043_tn.jpg}\\
+\textit{Source: NASA}
+\end{figure}
+\begin{itemize}
+\item Energy from the equator-pole temperature gradient drives heat engine~\cite{lorenz1960energy, holton2004introduction}.
+\item In northern states  ECs pose a greater hazard, and are better sampled.
+[But Hurricanes can still hit New England as in 1815 and 1938]~\cite{emanuel2005divine}.
+\item ECs may come on a continuous spectrum (with a limit?)
+\end{itemize}
+
+
 \end{frame}

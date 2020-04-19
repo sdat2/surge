@@ -4,37 +4,45 @@
 \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
 
 \input{Theme/beamer_theme.tex}
+
 \title{Using Learning Algorithms to Investigate East~US Storm Surges \vspace{-15pt}}
 \titlegraphic{\includegraphics[height=1.25cm]{Theme/Logos/UCC.png}\hspace{0.5cm}\includegraphics[height=1.25cm]{Theme/Logos/small-bas.png}}
 \author{Simon D.\ A.\ Thomas}
-\institute{University of Cambridge $|$ British Antarctic Survey\\
-\href{mailto:sdat2@cam.ac.uk}{sdat2@cam.ac.uk} $|$ \href{mailto:sithom@bas.ac.uk}{sithom@bas.ac.uk} }
+\institute{University of Cambridge | British Antarctic Survey\\
+\href{mailto:sdat2@cam.ac.uk}{sdat2@cam.ac.uk} | \href{mailto:sithom@bas.ac.uk}{sithom@bas.ac.uk} }
 \date{Collaborating with Dr.s:\\ Dan Jones, Laure Zanna, Pierre Mathiot, \& Rory Bingham } %\today
+
 \immediate\write18{texcount -nc -inc -merge -sum -q presentation.tex > wordcount/pres_wordcount.tex}
 
 \begin{document} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 {\setbeamertemplate{footline}{} % turns off footline in title slide.
 \frame{\titlepage}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%--------import sections-----%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %\input{pres-sec/intro.tex}
 %\input{pres-sec/model-intro.tex}
 %\input{pres-sec/coast-processing.tex}
 %\input{pres-sec/init-zos.tex}
 %\input{pres-sec/tau-reg.tex}
-%\input{pres-sec/ea-ext.tex}
-\input{pres-sec/evt.tex}
+\input{pres-sec/ea-ext.tex}
+%\input{pres-sec/evt.tex}
 %\input{pres-sec/end.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%--------Bibliography-----%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{frame}[allowframebreaks]
-\renewcommand*{\bibfont}{\footnotesize}
+\renewcommand*{\bibfont}{\footnotesize} % I think that this command does not work.
 \footnotesize
         \frametitle{References}
         \printbibliography
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-----appendix-----%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \appendix
 \normalsize
+
 %\input{pres-sec/appendix.tex}
+
 \end{document}

@@ -19,9 +19,15 @@ look in output/ for the pdf output.
 
 Ignore all non-fatal warnings.
 
+Look in wordcount folder for wordcounts.
+
 Convert the pdf slides to powerpoint slides.
 
 > python3 output/convert.py
+
+To change the style of algorithms, change the algorithms/algorithm.tex file.
+
+To change the .bib files included change the references/references.tex file.
 
 *Requirements*
 

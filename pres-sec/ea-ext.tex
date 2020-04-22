@@ -70,7 +70,7 @@
 
 
 
-\begin{frame}{VC $\eta$ Covariance and Correlation matrices are similar. }
+\begin{frame}{VC $\eta$ Covariance and Correlation matrices. }
 \vspace{-20pt}
 \begin{figure}[htb!]
   \centering
@@ -85,7 +85,7 @@
 \end{frame}
 
 
-\begin{frame}{VC $\tau_u$ Covariance and Correlation matrices are similar. }
+\begin{frame}{VC $\tau_u$ Covariance and Correlation matrices. }
 \vspace{-20pt}
 \begin{figure}[htb!]
   \centering
@@ -107,7 +107,95 @@
   \includegraphics[width=1\linewidth]{../surge/plots/vc_stats/zos_individual.pdf}
   \vspace{-7pt}
   \caption{There is a lack of large positive anomalies. I don't understand what
-  produces so many negative anomalies further North.}
+   produces so many negative anomalies further North.}
   \label{fig:}
 \end{figure}
+\end{frame}
+
+
+\begin{frame}{VC Bathymetry. }
+\vspace{-20pt}
+\begin{figure}[htb!]
+  \centering
+  \hspace{-10pt}
+  \includegraphics[width=1\linewidth]{../surge/plots/vc_bath_list.pdf}
+  \vspace{-7pt}
+  \caption{}
+  \label{fig:}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{VC Bathymetry. }
+\vspace{-20pt}
+\begin{figure}[htb!]
+  \centering
+  \hspace{-10pt}
+  \includegraphics[width=1\linewidth]{../surge/plots/vc_distance_isobath.pdf}
+  \vspace{-7pt}
+  %\caption{}
+  \label{fig:}
+\end{figure}
+\end{frame}
+
+\begin{frame}{VC Angles. }
+\vspace{-20pt}
+\begin{figure}[htb!]
+  \centering
+  \hspace{-10pt}
+  \includegraphics[width=1\linewidth]{../surge/plots/vc_angle_heatmap.pdf}
+  \vspace{-7pt}
+  \label{fig:}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Better for  moderate $\sigma$}
+\vspace{-20pt}
+\begin{figure}[htb!]
+    \centering
+            \begin{equation}
+        \frac{\partial B_i^{\prime}}{\partial \mathrm{pt}}
+        \equiv \frac{B_{i+1}^{\prime}-B_{i-1}^{\prime}}{2} \notag
+\end{equation}
+    \includegraphics[width=1.0\linewidth]{../surge/plots/vc_derivative_heatmap_10_30.pdf}
+    % \caption{To deal with this we could smooth, and try a variety of $\sigma$.}
+    % \label{fig:}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{VC Responsiveness}
+\vspace{-20pt}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{../surge/plots/vc_rmlr.pdf}
+    % \label{fig:}
+\end{figure}
+\end{frame}
+
+\begin{frame}{VC Responsiveness}
+\vspace{-20pt}
+\begin{figure}[htb!]
+    \centering
+    \includegraphics[width=0.8\linewidth]{../surge/plots/vc_ridge_lasso.pdf}
+    % \label{fig:}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{VC Low / High Pass Filter for all Points}
+\vspace{-30pt}
+    %\centering
+\hspace{-30pt}
+ \begin{minipage}{1.15\textwidth}
+\begin{figure}[htb!]
+    \centering
+   \hspace{-40pt} \includegraphics[width=0.48\linewidth]{../surge/plots/vc_low_pass_grid.pdf}
+        \includegraphics[width=0.48\linewidth]{../surge/plots/vc_high_pass_grid.pdf}
+    \vspace{-7pt}
+    \caption{Fourier Transform~\cite{cooley1965algorithm} of $\Delta\eta$.}
+    %\label{fig:A}
+\end{figure}
+\end{minipage}
 \end{frame}

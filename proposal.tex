@@ -19,7 +19,7 @@ the Natural Sciences Tripos}
      In an attempt to minimise research risk, there is significant flexibility on which data sources to focus on,
       and which theoretical frameworks to follow.
       The motivation for studying storm surges is described and they are put in their physical context.
-      The project can be categorized as machine learning (ML) enabled climate physics,
+      The project can be categorised as machine learning (ML) enabled climate physics,
        and will involve a significant amount of physical and algorithmic theory.
        See Figure~\ref{fig:Plan} for a project timeline.
 
@@ -196,7 +196,7 @@ w. \quad \quad h(x, y , t) = \eta(x, y, t) - \eta_{b}(x, y)\\
 
 
 Gaussian Processes (GPs) are a popular tool within probabilistic machine learning (ML), and the field predominantly uses Williams and Rasmussen's textbook~\cite{williams2006gaussian}\footnote{\href{http://www.gaussianprocess.org/gpml/chapters/RW.pdf}{http://www.gaussianprocess.org/gpml/chapters/RW.pdf}},
-Researchers prize GPs' ability to produce a data-driven prediction of a value with an associated uncertainty distribution given some number of inputs~\cite{ebden2008gaussian}.\footnote{ \href{https://www.robots.ox.ac.uk/~mebden/reports/GPtutorial.pdf}{https://www.robots.ox.ac.uk/$\sim$mebden/reports/GPtutorial.pdf}}. The GP is completely described by its mean prediction value \(m(\mathbf{x})\) and its covariance \(k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)\) through
+Researchers prize GPs' ability to produce a data-driven prediction of a value with an associated uncertainty distribution given some number of inputs~\cite{ebden2008gaussian}.\footnote{ \href{https://www.robots.ox.ac.uk/~mebden/reports/GPtutorial.pdf}{https://www.robots.ox.ac.uk/$\sim$mebden/reports/GPtutorial.pdf}}. The GP is completely described by its mean prediction value \(m(\mathbf{x})\) and its co-variance \(k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)\) through
 \begin{equation}m(\mathbf{x})=\mathbb{E}[f(\mathbf{x})], \end{equation}\begin{equation}k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)=\mathbb{E}\left[(f(\mathbf{x})-m(\mathbf{x}))\left(f\left(\mathbf{x}^{\prime}\right)-m\left(\mathbf{x}^{\prime}\right)\right)\right].\end{equation}
 With the GP written as:
 \begin{equation}f(\mathbf{x}) \sim \mathcal{G} P\left(m(\mathbf{x}), k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)\right). \end{equation}

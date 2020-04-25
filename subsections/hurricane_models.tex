@@ -1,0 +1,69 @@
+\subsection{Simple Tropical Cyclone Models}
+
+\subsubsection{Introduction to azimuthally symmetric models}
+One of the dominant controls on storm surge events on the Eastern Seaboard
+ of the US are the large tropical cyclones (Hurricanes).
+  These large vortices can be surprisingly well modelled by azimuthally
+   symmetric analytic pressure distributions, and the velocity distribution
+    that would be expected to result from them.
+
+\subsubsection{Holland Hurricane Model}
+The most prominent is the  Holland model~\cite{holland1980analytic,holland2010revised}
+ which elaborated on a class of functions initially proposed by Schloemer 1954~\cite{schloemer1954analysis}.
+  This model uses the dimensionless pressure \( P^{\prime}\) given by
+
+\begin{equation}
+    P^{\prime}=\dfrac{P-P_{c}}{P_{n}-P_{c}},
+\end{equation}
+where $P_c$ is the pressure at the centre of the storm, and $P_n$ is
+the ambient pressure, ideally at at an infinite distance from the storm.
+They then define the pressure relation
+\begin{equation}
+    r^{B}\ln(\frac{1}{P^{\prime}})=A,
+\end{equation}or in a more elegant form
+\begin{equation}
+P^{\prime}=\exp{(-\frac{A}{r^B})},
+\end{equation}
+where A and B are model parameters which must be found empirically.
+
+In steady state around this  pressure distribution generally yields a
+ velocity~\cite{roisin2010GFD} of:
+\begin{equation}
+    U_g = \sqrt{AB(P_{n} - P_{c})\frac{\exp{(-\frac{A}{r^{B}})}}{\rho r^{B}}
+     +\frac{r^2f^2}{4}}-\frac{rf}{2}.
+\end{equation}
+If we assume that the eye of the TC itself is small s.t. the Coriolis force
+ is much smaller than the centrifugal then we can approximate this as
+
+\begin{equation}
+U_c = \sqrt{AB(P_{n}-P_{c})\frac{\exp{(-A/r^{B})}}{\rho r^{B}}}.
+\end{equation}
+The maximum velocity
+\begin{equation}
+U_m = (\frac{B}{\rho e})^{0.5}(P_n-P_c)^{0.5},
+\end{equation}
+which occurs at
+\begin{equation}
+R_m = A^{1/B}.
+\end{equation}
+There are at least two degrees of freedom:
+B defines the height of the peak and A determines its relative position.
+ The difference between the ambient and central pressure of the vortex still
+ enter into the velocity expression, so there are four degrees of freedom when
+  those are included.
+
+
+\subsubsection{The Rankine Vortex}
+
+The Rankine vortex is
+\begin{equation}
+C=\left\{\begin{array}{ll}U \frac{R_m}{ r}& \text{ if } r < R_m,\\
+U\frac{r}{ R_m} & {\text { if } r>R_m},
+\end{array}\right.
+\end{equation}
+where C is a constant, and the two sections are joined together
+ so that the velocity is continuous at the boundary.
+   The two degrees of freedom are $R_m$ and C.
+This can be modified to a more general relation where $Ur^{x}=\text{constant}$
+where X is a new parameter to fit,
+which lies between 0.4 and 0.6~\cite{holland1980analytic}.

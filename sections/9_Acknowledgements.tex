@@ -3,13 +3,13 @@
 \section{Acknowledgements}
 \subsection{Personal Thanks}
 Dr.\ Dan Jones (British Antarctic Survey) has been an invaluable help throughout this project,
-remaining encouraging even when all is in a rut.
+help in this project.
 Dr.\ Laure Zanna (New York University) was a useful counsel as to what is feasible,
  and what the common views in the literature were.
 Dr.\ Pierre Mathiot (Met Office) also deserves my thanks for
 producing the high-resolution ORCA12 data that I used, and
 for answering my queries.
-I also received advice from Dr.\ Scott Hosking (BAS) and  Dr.\ Rory Bingham (Bristol).
+I also received advice from Dr.\ Rory Bingham (Bristol).
 I hope that in the fullness of time these collaborators will be rewarded
 as co-authors, as we expand and publish the
 work begun here.
@@ -17,18 +17,20 @@ work begun here.
 
 \subsection{Resources Used}
 
-This report was typeset in \LaTeX\  on Overleaf\footnote{\href{https://www.overleaf.com/}{https://www.overleaf.com/}}
+This report was typeset in \LaTeX\
 with \texttt{python3.matplotlib}~\cite{Hunter:2007} and \texttt{draw.io}~\cite{DrawIO}
 for original figures, WebPlotDigitiser for data extraction~\cite{WebPlotDigitiser},
 and Mathpix for maths extraction~\cite{mathpix}.
 It makes extensive uses of the sci-kit learn library~\cite{scikit-learn} as highlighted in the report.
-The cmocean package~\cite{thyng2016true}\footnote{\href{https://matplotlib.org/cmocean/}{https://matplotlib.org/cmocean/}}
-provided oceanography standard color maps, and xkcd was useful for specific color choice.\footnote{\href{https://xkcd.com/color/rgb/}{https://xkcd.com/color/rgb/}}
+The \texttt{cmocean} package~\cite{thyng2016true}\footnote{\href{https://matplotlib.org/cmocean/}{https://matplotlib.org/cmocean/}}
+provided oceanography standard colour maps.
 I used Panolpy and \texttt{ncview}\footnote{\url{http://meteora.ucsd.edu/~pierce/ncview_home_page.html}}
-for inspecting Netcdf files.
+for inspecting NetCDF files.
 
 I made use of these textbooks:~\cite{roisin2010GFD,williams2011ocean,ITILA,
-sivia2006data,landau1959course,faber1995fluid,williams2006gaussian,murphy2012machine}.\footnote{\href{http://www.gaussianprocess.org/gpml/chapters/RW.pdf}{http://www.gaussianprocess.org/gpml/chapters/RW.pdf}}$^{,}$\footnote{see also for EOF (p. 91): \href{https://atmos.washington.edu/~dennis/552_Notes_4.pdf}{https://atmos.washington.edu/~dennis/552\_Notes\_4.pdf}}
+sivia2006data,landau1959course,faber1995fluid,williams2006gaussian,
+murphy2012machine}.\footnote{\href{http://www.gaussianprocess.org/gpml/chapters/RW.pdf
+}{http://www.gaussianprocess.org/gpml/chapters/RW.pdf}}
 The report was written as instructed in the 1B Experimental Methods course
 2016~\cite{presentation} and the Cavendish Guide to Writing Formal
 Reports~\cite{LabNotes}, with writing style informed
@@ -39,11 +41,13 @@ I found Stephen Pinker's book~\cite{pinker2015sense} especially useful and enter
 The code listing for this report is available as a \texttt{python3} repository on Gitlab~\cite{gitlab}.
 I have tried to write using PEP8 style\footnote{\href{https://www.python.org/dev/peps/pep-0008/}{https://www.python.org/dev/peps/pep-0008/}}
 and have been helped by \texttt{pylint} and Pycharm.\footnote{\href{https://www.jetbrains.com/pycharm/download/}{https://www.jetbrains.com/pycharm/download/}}
-My use of \texttt{python3} is informed by the course given by Dr. Buscher that I attended~\cite{SciCompNotes}
+My use of \texttt{python3} is informed by the course given by Dr.~Buscher that I attended~\cite{SciCompNotes}
 and by Bader (2017)~\cite{bader2017python}.
 Errors are dealt with as per the Physics formula booklet~\cite{MathsFormulaBooklet}
-by the \texttt{python3} Uncertainties package~\cite{lebigot2010uncertainties}.\footnote{\href{https://pythonhosted.org/uncertainties/}{https://pythonhosted.org/uncertainties/}}
+by the \texttt{python3.uncertainties}
+package~\cite{lebigot2010uncertainties}.\footnote{\href{https://pythonhosted.org/uncertainties/}{https://pythonhosted.org/uncertainties/}}
 
  To move and process the large quantity of climate data on the HPCs I used \texttt{tmux}
  to run \texttt{bash}, \texttt{python3}, and \texttt{fortran} scripts.
+
 \end{document}

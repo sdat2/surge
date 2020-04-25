@@ -1,0 +1,35 @@
+\subsubsection{NEMO Models}
+\paragraph{Introduction}
+I was able to use two outputs~§\ref{sec:rean-prod}~\&~§\ref{sec:control-1950-intro}
+of use the European NEMO ocean engine~\cite{madec2015nemo}, which uses the ORCA12 grid, with a  $\frac{1}{12}^{\circ}$
+resolution.
+This is a tripolar ocean grid, designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
+Instead there are two `north' poles, one in Russia, and one in the Canada,
+with the grid elegantly curving between the two.
+The south pole remains in Antarctica, and the grid is undistorted from a lon-lat
+ grid up until 20$^{\circ}$N.\textbf{[citation needed]}
+
+ The Bathymetry used by the ocean engine is based on
+ ETOPO2~\cite{lecointre2011definition,noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
+
+\paragraph{Limitations}
+
+Neither of the outputs in~§\ref{sec:rean-prod}~\&~§\ref{sec:control-1950-intro}
+include tides, inundation, or wave setup.
+The resolution of the models mean that in the region of interest cells are around
+8km wide. Therefore the centre at which the sea surface height is recorded,
+is around 4km from the coast.
+
+\subsubsection{2004-5 Hourly Reanalysis Product}
+\label{sec:rean-prod}
+Dr.~Pierre Mathiot kindly ran a global two year ocean simulation with
+hourly outputs for the years 2004-5. It used EN4 for its initial conditions,
+and CORE2 for its atmospheric forcing.
+
+\paragraph{EN4 Initial Conditions}
+
+Initial condition EN4~\cite{good2013en4, HadObs} (start of the run = 1976).
+
+\paragraph{CORE2 Forcing}
+
+Atmospheric forcing came from CORE2~\cite{griffies2012datasets,large2009global}.

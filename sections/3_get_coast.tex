@@ -1,0 +1,70 @@
+\section{Coastlines within a climate model}
+\label{sec:coast}
+\subsection{Selection}
+ \subsubsection{Fractal coastline}
+ \label{sec:fractal}
+ The coastline appears to be a self-similar fractal~\cite{mandelbrot1967long,
+ richardson1961problem}, by which is meant that it has the same features at all
+ scales, so that the length of the coast increases without limit as resolution
+ is increased.
+ A consequence of this is that a coastline has no defined length without
+ reference to the resolution at which it is measured.
+ This presents some problem when comparing different climate models as they will have different
+ numbers of coastal cells. It has been observed that the fractal dimension changes
+  along the East US coast~\cite{jiang1998fractal}
+ and this would mean that the relative number of coastal cells between different
+ points will also change as the resolution is increased.
+
+\subsubsection{Algorithms}
+\label{sec:coast-algorithms}
+Algorithms~\ref{algo:Selection}~\&~\ref{algo:Sort} first extract the coastline
+from the surface slice of the ocean field and then pick out a single chain of
+coastal points between two chosen ends. The list of points can be further
+manually sorted to remove unwanted regions such as large bays (e.g.~Chesapeake~bay)
+and the occasional river island (e.g.~Shanghai bay's island). Once this is
+done \texttt{xarray} can be used to quickly extract these points
+from the climate model to make a new NetCDF file.
+
+
+\input{algorithms/select_coast.tex}
+\input{algorithms/sort_coast.tex}
+
+\subsubsection{Sample coastlines}
+The first coastline chosen was the eastern coastline of the mainland
+United States, so that it could be compared with~\cite{ZannaPreprint},
+and because the topography of the NEMO models is most accurate along the
+US coastline.
+
+Secondly I extracted the coastline from Hue, Northern Vietnam, to China's
+border with North Korea, removing Shanghai bay island.
+
+Finally we extracted the eastern coastline of Honshu island, Japan.
+
+\subsection{Metrics}
+\subsubsection{Motivation}
+A quick look at the coast revealed that certain features stuck out:
+high kurtosis at New Orleans (NO), at the end of a shallowly sloping bay;
+low kurtosis at Miami (MM), at the end of the headland of Florida.
+But it would be interesting to find out what is really the controlling
+factor, or whether either of these are truly predictive of storm surge risk.
+
+To assess this question, it is necessary to quantify these two coastal attributes
+and given that the coast is fractal (§~\ref{sec:fractal}), these metrics must also be defined at
+all scales.
+
+\subsubsection{Convexity}
+Given a selected coastline, we have a list of points of latitude and longitude.
+We can define the normal bearing to the coast.
+
+This provides a convexity value for every smoothing length $\sigma$.
+
+\subsubsection{Bathymetric gradient}
+The simplest way of working this out is to look at the
+bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
+ case (§~\ref{sec:nemo})), and work out where some set of chosen isobaths are.
+Once these isobaths have been selected, the cartesian distance
+within the model grid from every point on
+the coast to that isobath are calculable.
+
+This provides a distance-to-isobath value for each of the isobaths
+queried.

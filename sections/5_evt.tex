@@ -1,0 +1,53 @@
+\section{Extreme value theory}
+\label{sec:5_Transform}
+\subsection{Idealised statistical theory}
+The central limit theorem is a well known triumph of classical statistics,
+and it is often useful in the physical sciences where the central value
+is that of interest. However, by its nature the mean SSH will
+not be able to damage the coast, and life and property will only be put
+at risk by the most extreme events.
+
+Extreme value theory is the provides the extension of this theory
+to look at the return period of extreme events of a certain value.
+
+Both require domain of attraction condition~\cite{bucher2018horse}:
+
+\begin{enumerate}
+  \item Either $\forall r \in \mathbb{N} \;\exists \;b_r \in \mathbb{R},\; \gamma\in \mathbb{R},\; a_r>0: $
+    \begin{eqnarray}
+    \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \\
+     \text { for all } 1+\gamma x>0
+    \tag{BM}
+    \end{eqnarray}
+
+  \item Or equivalently, there exists a positive function $\psi=\psi (t):$
+    \begin{eqnarray}
+    \lim _{t \uparrow x^{*}} \frac{1-F(t+\psi(t) x)}{1-F(t)}=(1+\gamma x)^{-1 / \gamma} \\
+    \text { for all } 1+\gamma x>0
+    \tag{POT}
+    \end{eqnarray}
+ \end{enumerate}
+
+Normal Choices are POT or Block Maxima, but these strategies require
+large amounts of data to converge~\cite{taleb2019much}.
+
+BM leads to Generalised Extreme Value (GEV) distribution,
+      whereas POT leads to Generalised Pareto Distribution (GPD).
+
+\subsection{Block maxima GEV}
+It is trivial to extract the highest SSH value in a given year at a given point
+from \texttt{control-1950}.
+It was decided not to subtract the low frequency SSH seasonal cycle from the
+values first, because it is the absolute height of the sea surface which
+creates the hazard rather than the relative height.
+
+\subsection{Comparison to POT GPD}
+The other alternative is to use the peak-over-threshold method.
+There are a number of alternatives as to how you should choose the
+threshold.
+
+\subsection{Enforcing an asymptote using potential intensity theory }
+As noted in~§~\ref{sec:hurr-theory} there is some maximum size
+that a tropical cyclone might be expected to be able to reach given
+the climate. This gives us information as to the shape of the probability
+distribution beyond what just curve-fitting the tail.

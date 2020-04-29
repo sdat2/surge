@@ -1,23 +1,58 @@
 \section{Introduction}
 \label{sec:1_Introduction}
 
-Machine Learning\footnote{The use of the term Machine Learning (ML) is unfortunate,
-I would prefer it if ``Learning Algorithms'' or ``Advanced Statistical Modelling''
- were used by the field as I find these more descriptive.
-  Perhaps due to the pressures research grant proposals and IPOs,
-   the field tends to use the quite cryptic labels `AI' and `ML',
-   and I will do likewise for consistency.
-   I here define define Machine Learning as any algorithm applied to data
-    to extract information which is more advanced than classical statistics.
-    This may seem hopelessly broad, but I have not heard of one better. }
-algorithms are often directly inspired by physical processes (e.g.\
-stochastic differential equations (SDEs)) and concepts (e.g.\ transfer entropy).
+
+Storm surges are coastal sea levels which far exceed those
+expected given the tide.
+They are caused by either tropical cyclones
+(TCs) or extratropical cyclones (ECs).
+TCs draw their kinetic energy from the thermodynamic disequilibrium between
+the tropical sea surface and the troposphere~\cite{emanuel1987dependence},
+whereas ECs draw theirs from the
+polewards temperature gradient~\cite{lorenz1960energy, holton2004introduction}.
+Their respective names reflect that conditions favourable
+to their formation and growth are within and without the tropics respectively.
+Because they can lower central pressures and sustain greater winds,
+TCs create larger and more dangerous storm surges~\cite{emanuel2005divine}.
+
+TC storm surges have historically been the
+world's largest physical hazard~\cite{shultz2005epidemiology},
+in terms of lives lost and economic damage~\cite{zhang2009tropical}.
+This hazard is increasing as more people live on vulnerable coastlines
+in insufficient buildings.
+Anthropogenic climate change is expected to exacerbate this,
+as it begins to both increase the maximum TC intensity\footnote{However the uptick
+in the number of tropical cyclones is not currently above
+ natural variability~\cite{mendelsohn2012impact}.}
+(see~§~\ref{sec:hurr-theory})~\cite{emanuel2008hurricanes},
+and lead to sea level rise placing more areas at risk~\cite{SROCC}.
+The geographical range of hurricanes may also increase
+to the ranges of previous epochs~\cite{fedorov2010tropical}.
+
+Understanding how this hazard will change quantitatively
+is a complicated question, but necessary to accurately
+inform the public,
+so that they can act with foresight.
+Others have already begun to apply machine learning (ML) techniques to this
+question~\cite{kulp2019new, kulp2018coastaldem}.
+
+This report begins to develop new methods of achieving this goal
+as inspired by Yin~et~al.~2020~\cite{ZannaPreprint}. Initially, by
+developing algorithms for extracting the coastlines from climate models
+and metrics to characterise that coastline in §~\ref{sec:coast}.
+Then by following~\cite{ZannaPreprint} I compare measures for the
+responsiveness of a stretch of the coastline to a certain wind stress
+level. Far from being a useless metric divorced from the catastrophic
+storm surge events, I show using extreme value theory (EVT), that the
+distributions of extreme events are controlled by the same factors as
+the responsiveness under normal circumstances. Finally, I suggest a
+novel method of improving a naive EVT fit, using our physical knowledge
+that there is a thermodynamical limit to the maximum intensity of a hurricane
+ given a climate (see~§~\ref{sec:hurr-theory}), albeit with some level of
+ uncertainty.
 
 
-This work follows in the footsteps of the late Professor Sir David MacKay
-in two respects: in its focus on the using a Bayesian framework for inference~\cite{ITILA, MacKay91},
-and in its ultimate goal to provide clear information about climate~\cite{mackay2008sustainable}.
-
-I note that because of the rotation-induced symmetry of western ocean boundaries~\cite{hogg1995western},
- any model that works here should generalise better to East Asia (Vietnam, Philippines,
-  and China) than it would to the United Kingdom.
+I discuss the merits and deficiencies of these new investigations (§),
+and suggest how they could be built upon in future work (§).
+ There are few words to play with
+and so much of the basic theory is placed in the appendix (§) to this document.

@@ -1,11 +1,73 @@
-%\documentclass[../main.tex]{subfiles}
-%\begin{document}
-
 \section{Discussion}
 \label{sec:7_Discussion}
 
+\subsection{Future work}
+\subsubsection{Model intercomparison}
+Different models have different systematic biases (in cyclogenesis etc.)
+and also different resolutions. It would be interesting to see how
+the responsiveness changes as the resolution decreases.
+Presumably it must increase with a bound.
+
+\subsubsection{Gauges}
+Data is available from tidal gauges along the U.S.~coastline.
+Frequencies of data are variable, and the API to extract this data
+is difficult to implement. Tidal gauges are also sometimes moved
+without note in the dataset.
+
+\subsubsection{Tides}
+Models like LLC4320 include tides, and these tides introduce
+non-linear tide-surge interaction which should be studied.
+Famously dangerous storm surges, such as the 1938 New England
+Hurricane, coincided with spring high tides.
+
+\subsubsection{Inundation}
+Combining the climate models outputs with a SLOSH model could produce
+an output which could more directly be compared against the tidal gauges
+without the bias created by measuring SSH from the centre of the coastal
+cell.
+
+
 \begin{itemize}
-\item Problem.
-\item Problem.
-\item Observational Data.
+\item Learn the statistical transformation from
+      a 4km coast point to real coast.
+\item Add in tides using LLC4320, and look at the
+      non-linear tide-surge interaction.
+\item Higher dimensional machine learning Models
+      to capture non-local structural influences.
 \end{itemize}
+
+\subsection{Cyclone Problem}
+There are insufficient TCs in climate models, because the processes involved
+in cyclogenesis are hard to resolve in climate models.
+
+\subsection{Model Hysteresis}
+The sea surface does not instantly reach its steady state when the sea surface
+stress is applied, and it does not recede from its high level.
+
+
+\subsection{Summary of Systematic Errors}
+Table~\ref{tab:syst_error} shows the list of systematic errors that effect the
+answer.
+
+\begin{table}[ht]
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{l L{8.5cm}}
+%\hline \hline
+\textbf{Effect} & \textbf{Source}\\
+\hline
+($-$) & Coarsening of time to daily outputs.\\
+($-$) & Lack of cyclogenesis  $\implies$ not enough
+        TCs~\cite{tomassini2017interaction, williams2018met, FurtherInfo}.\\
+($\pm$) & Parameterisation of heat transfer $\implies$ wrong TC strength.\\
+($\pm$) & Parameterisation of wind stress $\implies$ wrong TC surge.\\
+($-$) & SSH 4km out from the coast (centre of cell).\\
+($\pm$) & No non-linear surge-tide interaction.\\
+($-$) & Limited wave build up.\\
+($-$) & Long TC return periods $> 100$~yrs (e.g.~New England).\\
+\hline
+\end{tabular}
+}
+\caption{Systematic sources of error for the estimate of TC-induced storm surge frequency
+and severity.}
+\label{tab:syst_error}
+\end{table}

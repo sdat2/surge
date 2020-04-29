@@ -26,7 +26,7 @@
     %\vspace{-0.235cm}
 
     \begin{tikzpicture}
-    \node[fill=white, fill opacity=1]{\textbf{Dr.\ Dan Jones}}
+    \node[fill=white, fill opacity=1]{\textbf{Dr.~Dan Jones}}
     \end{tikzpicture}
     %\vspace{-0.235cm}
 
@@ -52,7 +52,12 @@
 \begin{center}
        \normalsize{
     \begin{tikzpicture}
-    \node[fill=white,fill opacity=1]{A thesis submitted for the degree of Master of Natural Science.}
+    \node[fill=white,fill opacity=1]{A thesis submitted for the partial fulfilment of the
+     }
+    \end{tikzpicture}
+
+    \begin{tikzpicture}
+    \node[fill=white,fill opacity=1]{ degree requirements for Master of Natural Sciences.}
     \end{tikzpicture}
         }
 
@@ -61,7 +66,7 @@
 
            \begin{tikzpicture}
     \node[fill=white,fill opacity=1] (a) {\large{
-       c. 5000 words}}
+       \words~words}}
     \end{tikzpicture}
        \vspace{0.3cm}
 
@@ -75,12 +80,11 @@
 
 \newpage
     \addtocontents{toc}{\protect\thispagestyle{empty}}
-\twocolumn[
-  \begin{@twocolumnfalse}
+%\twocolumn[
+  %\begin{@twocolumnfalse}
   {
   \vspace{-50pt}
-  % \texit{Dedicated to Hugo de Balsham, who in 1284 founded something good}
-  \paragraph{Cover matter:} An image from Nullschool.net on 28/10/19. Sea Surface
+  \paragraph{Cover matter:} An image from Nullschool.net on 28/10/19. Sea surface
   temperature provides the colormap, and ocean currents provide the stripes.
   \paragraph{Originality:} This is all my own original work
                            unless otherwise highlighted.
@@ -88,9 +92,15 @@
 
   \tableofcontents
 
-  \end{@twocolumnfalse}
+%  \end{@twocolumnfalse}
+  \paragraph{Length compliance statistics:}
+
+  (out of limits.) \\
+  Abstract:  \abwords/500 words. \\
+  Main body: \words/5000 words. \\
+  Pages: \pages/30
   \thispagestyle{empty}
-]
+%]
 
 \newpage
 \end{document}

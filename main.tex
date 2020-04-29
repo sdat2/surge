@@ -4,57 +4,62 @@
 \date{\today}
 \title{\vspace*{-100pt}\textbf{\mytitle}\vspace{-0pt}}
 \author{\penname \\  \supervisor }
+\newcommand\words{2576}
+\newcommand\pages{6}
+\newcommand\abwords{200}
 
 \usepackage{moreverb} % for verbatim ouput
 % Count of words
 \immediate\write18{texcount -nc -inc -merge -sum -q main.tex > wordcount/wordcount.tex}
-
 \newcommand\wordcount{ \verbatiminput{wordcount/wordcount.tex}}
-%%%%%%%%%%%Actual Document%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%---Actual Document---%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 %%TC:ignore
- \subfile{sections/Title_Page}
+\subfile{sections/Title_Page}
  \input{sections/0_Abstract}
 %%TC:endignore
 
-%%%%%%%%%%%%Real Report%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%---Real Report---%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{sections/1_Introduction}
 %\FloatBarrier
 \input{sections/2_background_models}
 %\FloatBarrier
 \FloatBarrier
-\input{sections/3_ORCA12_REG}
-\input{sections/4_OBS_Reg}
+\input{sections/3_get_coast.tex}
+\input{sections/3.5_low_freq.tex}
+\input{sections/4_responsiveness.tex}
 %\FloatBarrier
-\input{sections/5_Transform}
+\input{sections/5_evt}
 %\FloatBarrier
-\input{sections/6_Application}
+%\input{sections/6_Application}
 \input{sections/7_Discussion}
 %\FloatBarrier
 \input{sections/8_Conclusion}
 %\FloatBarrier
 
-%%%%%%%%%%%%End Real Report%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%----End Real Report---%%%%%%%%%%%%%%%%%%%
 
 %%TC:ignore
 \FloatBarrier
 \footnotesize
 \printbibliography
 \normalsize
-%%%%%%%%%%%%%%Start Appendices%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%----Start Appendices---%%%%%%%%%%%%%%%%%%%%%
 \appendix
-\subfile{sections/9_Acknowledgements}
-\subfile{appendices/ref_theory}
+\input{sections/9_Acknowledgements}
+\input{appendices/ref_theory}
 \onecolumn
 \input{appendices/repo_intro.tex}
 \section{Wordcount}
-The word limit for this thesis was 5000 words (excluding abstract, figure captions, references, and appendices).
+The word limit for this thesis was 5000 words
+(excluding abstract, figure captions, references, and appendices).
 For full transparency, this is the full automatic breakdown:
 \wordcount
-
 %%TC:endignore
-%%%%%%%%%%%%%End of Document%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%---End of Document---%%%%%%%%%%%%%%%%%%%%
 \end{document}

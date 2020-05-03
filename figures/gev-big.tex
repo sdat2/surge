@@ -2,11 +2,51 @@
     \centering
     \includegraphics[width=0.8\linewidth]{../surge/plots/GEV_modelNO.pdf}
     %\vspace{-25pt}
-   \caption{New Orleans GEV plot for \texttt{control-1950} Interesting transition
-            - does this represent hurricanes?}
+   \caption{New Orleans GEV plot adapted from \texttt{skextreme}~\cite{skextremes} for \texttt{control-1950} Interesting transition
+            - does this represent hurricanes? The deviation from the fitted distribution
+            is shown in A~\&~C.}
     \label{fig:gev-no}
     \includegraphics[width=0.8\linewidth]{../surge/plots/skextreme_second_tactic.pdf}
     \vspace{-15pt}
-   \caption{Confidence intervals not defined near Miami and Eastport. }
+   \caption{Confidence intervals not defined near Miami and Eastport.
+   The confidence intervals, particularly in $\xi$, show that the fit of the
+   GEV to the data is relatively poor.}
     \label{fig:gev_all_points}
 \end{figure*}
+
+
+\begin{itemize}
+\item
+\(
+\operatorname{GEV}(\mu, \sigma, \xi):
+\)
+\(
+\text{ location, } \mu \in \mathbb{R}
+\text{; scale, } \sigma>0
+\text{; shape, } \xi \in \mathbb{R}.
+\)
+\begin{eqnarray}
+\operatorname{GEV}(x; \mu, \sigma, \xi)=&
+\frac{1}{\sigma} \chi(x)^{\xi+1} e^{-\chi(x)};
+\end{eqnarray}
+\begin{eqnarray}
+\chi(x)=&\left\{\begin{array}{ll}
+\left(1+\xi\left(\frac{x-\mu}{\sigma}\right)\right)^{-1 / \xi} & \text { if } \xi \neq 0 \\
+e^{-(x-\mu) / \sigma} & \text { if } \xi=0
+\end{array}\right.
+\end{eqnarray}
+\item The Gumbel distribution is a special case ($\xi=0$)
+\begin{equation}
+\operatorname{GUM}(x ; \mu, \sigma)=e^{-\frac{x-\mu}{\sigma}-e^{-(x-\mu) / \sigma}}
+\end{equation}
+\end{itemize}
+
+location $\mu$: position of the GEV mean
+Return level: value $\eta$ that is expected to
+be exceeded on average once every $1/p $periods, where $1 − p$ is the probability associated with the quantile. Find zp such that
+$G(\eta) = 1 − p$
+
+
+Traditionally a GEV where
+$\xi<0$ is called a Weibull
+distribution, and  $\xi>0$ a Fr\'echet.

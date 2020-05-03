@@ -1,23 +1,26 @@
 \subsubsection{NEMO models}
 \paragraph{Introduction}
 \label{sec:nemo}
-I was able to use two outputs~§\ref{sec:rean-prod}~\&~§\ref{sec:control-1950-intro}
+I was able to use two outputs~§~\ref{sec:rean-prod}~\&~§~\ref{sec:control-1950-intro}
 of use the European NEMO ocean engine~\cite{madec2015nemo}, which uses the ORCA12 grid, with a  $\frac{1}{12}^{\circ}$
 resolution.
 This is a tripolar ocean grid, designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
 Instead there are two `north' poles, one in Russia, and one in the Canada,
 with the grid elegantly curving between the two.
 The south pole remains in Antarctica, and the grid is undistorted from a lon-lat
- grid up until 20$^{\circ}$N.\textbf{[citation needed]}
+ grid in the southern hemisphere.
 
  The Bathymetry used by the ocean engine is based on
  ETOPO2~\cite{lecointre2011definition,noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
  This bathymetry is more accurate along the US coastline because it incorporates
- more direct measurements rather than relying on altimetry data.
+ more direct measurements rather than relying on altimetry data. Table~\ref{tab:mod-symb}
+ introduces the variables taken from NEMO.
+
+\input{tables/model-symbols.tex}
 
 \paragraph{Limitations}
 
-Neither of the outputs in~§\ref{sec:rean-prod}~\&~§\ref{sec:control-1950-intro}
+Neither of the outputs in~§~\ref{sec:rean-prod}~\&~§~\ref{sec:control-1950-intro}
 include tides, inundation (the flooding of land), or wave setup.
 The resolution of the models mean that in the region of interest cells are around
 8km wide. Therefore the centre at which the sea surface height is recorded,

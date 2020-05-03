@@ -26,16 +26,22 @@ is around 4km from the coast.
 \subsubsection{2004-5 hourly reanalysis product}
 \label{sec:rean-prod}
 Dr.~Pierre Mathiot kindly ran a global two year ocean simulation with
-hourly outputs for the years 2004-5. It used EN4 for its initial conditions,
+hourly outputs for the years 2004-5 (thus including a representation of Katrina as
+in Figure~\ref{fig:katrina}).
+It used EN4 for its initial conditions,
 and CORE2 for its atmospheric forcing.
 
 \paragraph{EN4 initial conditions}
 EN4 is a product that uses all available ocean profiles
 (through the ARGO program etc.)~\cite{good2013en4, HadObs}
 to produce a best guess as to what the salinity and temperature of the ocean is.
- The start start of this reanalysis product is 1976.
+ The start of this reanalysis product is 1976.
 
-\paragraph{CORE2 Forcing}
-CORE2 is a set of global air-sea fluxes~\cite{griffies2012datasets,large2009global, hurrell2008new, core2, core2expert}.~\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
+
+\paragraph{CORE2 forcing}
+CORE2 is a set of global air-sea fluxes~\cite{griffies2012datasets,large2009global,
+ hurrell2008new, core2, core2expert}.\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
  The primary data source is the NCEP/NCAR R1 reanalysis product, but bias corrected
  with more reliable remote and local sensing data.
+
+\input{figures/katrina.tex}

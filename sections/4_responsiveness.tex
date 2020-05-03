@@ -9,11 +9,16 @@ as it approximately guarantees that the sea surface stress is acting into
 the coast rather than away from it.
 
 
-\subsection{$\tau_u$, $\tau_v$ eesponsiveness}
+\subsection{$\tau_u$, $\tau_v$ responsiveness}
+\label{sec:tau-tau}
 This method is quite crude, and could be simply improved.
 Simple MLR algorithms exist.
 
+\input{figures/responsiveness-page.tex}
+
 \subsubsection{Angle $\implies$ Ekman transport}
+\label{sec:angle}
+
 The bearing of the regression line can be simply calculated,
 and compared to the bearing of the normal coastline.
 As shown, there is a systematic offset between the two lines,
@@ -21,12 +26,16 @@ which changes between them. This can be explained through the
 classic theory of Ekman transport of the water.
 
 \subsubsection{Regression onto the local metrics}
+\label{sec:reg-metrics}
+
 The magnitude of this regression line varies in approximately the same
 way for both methods, showing that there is some underlying property of the
 coastline that both illuminate. In the previous section, I outlined
 a series of metrics.
 
 \subsubsection{Generalisability between coastlines}
+\label{sec:generalisability}
+
 It would be possible that this is a spurious structure, where the fit
 is made possible by giving so many information-less channels to fit against.
 Therefore we need to use the other coasts to compare this against.

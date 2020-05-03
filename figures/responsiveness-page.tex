@@ -1,0 +1,23 @@
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth]{../surge/plots/3d_plots/3d_plotnorlean.pdf}
+ \caption{High pass filter (lower two panels) makes small difference.}
+ \label{fig:tau-tau-resp}
+\end{figure}
+
+
+\begin{figure*}
+\centering
+ \hspace{-40pt} \includegraphics[width=0.7\linewidth]{../surge/plots/rmlr.pdf}
+  \vspace{-15pt}
+ \caption{Huber regression generalises less well than MLR.}
+ \label{fig:tau-tau-resp}
+ \hspace{-40pt} \includegraphics[width=0.4\linewidth]{../surge/plots/reg_angle.png}
+  \vspace{-15pt}
+ \caption{\texttt{np.arctan2(c0, c1)}}
+  \label{fig:tau-tau-angle}
+  \hspace{-40pt} \includegraphics[width=0.6\linewidth]{../surge/plots/adj_reg_mag.pdf}
+   \vspace{-15pt}
+  \caption{($\bar{r^2}$)\texttt{*np.square(np.sqrt(c0) + np.sqrt(c1))}. }
+   \label{fig:tau-tau-responsiveness}
+\end{figure*}

@@ -2,6 +2,7 @@
 \label{sec:7_Discussion}
 
 \subsection{Future work}
+\label{sec:future}
 \subsubsection{Model intercomparison}
 Different models have different systematic biases (in cyclogenesis etc.)
 and also different resolutions. It would be interesting to see how
@@ -16,7 +17,7 @@ without note in the dataset.
 
 \subsubsection{Tides}
 Models like LLC4320 include tides, and these tides introduce
-non-linear tide-surge interaction which should be studied.
+non-linear tide-surge interaction~\cite{feng2019characteristics} which should be studied.
 Famously dangerous storm surges, such as the 1938 New England
 Hurricane, coincided with spring high tides.
 
@@ -40,34 +41,16 @@ cell.
 There are insufficient TCs in climate models, because the processes involved
 in cyclogenesis are hard to resolve in climate models.
 
+see Seager et~al.~2019~\cite{seager2019strengthening}
+
 \subsection{Model Hysteresis}
 The sea surface does not instantly reach its steady state when the sea surface
 stress is applied, and it does not recede from its high level.
 
 
 \subsection{Summary of Systematic Errors}
+\label{sec:sys-errors}
 Table~\ref{tab:syst_error} shows the list of systematic errors that effect the
 answer.
 
-\begin{table}[ht]
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{l L{8.5cm}}
-%\hline \hline
-\textbf{Effect} & \textbf{Source}\\
-\hline
-($-$) & Coarsening of time to daily outputs.\\
-($-$) & Lack of cyclogenesis  $\implies$ not enough
-        TCs~\cite{tomassini2017interaction, williams2018met, FurtherInfo}.\\
-($\pm$) & Parameterisation of heat transfer $\implies$ wrong TC strength.\\
-($\pm$) & Parameterisation of wind stress $\implies$ wrong TC surge.\\
-($-$) & SSH 4km out from the coast (centre of cell).\\
-($\pm$) & No non-linear surge-tide interaction.\\
-($-$) & Limited wave build up.\\
-($-$) & Long TC return periods $> 100$~yrs (e.g.~New England).\\
-\hline
-\end{tabular}
-}
-\caption{Systematic sources of error for the estimate of TC-induced storm surge frequency
-and severity.}
-\label{tab:syst_error}
-\end{table}
+\input{tables/syst_errors.tex}

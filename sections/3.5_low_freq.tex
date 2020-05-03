@@ -1,6 +1,9 @@
 \section{Preprocessing coastal data}
 \subsection{Fourier Transform}
 \label{sec:fourier}
+\input{figures/stats_zos}
+Initially looking at the statistics of the sea surface height along the
+US coast in Figure~\ref{fig:ssh_stats_america}.
 
 The sea surface moves up and down.
 
@@ -10,6 +13,18 @@ The relationship between the temperature and the sea surface temperature.
 
 The Florida current is a likely source of noise at Miami.
 
+\begin{equation}
+F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x
+\end{equation}
+\begin{equation}
+\sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=\sum_{n=0}^{N / 2-1} a_{2 n}
+e^{-2 \pi i k (2 n)/ N} +\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}
+\end{equation}
+
+\input{figures/fourier-transform-panels.tex}
+
+\input{figures/choose-thresh.tex}
+
 \subsection{Lag Correlation Plot}
 \label{sec:lag}
 
@@ -18,3 +33,5 @@ of Tonkin (Northern Vietnam).
 
 Some level of lag is understandable, as the mixed layer takes longer
 to heat up than the surface itself.
+
+\input{figures/lag-panels.tex}

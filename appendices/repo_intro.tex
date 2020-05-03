@@ -1,14 +1,23 @@
 \section{Repositories}
 \subsection{\texttt{surge} repository}
 
-My primary code git repository is called `\texttt{surge}'.
-It is quite large, and very little of the code is worth reproducing here,
+My primary code git repository is called `\texttt{surge}'~\cite{gitlab}.
+It is quite large (see below), and I do not think that it would be helpful to reproduce any of the code here
 as the logical structure of any interesting code is represented by the
-algorithms included in the report.
+algorithms included in the report. There are so many lines of code within the file
+repository as shown below, and I think the easiest way to understand it would be to open
+and run the repository in an appropriate development environment rather than a pdf file.
+The repository comes with the slimmed down point data files for the american and
+viet-chinese coast, and all of the results in this report could be reproduced from them.
+This repository was developed from scratch by myself during this academic year 2019-20.
+There are a couple of files that I borrowed from others who were
+experienced with using the HPC (e.g. bash batch job file).
+
 
 \verbatiminput{../surge/environment/cloc.txt}
 
-Below is the README of the main repository:
+Below is the README of the \texttt{surge} repository which is designed to
+introduce the project and give instructions to replicate the results:
 
 \verbatiminput{../surge/README.md}
 
@@ -16,7 +25,7 @@ Below is the README of the main repository:
 
 To implement models from univariate extreme value theory, I built
 on an unfinished repository that I locally installed from github,
-called \texttt{scikit-extremes}.
+called \texttt{scikit-extremes}~\cite{skextremes}.
 
 \verbatiminput{../scikit-extremes/cloc.txt}
 

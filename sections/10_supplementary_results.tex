@@ -1,0 +1,38 @@
+\section{Supplementary results}
+\label{sec:sup-res.}
+
+\subsection{Summary variable statistics}
+\label{sec:sum-var-stat}
+
+\paragraph{Gaussian processes (GPs)}
+\begin{itemize}
+\item Equations 2.13-2.14 in GPML~\cite{williams2006gaussian}.
+\begin{align}
+m(\mathbf{x})&=&\mathbb{E}[f(\mathbf{x})] % \tag{Mean}
+\\
+k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)&=&\mathbb{E}
+\left[(f(\mathbf{x})-m(\mathbf{x}))\left(f\left(\mathbf{x}^{\prime}\right)
+-m\left(\mathbf{x}^{\prime}\right)\right)\right]
+%\tag{Covariance}
+\\
+f(\mathbf{x})& \sim& \mathcal{G} \mathcal{P}\left(m(\mathbf{x}),
+ k\left(\mathbf{x}, \mathbf{x}^{\prime}\right)\right)%\tag{GP}
+\end{align}
+\item Can assume $m(\mathbf{x})=0$ without terrible consequences.
+ \item Thought should be put into the form of $k\left(\mathbf{x},
+  \mathbf{x}^{\prime}\right)$~\cite{duvenaud2014automatic}.
+\item GPs assume that there is a Gaussian error around each point,
+      but this is often not the case in real variables.
+      However, it is often possible to transform to
+      a space where this is the case, Krige there,
+      and then transform
+      back~\cite{snelson2004warped}.\footnote{\url{http://mlg.eng.cam.ac.uk/zoubin/papers/gpwarp.pdf}}
+      \includegraphics[width=\linewidth]{images/example-images/warped-example.png}\\
+      \textit{Figure 1 from~\cite{snelson2004warped}}
+\item Lewis Fry Richardson (1948) showed that the estimates
+      of deaths during a war had
+      symmetric error bars in logarithmic space~\cite{richardson1948variation}.
+      \cite{snelson2004warped}~mentions this as a common trick.
+ \end{itemize}
+
+\input{figures/individual_stats}

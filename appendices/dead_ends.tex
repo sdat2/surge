@@ -1,0 +1,63 @@
+
+\subsection{Dead Ends}
+
+\begin{quote}
+``I have not failed. I've just found 10,000 ways that won't work.''
+Thomas Edison
+\end{quote}
+
+Initially I was quite convinced that it would be relatively
+simple to apply the algorithms that my peers where applying
+(Gaussian Processes) to this new problem~\cite{LeMaitre2019gaussian}, but I did not
+forsee all of the technical problems that would be in the way of that.
+Although it would have been possible to regress $\tau_u$, $\tau_v$ against
+$\eta$ using Gaussian processes, and this would have been bound to produce a
+higher $r^2$ value than linear regression because of the increased number of
+degrees of freedom, it would have been impossible to give all of the points,
+there is no simple way of summarising what the kernel contains,
+and it would have taken many hours on the HPC to process the coastline.
+
+One other thing that influenced my de-prioritisation of this
+avenue was reading Taleb's \textit{The Black Swan}~\cite{taleb2007black} during Lent
+term, which included extensive criticism of using Gaussian based methods in the
+real world, particularly for the estimation of risk.
+I also attended a Gaussian Processes Cambridge meetup where a practitioner noted that
+Gaussian processes do not naturally cope well with extreme
+events. This lead me to T19~\cite{taleb2019statistical} and using extreme value
+theory with a greater amount of data using \texttt{control-1950}.
+It does not rule out that using warped Gaussian processes, approximated as
+warped SDEs, will not patch over these deficiencies in the future.
+
+When I initially began to look at the ORCA12 output,
+I thought that it would be easier to go from that 2D
+curvilinear grid, to a rectilinear lat-lon grid before
+I began to interpret the data. It was not obvious how
+this was to be done, and so I asked Dr.~Mathiot, who recommended
+I use SOSIE \texttt{fortran} package for interpolation.\footnote{\url{https://github.com/sdat2/sosie}}
+The package was eventually coerced into working on my laptop and the JASMIN
+HPC after I had run some example \texttt{fortran}
+code\footnote{\url{https://gitlab.com/sdat2/fortran-examples}} on my laptop
+to get my head round the language. It was only after this introduction to
+the new language that I realised that interpolating the results was
+unnecessary, and that it would probably lead to artefacts in the product as coastal
+locations inherit the mask of the adjacent land.
+
+I used \texttt{iris} to verify that the deformation of the ORCA12 grid was quite small
+for all of the points that I initially chose (from the East~US coastline).
+
+\paragraph{The MOOSE problems}
+
+The \texttt{two-year} run was stored on the
+Met Office's tape's.
+To access the \texttt{two-year} run I used the
+MASS transfer system on the JASMIN HPC.
+During the first week and a half this system broke
+with no restart after about 4GB of file transfer,
+which meant that only the smallest files could be
+moved to the group workspace. This seemed to magically resolve
+itself the night before my second project meeting.
+Originally, I was also not using \texttt{screen}
+and therefore there was the additional failure-mode
+that the wifi access from BAS to JASMIN would break,
+thus halting the transfers to the group work space,
+with no way to restart, except from the beginning.

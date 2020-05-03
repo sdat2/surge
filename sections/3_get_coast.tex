@@ -1,29 +1,41 @@
+\input{figures/reference-points}
+
 \section{Coastlines within a climate model}
 \label{sec:coast}
 \subsection{Selection}
  \subsubsection{Fractal coastline}
  \label{sec:fractal}
  The coastline appears to be a self-similar fractal~\cite{mandelbrot1967long,
- richardson1961problem}, by which is meant that it has the same features at all
+ richardson1961problem}. This means that it has the same features at all
  scales, so that the length of the coast increases without limit as resolution
- is increased.
+ is increased, following the formula:
+ \begin{equation}
+ L(G)=M G^{1-D},
+ \end{equation}
+ where $L$ is the total length, $G$ is the length of a side,
+ and $D>1$ is the fractal dimension~\cite{mandelbrot1967long}.
  A consequence of this is that a coastline has no defined length without
  reference to the resolution at which it is measured.
- This presents some problem when comparing different climate models as they will have different
- numbers of coastal cells. It has been observed that the fractal dimension changes
-  along the East US coast~\cite{jiang1998fractal}
+ This presents some problem when comparing different climate models with different resolutions.
+ It has been observed that the fractal dimension changes
+  along the East US coast ($1.11<D<1.20$ in one degree latitude bins)~\cite{jiang1998fractal}
  and this would mean that the relative number of coastal cells between different
  points will also change as the resolution is increased.
+ This implies that the only practical way of labeling the points is by
+ reference to certain reference locations as listed in
+ Figures~\ref{fig:america}~\&~\ref{fig:vin-china}.
 
 \subsubsection{Algorithms}
 \label{sec:coast-algorithms}
 Algorithms~\ref{algo:Selection}~\&~\ref{algo:Sort} first extract the coastline
 from the surface slice of the ocean field and then pick out a single chain of
 coastal points between two chosen ends. The list of points can be further
-manually sorted to remove unwanted regions such as large bays (e.g.~Chesapeake~bay)
+manually sorted to remove unwanted regions such as large bays
+(e.g.~Chesapeake~bay)
 and the occasional river island (e.g.~Shanghai bay's island). Once this is
 done \texttt{xarray} can be used to quickly extract these points
-from the climate model to make a new NetCDF file.
+from the climate model to make a new NetCDF file that contains all of the
+required fields over a large number of timesteps for those points.
 
 
 \input{algorithms/select_coast.tex}
@@ -33,12 +45,14 @@ from the climate model to make a new NetCDF file.
 The first coastline chosen was the eastern coastline of the mainland
 United States, so that it could be compared with~\cite{ZannaPreprint},
 and because the topography of the NEMO models is most accurate along the
-US coastline.
+US coastline (see Figure~\ref{fig:america}).
 
 Secondly I extracted the coastline from Hue, Northern Vietnam, to China's
-border with North Korea, removing Shanghai bay island.
+border with North Korea, removing Shanghai bay island (see Figure~\ref{fig:vin-china}).
 
 Finally we extracted the eastern coastline of Honshu island, Japan.
+
+
 
 \subsection{Metrics}
 \subsubsection{Motivation}
@@ -54,9 +68,44 @@ all scales.
 
 \subsubsection{Convexity}
 Given a selected coastline, we have a list of points of latitude and longitude.
-We can define the normal bearing to the coast.
+We can define the normal bearing to the coast as in Equation~\ref{eq:bearing}.
 
-This provides a convexity value for every smoothing length $\sigma$.
+
+%\begin{figure*}[htb!]
+\begin{equation}
+B_i^{\prime}=\operatorname{arctan} 2
+\left(S_i,\; C_i\right)
+\label{eq:bearing}
+\end{equation}
+
+with
+\begin{equation}
+S_i = \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot \sin{( B_{j})},
+\end{equation}
+\begin{equation}
+C_i  =  \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot  \cos{( B_{j})},
+\end{equation}
+
+with reflective boundary conditions.
+
+An example of this is shown in Figure~\ref{fig:angle_heatmap}} for the
+East~US coastline. We can then define the symmetric derivative of this
+smoothed angle,
+
+\begin{equation}
+\frac{d B_i^{\prime}}{d \mathrm{pt}}
+\equiv \frac{B_{i+1}^{\prime}-B_{i-1}^{\prime}}{2},
+\label{eq:bearing_derivative}
+\end{equation}
+
+where I apologise for a slight abuse of notation. This provides a convexity value for every smoothing length $\sigma$, as
+shown in Figure~\ref{fig:derivative}A-C. The reflective boundary conditions
+ensure that the bearing derivative is 0 at either end of the coastline.
+
+
+\input{figures/angle_derivative.tex}
+\input{figures/bath.tex}
+\FloatBarrier
 
 \subsubsection{Bathymetric gradient}
 The simplest way of working this out is to look at the

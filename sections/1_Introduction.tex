@@ -15,16 +15,16 @@ to their formation and growth are within and without the tropics respectively.
 Because they can lower central pressures and sustain greater winds,
 TCs create larger and more dangerous storm surges~\cite{emanuel2005divine}.
 
-TC storm surges have historically been the
+TCs have historically been the
 world's largest physical hazard~\cite{shultz2005epidemiology},
-in terms of lives lost and economic damage~\cite{zhang2009tropical}.
+in terms of economic damage, and TC storm surges for lives lost~\cite{zhang2009tropical}.
 This hazard is increasing as more people live on vulnerable coastlines
-in insufficient buildings.
+in insufficient buildings~\cite{emanuel2005divine}.
 Anthropogenic climate change is expected to exacerbate this,
 as it begins to both increase the maximum TC intensity\footnote{However the uptick
 in the number of tropical cyclones is not currently above
  natural variability~\cite{mendelsohn2012impact}.}
-(see~§~\ref{sec:hurr-theory})~\cite{emanuel2008hurricanes},
+(see~§~\ref{sec:hurr-theory})~\cite{emanuel2008hurricanes,emanuel2017will},
 and lead to sea level rise placing more areas at risk~\cite{SROCC}.
 The geographical range of hurricanes may also increase
 to the ranges of previous epochs~\cite{fedorov2010tropical}.
@@ -34,25 +34,25 @@ is a complicated question, but necessary to accurately
 inform the public,
 so that they can act with foresight.
 Others have already begun to apply machine learning (ML) techniques to this
-question~\cite{kulp2019new, kulp2018coastaldem}.
+question~\cite{kulp2019new, kulp2018coastaldem, tadesse2020data}.
+
+
+\input{tables/abbreviations.tex}
 
 This report begins to develop new methods of achieving this goal
-as inspired by Yin~et~al.~2020~\cite{ZannaPreprint}. Initially, by
+as inspired by Yin~et~al.~2020~\cite{ZannaPreprint} (henceforth Y20). Initially, by
 developing algorithms for extracting the coastlines from climate models
 and metrics to characterise that coastline in §~\ref{sec:coast}.
-Then by following~\cite{ZannaPreprint} I compare measures for the
+Developing from Y20~\cite{ZannaPreprint} I compare measures for the
 responsiveness of a stretch of the coastline to a certain wind stress
-level. Far from being a useless metric divorced from the catastrophic
-storm surge events, I show using extreme value theory (EVT), that the
+level. I show using extreme value theory (EVT), that the
 distributions of extreme events are controlled by the same factors as
 the responsiveness under normal circumstances. Finally, I suggest a
 novel method of improving a naive EVT fit, using our physical knowledge
-that there is a thermodynamical limit to the maximum intensity of a hurricane
- given a climate (see~§~\ref{sec:hurr-theory}), albeit with some level of
- uncertainty.
+that there is a thermodynamical limit to the maximum intensity of a hurricane~\cite{emanuel1999thermodynamic}
+ given a climate (see~§~\ref{sec:hurr-theory})~\cite{emanuel1987dependence}, albeit with some level of
+ uncertainty~\cite{emanuel2016predictability}.
 
 
-I discuss the merits and deficiencies of these new investigations (§),
-and suggest how they could be built upon in future work (§).
- There are few words to play with
-and so much of the basic theory is placed in the appendix (§) to this document.
+I discuss the merits and deficiencies of these new investigations (§~\ref{sec:future}),
+and suggest how they could be built upon in future work (§~\ref{sec:sys-errors}).

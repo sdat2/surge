@@ -47,10 +47,8 @@ The first coastline chosen was the eastern coastline of the mainland
 United States, so that it could be compared with~\cite{ZannaPreprint},
 and because the topography of the NEMO models is most accurate along the
 US coastline (see Figure~\ref{fig:america}).
-
 Secondly I extracted the coastline from Hue, Northern Vietnam, to China's
 border with North Korea, removing Shanghai bay island (see Figure~\ref{fig:vin-china}).
-
 Finally we extracted the eastern coastline of Honshu island, Japan.
 
 
@@ -68,6 +66,7 @@ and given that the coast is fractal (§~\ref{sec:fractal}), these metrics must a
 all scales.
 
 \subsubsection{Convexity}
+\label{sec:convexity}
 Given a selected coastline, we have a list of points of latitude and longitude.
 We can define the normal bearing to the coast as in Equation~\ref{eq:bearing}.
 
@@ -109,6 +108,7 @@ ensure that the bearing derivative is 0 at either end of the coastline.
 \FloatBarrier
 
 \subsubsection{Bathymetric gradient}
+\label{sec:bath-grad}
 The simplest way of working this out is to look at the
 bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
  case (§~\ref{sec:nemo})), and work out where some set of chosen isobaths are.

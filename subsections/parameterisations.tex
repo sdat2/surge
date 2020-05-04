@@ -1,14 +1,27 @@
 \subsection{Model parameterization}
 \subsubsection{Sea surface wind stress}
-Limited observational data.
-It is unclear whether this increase or decreases at high wind speeds.
-\cite{powell2003reduced, donelan2004limiting}
 
-Y20~\cite{ZannaPreprint} speculates that $c_d$ may naturally continue
+Due to limited observational data
+it is unclear whether this increase or decreases at high wind speeds
+\cite{powell2003reduced, donelan2004limiting}.
+
+
+\begin{equation}
+ |\tau| = C_d(|U|) \cdot U^2
+ \label{eq:tau}
+ \end{equation}
+
+Y20~\cite{ZannaPreprint} speculates that $C_d$ may naturally continue
 to increase with windspeed up to linearly, making the expression
-closer to cubic.
+closer to cubic.s
 
+We can make sense of Equation~\ref{eq:tau} by analogy to the pressure of an ideal
+gas caused by the impact of a molecule of speed $u$, where one factor of
+$u$ comes from the probability of collision, and one from the momentum
+exchanged during each collision.
 
 \subsubsection{Sea surface wind induced heat transfer}
 The misparameterisation of this may be an explanation as to why there are
-not enough extremely intense hurricanes in models.
+not enough Safir-Simpson category 4 and 5 in models~\cite{emanuel2005divine}.
+
+\input{figures/param_figs}

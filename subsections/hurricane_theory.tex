@@ -6,41 +6,114 @@
 
 The hurricane can be idealised as a Carnot cycle as in Figure~\ref{fig:hurricane-carnot},
 as was originally proposed Kleinschmidt,~1951~\cite{kleinschmidt1951grundlagen},
-and reproposed by Emanuel~1986~\cite{lilly1985steady, emanuel1986air,emanuel1987dependence}.
-\cite{emanuel1991theory, emanuel2018progress}
+and reproposed by Emanuel~1986~\cite{emanuel1986air, emanuel1987dependence, lilly1985steady,}.
 \input{figures/carnot.tex}
 
 
-The temperature of the sea surface temperature controls the hurricane.
+The temperature of the sea surface temperature controls the hurricane\cite{emanuel1991theory, emanuel2018progress}.
 
-There was a cold bias in CMIP5 models~\cite{camargo2013global}.
 
-A western boundary current~\cite{hogg1995western} has a thicker
 
-\begin{itemize}
-\item thermodynamic disequilibrium
-\item cyclogenesis
-\item Carnot cycle $\implies$ potential intensity limits.
-\item reasons for not reaching potential intensity.
-\item super-intensity cyclones.
-\item weaknesses.
-\end{itemize}
+Hurricanes are a finite amplitude instability, and there is a
+clear separation between a tropical storm and a hurricane~\cite{emanuel2005divine}.
 
-\subsubsection{Potential intensity}
-\label{sec:potential_intensity}
+As shown in Figure~\ref{fig:hurricane-carnot} Enthalpy is acquired from the sea surface,
+and entropy from the dissipation of kinetic energy,
+ as the air travels isothermally towards the eyewall.
+ At the eyewall the air rises moist adiabatically
+ to the lower stratosphere and out to some distance from the storm.
+ In a simplified model it then subsides
+ approximately isothermally at first, albeit with some loss through radiation.
+ The final descent is approximately moist adiabatic~\cite{emanuel2018progress}.
 
-\cite{bister2002low}
+This is nearly an ideal carnot cycle, this converts heat energy of the sea surface into
+mechanical energy of the winds, doing the majority of the work against the sea surface.
+
+The potential intensity (equation 15-7 in \cite{emanuel2018progress}) is,
+
+\begin{equation}
+\left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}} \frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
+\tag{PI}
+\label{eq:PI}
+\end{equation}
+
+where $C_d$ is the surface drag coefficient $C_k$ is the dimensionless
+surface exchange coefficient for enthalpy.
+$T_s$ is the sea surface temperature, $T_o$ is the temperature of the
+lower stratosphere at the end of the moist adiabatic rise.
+One can see that the a warmer sea surface, and a cooler lower stratosphere
+would both lead to a higher potential intensity in paragraph~\cite{emanuel1991theory}.
+Further in \ref{eq:PI} the enthalpy per unit mass (equation 15-8 in \cite{emanuel2018progress}) is
+
+\begin{equation}
+k \equiv c_{p} T+L_{v} q,
+\label{eq:enthalpy_per_unit_mass}
+\end{equation}
+
+where $c_p$ is the heat capacity at constant pressure and $L_{v}$ is the latent heat
+of vaporisation. $k_{0}^{*}$ is the saturation enthalpy at the sea surface.
+
+
+There is a positive feedback loop from air cooling adiabatically as it flows down
+the pressure gradient, and therefore increasing the enthalpy disequilibrium
+$k_{0}^{*}-k$, leading to a root below 700 mbar central pressure called a `hypercane'.
+
+The Carnot cycle derivation makes no assumption about hydrostatic of gradient
+balance.
+
 Therefore given the sea surface temperature, there is some maximum intensity
-that a hurricane could reach given the rest of the climate.
+that a hurricane could reach given the rest of the climate \cite{bister2002low}.
 
+The simplest
 
 \cite{bister1996development,bister1998dissipative, bister2002low}
 
-This makes some simplifying assumptions, the sea is not all at the temperature
+This makes some simplifying assumptions. One of the main reasons for
+hurricanes failing to reach their potential intensity is that not all of the
+water column at the temperature
 of the surface, instead only up to some depth. The depth of warm water
-is larger at the western boundary currents, which means that if a hurricane
-travels down the axis of the current it can reach a higher intensity than
-if it does not.
+is much larger at the western boundary currents~\cite{hogg1995western}, which means that if a hurricane
+travels down the axis of the current (e.g. the loop current)
+it can reach a higher intensity than
+if it travelled 20km to one side.
+
+
+
+
 
 \subsubsection{Cyclogenesis}
-\input{subsections/cyclogenesis}
+
+
+Given that there is a thermodynamic disequilibrium between the Ocean and
+atmosphere, it is reasonable to ask why there are not more tropical cyclones
+continuously spontaniously emerging.
+
+Warm air rises in cumulonimbus clouds,
+ dries, and then falls down very dry.
+A decrease in humidity with altitude.
+ Middle level dryness.
+cumulonimbus clouds clump together.
+ More updrafts give more rain.
+
+Nascent cloud cluster dies away.
+
+
+Middle atmosphere becomes humidified.
+
+William grey cyclogenesis~\cite{gray1975tropical}.
+
+African Easterly Waves.
+
+Ordinary cold front that penetrates tropics.
+
+Tropical cyclogenesis is one of the
+ great mysteries of the tropical atmosphere.
+
+An EC does not need anything to trigger it.
+
+Notes from Emanuel~\cite{emanuel2005divine}.
+
+There was a cold bias in CMIP5 models~\cite{camargo2013global}.
+
+
+\input{figures/pi_maximum.tex}

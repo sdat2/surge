@@ -6,8 +6,11 @@
 \subsubsection{Model intercomparison}
 Different models have different systematic biases (in cyclogenesis etc.)
 and also different resolutions. It would be interesting to see how
-the responsiveness changes as the resolution decreases.
-Presumably it must increase with a bound.
+the responsiveness changes as the resolution decreases, as the difference
+between the value at 4km distance (~2m) of the Katrina Hurricane (see Figure~\ref{fig:katrina}),
+is quite a lot smaller than the actual value observed at the coast itself (c. 9m according to news reports).
+Presumably it must increase with a bound. As model resolution increases the model
+timesteps have to increase in frequency so as to avoid numerical blow-up.
 
 \subsubsection{Gauges}
 Data is available from tidal gauges along the U.S.~coastline.
@@ -39,13 +42,14 @@ cell.
 
 \subsection{Cyclone Problem}
 There are insufficient TCs in climate models, because the processes involved
-in cyclogenesis are hard to resolve in climate models.
-
-see Seager et~al.~2019~\cite{seager2019strengthening}
+in cyclogenesis are hard to resolve in climate models. This may be
+exacerbated by the cold bias (see Seager et~al.~2019~\cite{seager2019strengthening})
 
 \subsection{Model Hysteresis}
 The sea surface does not instantly reach its steady state when the sea surface
-stress is applied, and it does not recede from its high level.
+stress is applied, and it does not recede from its high level, this leads
+to the regression being quite distorted, as the assumption would be that data
+is iid, when it actually depends significantly on the previous points.
 
 
 \subsection{Summary of Systematic Errors}

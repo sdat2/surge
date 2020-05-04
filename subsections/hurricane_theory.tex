@@ -9,11 +9,6 @@ as was originally proposed Kleinschmidt,~1951~\cite{kleinschmidt1951grundlagen},
 and reproposed by Emanuel~1986~\cite{emanuel1986air, emanuel1987dependence, lilly1985steady,}.
 \input{figures/carnot.tex}
 
-
-The temperature of the sea surface temperature controls the hurricane\cite{emanuel1991theory, emanuel2018progress}.
-
-
-
 Hurricanes are a finite amplitude instability, and there is a
 clear separation between a tropical storm and a hurricane~\cite{emanuel2005divine}.
 
@@ -42,7 +37,7 @@ surface exchange coefficient for enthalpy.
 $T_s$ is the sea surface temperature, $T_o$ is the temperature of the
 lower stratosphere at the end of the moist adiabatic rise.
 One can see that the a warmer sea surface, and a cooler lower stratosphere
-would both lead to a higher potential intensity in paragraph~\cite{emanuel1991theory}.
+would both lead to a higher potential intensity in paragraph~\cite{emanuel1991theory, emanuel2018progress}.
 Further in \ref{eq:PI} the enthalpy per unit mass (equation 15-8 in \cite{emanuel2018progress}) is
 
 \begin{equation}
@@ -58,15 +53,50 @@ There is a positive feedback loop from air cooling adiabatically as it flows dow
 the pressure gradient, and therefore increasing the enthalpy disequilibrium
 $k_{0}^{*}-k$, leading to a root below 700 mbar central pressure called a `hypercane'.
 
-The Carnot cycle derivation makes no assumption about hydrostatic of gradient
-balance.
 
-Therefore given the sea surface temperature, there is some maximum intensity
-that a hurricane could reach given the rest of the climate \cite{bister2002low}.
+To explore the impact that an increased amount of greenhouse gasses might have
+on the system, consider a single layer model of the atmosphere, described by the
+set of four simultanious equations.
 
-The simplest
+\begin{eqnarray}
+F_{\mathrm{solar}} =& F_{\mathrm{atm}} + F_{\mathrm{ground}}\tau_{\mathrm{IR}}\\
+F_{\mathrm{solar}}(1-\tau_{\mathrm{vis}}) =& 2F_{\mathrm{atm}} + F_{\mathrm{ground}}(\tau_{\mathrm{IR}}-1)\\
+F_{\mathrm{solar}}(\tau_{\mathrm{vis}}) +F_{\mathrm{atm}} =&F_{\mathrm{ground}} \\
+\sigma T_{\mathrm{ground}}{}^4 =& F_{\mathrm{ground}}
+\end{eqnarray}
 
-\cite{bister1996development,bister1998dissipative, bister2002low}
+which leads to the solution
+
+\begin{equation}
+T_{\mathrm{ground}} = \left( \frac{F_{\mathrm{solar}}}{\sigma}\frac{(1+\tau_{\mathrm{vis}})}{(1+\tau_{\mathrm{IR}})}\right)^{1/4}
+\end{equation}
+
+which shows that when $\tau_{\mathrm{IR}}$, i.e.~the ammount of greenhouse gasses,
+is increased, this leads to an increase in the temperature of the (sea) surface (c. $T_s$).
+When using the Stefan-Boltzmann relation,
+
+\begin{equation}
+F_{\mathrm{atm}} = \sigma T_a{}^{4},
+\end{equation}
+
+we can further find that the
+
+\begin{equation}
+T_{\mathrm{atm}}^{4}=T_{\mathrm{ground}}^4\frac{(1-\tau_{\mathrm{vis}}\tau_{\mathrm{IR}})}{(1+\tau_{vis})}
+\end{equation}
+
+so that the temperature of the atmosphere (approximately equivalent to $T_{o}$)
+decreases as the amount of greenhouse gases are increased.
+
+
+One can then use \ref{eq:PI} and see that as the nominator has increased, and the
+denominator has decreased, the potential intensity is expected to increase with the
+ammount of greenhouse gases, $\tau_IR$, in the atmosphere.
+
+
+Bister 2002 gives an algorithm whereby given the rest of the climate
+there is some maximum intensity that a hurricane could reach  \cite{bister2002low}.
+This is a development of the original work~\cite{bister1996development,bister1998dissipative, bister2002low}
 
 This makes some simplifying assumptions. One of the main reasons for
 hurricanes failing to reach their potential intensity is that not all of the
@@ -78,6 +108,10 @@ it can reach a higher intensity than
 if it travelled 20km to one side.
 
 
+A few super-intense tropical cyclones have been observed, although this is still a
+matter of some dispute, and the community still trusts the assumptions made in the
+Carnot cyclone model~\cite{camargo2019tropical}.
+
 
 
 
@@ -86,7 +120,8 @@ if it travelled 20km to one side.
 
 Given that there is a thermodynamic disequilibrium between the Ocean and
 atmosphere, it is reasonable to ask why there are not more tropical cyclones
-continuously spontaniously emerging.
+continuously spontaniously emerging. Cyclogenesis is one of the
+ great mysteries of the tropical atmosphere~\cite{emanuel2005divine}.
 
 Warm air rises in cumulonimbus clouds,
  dries, and then falls down very dry.
@@ -94,26 +129,30 @@ A decrease in humidity with altitude.
  Middle level dryness.
 cumulonimbus clouds clump together.
  More updrafts give more rain.
-
 Nascent cloud cluster dies away.
-
-
 Middle atmosphere becomes humidified.
 
-William grey cyclogenesis~\cite{gray1975tropical}.
+William Grey made the first comprehensive study of cyclogenesis in 1975~\cite{gray1975tropical},
+showing that there were a number of diverse phenomena that triggered the growth of TC.
+In the North Atlantic, the primary trigger seems to be the passage of African Easterly Waves,
+that sometimes deepen into tropical depressions and then hurricanes. Cyclogenesis can also be caused by an Ordinary cold front that penetrates tropics,
+providing the same nucleation. There was a tropical cold bias in CMIP5 models~\cite{camargo2013global},
+possibly caused by the way moisture was dealt with by CMIP models~\cite{seager2019strengthening},
+and this could have caused the under observation of tropical cyclones in those models.
+African easterly waves are also relatively difficult to resolve.
 
-African Easterly Waves.
 
-Ordinary cold front that penetrates tropics.
 
-Tropical cyclogenesis is one of the
- great mysteries of the tropical atmosphere.
+In contrast to this EC does not need anything to trigger it, forming
+spontaniously through the baroclinic instability in the extratropical atmosphere~\cite{lorenz1960energy}.
+This is one reason as to why extratropical cyclones seem to come in a continuous spectrum,
+whereas tropical cyclones seem to have a clear break between tropical storms and cyclones.
+Extratropical cyclones must reasonably also have some maximum size that they can be
+expected to reach given the climate, but given that they cause significantly less damage
+and smaller storm surges, and no theory has been set out to suggest what this might be,
+they will be largely ignored in the rest of this thesis.
 
-An EC does not need anything to trigger it.
 
-Notes from Emanuel~\cite{emanuel2005divine}.
-
-There was a cold bias in CMIP5 models~\cite{camargo2013global}.
 
 
 \input{figures/pi_maximum.tex}

@@ -1,0 +1,17 @@
+
+
+
+\begin{algorithm}[H]
+\dontprintsemicolon
+% \DontPrintSemicolon % Some LaTeX compilers require you to use \dontprintsemicolon instead
+\caption{Coastal Selection}
+\label{algo:Selection}
+\KwIn{Grid: boolean grid (True for NaN values (land))}
+\For{indices in Grid}{
+  \If {Grid[indices] == False}{
+     \If{ any of Grid[index\_x $\pm$ 1, index\_y $\pm$ 1] are True}
+        {\textbf{append} indices to List\;}
+     }
+}
+\KwOut{List: list of indices}
+\end{algorithm}

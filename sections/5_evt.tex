@@ -18,16 +18,16 @@ to look at the return period of extreme events of a certain value.
 Both require domain of attraction condition~\cite{bucher2018horse}:
 
 \begin{enumerate}
-  \item Either $\forall r \in \mathbb{N} \;\exists \;b_r \in \mathbb{R},\; \gamma\in \mathbb{R},\; a_r>0: $
+  \item Either $\forall r \in \mathbb{N} \;\exists \;b_r, \gamma\in \mathbb{R},\; a_r>0: $
     \begin{eqnarray}
-    \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \\
+    \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \notag \\
      \text { for all } 1+\gamma x>0
     \tag{BM}
     \end{eqnarray}
 
   \item Or equivalently, there exists a positive function $\psi=\psi (t):$
     \begin{eqnarray}
-    \lim _{t \uparrow x^{*}} \frac{1-F(t+\psi(t) x)}{1-F(t)}=(1+\gamma x)^{-1 / \gamma} \\
+    \lim _{t \uparrow x^{*}} \frac{1-F(t+\psi(t) x)}{1-F(t)}=(1+\gamma x)^{-1 / \gamma} \notag \\
     \text { for all } 1+\gamma x>0
     \tag{POT}
     \end{eqnarray}

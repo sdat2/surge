@@ -17,7 +17,13 @@ degrees of freedom, it would have been impossible to give all of the points,
 there is no simple way of summarising what the kernel contains,
 and it would have taken many hours on the HPC to process the coastline.
 
-One other thing that influenced my de-prioritisation of this
+Gaussian processes do seem a particularly promising route to go down
+with regards to hybrid ML/physical modelling, as the some degree of knowledge
+of the physical system can and should be encoded in the kernel~\cite{duvenaud2014automatic}.
+However, in the context of extreme events, it would be wise to think more carefully
+before applying this technique.
+
+Another influence to  my de-prioritisation of this
 avenue was reading Taleb's \textit{The Black Swan}~\cite{taleb2007black} during Lent
 term, which included extensive criticism of using Gaussian based methods in the
 real world, particularly for the estimation of risk.
@@ -61,3 +67,14 @@ and therefore there was the additional failure-mode
 that the wifi access from BAS to JASMIN would break,
 thus halting the transfers to the group work space,
 with no way to restart, except from the beginning.
+There was also no way to take only a subset of the file.
+
+\paragraph{Interpretation of results}
+As shown in our first order thermodynamic understanding, it seems likely that
+global warming will lead to an increase in hurricane intensity, independent
+of the imperfections of the current round of global climate models,
+but instead rests on simple physical argument (see §~\ref{sec:1d-hurr}).
+Even if the most severe outcomes may not occur,
+it would be as imprudent to not to take mitigating action as it would be
+to not buy fire insurance for your house~\cite{emanuel2005divine};
+public policy is based on the worst case event rather than the average~\cite{taleb2020statistical}.

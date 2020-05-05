@@ -5,16 +5,16 @@ I was able to use two outputs~§~\ref{sec:rean-prod}~\&~§~\ref{sec:control-1950
 of use the European NEMO ocean engine~\cite{madec2015nemo}, which uses the ORCA12 grid, with a  $\frac{1}{12}^{\circ}$
 resolution.
 This is a tripolar ocean grid, designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
-Instead there are two `north' poles, one in Russia, and one in the Canada,
+Instead there are two `north' poles, in Russia and Canada,
 with the grid elegantly curving between the two.
-The south pole remains in Antarctica, and the grid is undistorted from a lon-lat
+The grid is undistorted from a lon-lat
  grid in the southern hemisphere.
 
- The Bathymetry used by the ocean engine is based on
+ The bathymetry used by the ocean engine is based on
  ETOPO2~\cite{lecointre2011definition,noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
- This bathymetry is more accurate along the US coastline because it incorporates
- more direct measurements rather than relying on altimetry data. Table~\ref{tab:mod-symb}
- introduces the variables taken from NEMO.
+ This is more accurate along the US coastline as it uses
+ direct measurements rather than relying on altimetry data~\cite{noaa20062}.
+ Table~\ref{tab:mod-symb} introduces the variables taken from NEMO.
 
 \input{tables/model-symbols.tex}
 
@@ -31,8 +31,6 @@ is around 4km from the coast.
 Dr.~Pierre Mathiot kindly ran a global two year ocean simulation with
 hourly outputs for the years 2004-5 (thus including a representation of Katrina as
 in Figure~\ref{fig:katrina}).
-It used EN4 for its initial conditions,
-and CORE2 for its atmospheric forcing.
 
 \paragraph{EN4 initial conditions}
 EN4 is a product that uses all available ocean profiles

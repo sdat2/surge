@@ -1,0 +1,30 @@
+\paragraph{Linear regression}
+
+\begin{equation}
+\min _{w}\|X w-y\|_{2}^{2}
+\end{equation}
+
+\paragraph{Lasso Regression}
+
+
+\begin{equation}
+\min _{w} \frac{1}{2 n_{\text {samples }}}\|X w-y\|_{2}^{2}+\alpha\|w\|_{1}
+\end{equation}
+
+The lasso estimate solves for the minimisation of the least squares penalty with
+$\alpha\|w\|_{1}$ added, where $\alpha$ is a constant and $\|w\|_{1}$ is the
+$l_1$-norm of the coefficient vector.
+A coordinate descent algorithm is used to fit the coefficients~\cite{scikit-learn}.
+
+\paragraph{Ridge regression}
+
+\begin{equation}
+\min _{w}\|X w-y\|_{2}^{2}+\alpha\|w\|_{2}^{2}
+\end{equation}
+
+The complexity parameter $\alpha\ge0$ controls the amount of shrinkage:
+the larger value of $\alpha$, the greater the amount of shrinkage
+and thus the coefficients become more robust to colinearity.
+
+RidgeCV implements ridge regression with built in cross validation of the
+alpha parameter,

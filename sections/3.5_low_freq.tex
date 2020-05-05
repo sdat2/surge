@@ -1,25 +1,48 @@
 \section{Preprocessing coastal data}
-\subsection{Fourier Transform}
-\label{sec:fourier}
-\input{figures/stats_zos}
+\subsection{Coastal point statistics}
+
+\begin{equation}
+\operatorname{Kurt}[X]=
+\mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{4}\right]-3
+\equiv \frac{\mathrm{E}\left[(X-\mu)^{4}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{2}}-3
+\end{equation}
+
+\begin{equation}
+\operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
+=\frac{\mathrm{E}\left[(X-\mu)^{3}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}}
+\end{equation}
+
 Initially looking at the statistics of the sea surface height along the
 US coast in Figure~\ref{fig:ssh_stats_america}.
+\input{figures/stats_zos}
 
-The sea surface moves up and down.
+
+There is some dynamic topography that emerges because of the
+currents and density contrasts (Figures~\ref{fig:zos}).
+\input{figures/2d_fields/zos.tex}
+
+
+\subsection{Fourier Transform}
+\label{sec:fourier}
+
 
 The ocean is known to have a red-noise spectrum.
 
 The relationship between the temperature and the sea surface temperature.
 
-The Florida current is a likely source of noise at Miami.
+The Florida current is a likely source of particularly red noise at Miami
+(Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
+
+\input{figures/2d_fields/vos}
+\input{figures/2d_fields/uos}
 
 \begin{equation}
 F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x
 \end{equation}
-\begin{equation}
-\sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=\sum_{n=0}^{N / 2-1} a_{2 n}
-e^{-2 \pi i k (2 n)/ N} +\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}
-\end{equation}
+\begin{eqnarray}
+\sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=&\sum_{n=0}^{N / 2-1} a_{2 n}
+e^{-2 \pi i k (2 n)/ N} \notag \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}
+\end{eqnarray}
 
 \input{figures/fourier-transform-panels.tex}
 

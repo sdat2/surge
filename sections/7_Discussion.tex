@@ -13,16 +13,19 @@ Presumably it must increase with a bound. As model resolution increases the mode
 timesteps have to increase in frequency so as to avoid numerical blow-up.
 
 \subsubsection{Gauges}
-Data is available from tidal gauges along the U.S.~coastline.
+Data is available from tidal gauges along the U.S.~coastline and worldwide as
+in \cite{tadesse2020data, arns2020non}.
 Frequencies of data are variable, and the API to extract this data
-is difficult to implement. Tidal gauges are also sometimes moved
-without note in the dataset.
+is difficult to implement.
 
 \subsubsection{Tides}
 Models like LLC4320 include tides, and these tides introduce
-non-linear tide-surge interaction~\cite{feng2019characteristics} which should be studied.
+non-linear tide-surge interaction~\cite{feng2019characteristics, arns2020non} which should be studied.
 Famously dangerous storm surges, such as the 1938 New England
-Hurricane, coincided with spring high tides.
+Hurricane, coincided with spring high tides, and according to Arns~et~al.~April~2020~\cite{arns2020non}
+these effects are strongest on the UK's East Coast,
+the US east coast, and southern Japan, i.e. most of the coastlines in
+this report.
 
 \subsubsection{Inundation}
 Combining the climate models outputs with a SLOSH model could produce
@@ -30,15 +33,6 @@ an output which could more directly be compared against the tidal gauges
 without the bias created by measuring SSH from the centre of the coastal
 cell.
 
-
-\begin{itemize}
-\item Learn the statistical transformation from
-      a 4km coast point to real coast.
-\item Add in tides using LLC4320, and look at the
-      non-linear tide-surge interaction.
-\item Higher dimensional machine learning Models
-      to capture non-local structural influences.
-\end{itemize}
 
 \subsection{Cyclone Problem}
 There are insufficient TCs in climate models, because the processes involved

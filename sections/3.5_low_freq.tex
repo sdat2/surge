@@ -1,25 +1,48 @@
 \section{Preprocessing coastal data}
 \subsection{Coastal point statistics}
+The sea surface height in the model is measured relative to
+a reference Geoid, which is the surface that a fluid would occupy
+in the absence of density contrasts and ocean currents around an
+azimuthally symmetric Earth of the same size.
+Some dynamic topography emerges because of the
+currents and density contrasts (Figures~\ref{fig:zos}).
+\input{figures/2d_fields/zos.tex}
+
+
+
+While the first moment around the mean is trivial, we also define the third
+\begin{equation}
+\operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
+=\frac{\mathrm{E}\left[(X-\mu)^{3}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}},
+\end{equation}
+
+and fourth (as the excess above the Gaussian)~\cite{taleb2019statistical}
 
 \begin{equation}
 \operatorname{Kurt}[X]=
 \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{4}\right]-3
-\equiv \frac{\mathrm{E}\left[(X-\mu)^{4}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{2}}-3
+\equiv \frac{\mathrm{E}\left[(X-\mu)^{4}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{2}}-3.
 \end{equation}
 
-\begin{equation}
-\operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
-=\frac{\mathrm{E}\left[(X-\mu)^{3}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}}
-\end{equation}
 
 Initially looking at the statistics of the sea surface height along the
 US coast in Figure~\ref{fig:ssh_stats_america}.
 \input{figures/stats_zos}
 
 
-There is some dynamic topography that emerges because of the
-currents and density contrasts (Figures~\ref{fig:zos}).
-\input{figures/2d_fields/zos.tex}
+
+Looking at the individual points' SSH (Figure~\ref{fig:individual_zos} in §~\ref{sec:sum-var-stat}),
+does not reveal any discontinuity in the data in the two year period,
+ but Figures~\ref{fig:four-trans-panels}-\ref{fig:mm-hp-lp}
+suggest that this might be caused by model spin up from the
+EN4 initial conditions using the CORE2 forcing.
+On the right of the plots (\ref{fig:ssh_stats_america}A--D) is the Pearson regression coefficient $r_p$,
+between the two years for that moment, which shows that the mean and
+standard deviation of a point are relatively static between the years, but the
+higher order moments of skew and kurtosis (\ref{fig:ssh_stats_america}C~\&~D) are more sensitive to the
+random incidence of storms along different areas of the coast.
+
+
 
 
 \subsection{Fourier Transform}
@@ -33,6 +56,11 @@ The relationship between the temperature and the sea surface temperature.
 The Florida current is a likely source of particularly red noise at Miami
 (Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
 
+
+The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
+as the loop current has formed a secondary vortex ring moving Northwards
+in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
+
 \input{figures/2d_fields/vos}
 \input{figures/2d_fields/uos}
 
@@ -41,12 +69,23 @@ F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x
 \end{equation}
 \begin{eqnarray}
 \sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=&\sum_{n=0}^{N / 2-1} a_{2 n}
-e^{-2 \pi i k (2 n)/ N} \notag \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}
+e^{-2 \pi i k (2 n)/ N}  \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N} \notag
 \end{eqnarray}
 
 \input{figures/fourier-transform-panels.tex}
 
 \input{figures/choose-thresh.tex}
+
+Fourier transforms of real signals have Hermitian symmetry,
+
+\begin{equation}
+\mathcal{F}{(-g(x))}=\mathcal{F}(g(x))^{*},
+\end{equation}
+
+which implies that the negative frequencies
+have no information not displayed by the positive.
+
+
 
 \subsection{Lag Correlation Plot}
 \label{sec:lag}
@@ -58,3 +97,5 @@ Some level of lag is understandable, as the mixed layer takes longer
 to heat up than the surface itself.
 
 \input{figures/lag-panels.tex}
+
+\FloatBarrier

@@ -2,9 +2,10 @@
 \subsection{The Theory of Hurricanes}
 \label{sec:hurr-theory}
 
-\subsection{Cyclogenesis}
+\subsubsection{Cyclogenesis}
 \label{sec:cyclogenesis}
-TCs are a finite amplitude instability, with
+TCs are a finite amplitude instability created by
+wind induced sea heat exchange (WISHE). There is
 a clear separation between a tropical storm and a TC
 in frequency of occurrance against maximum intensity~\cite{emanuel2005divine}.
 `Cyclogenesis is one of the great mysteries of the tropical atmosphere'~\cite{emanuel2018progress};
@@ -13,12 +14,14 @@ surface and the atmosphere TCs cannot spontaneously emerge. As first shown by
 Gray 1975~\cite{gray1975tropical} there are
  diverse phenomena that triggered the growth of TC:
 
- In the North Atlantic, the primary trigger seems to be the passage of African Easterly Waves,
+ In the North Atlantic, the primary triggers are African easterly waves (AEWs),
  that sometimes deepen into tropical depressions and then hurricanes,
- although these can be poorly resolved in models~\cite{tomassini2017interaction}.
- Cyclogenesis can also be caused by a cold front that penetrates tropics.
+ although AEWs can be poorly resolved in models~\cite{tomassini2017interaction}.
+ Cyclogenesis can also be caused by a cold front that penetrates the tropics.
+
  There is a tropical cold bias in CMIP models~\cite{camargo2013global},
- possibly caused by the way moisture was dealt (see Seager 2019~\cite{seager2019strengthening}).
+ possibly caused by the way moisture was dealt (see Seager 2019~\cite{seager2019strengthening}),
+ and this may lead to the low TC bias in those models~\cite{tomassini2017interaction}.
 
 \subsubsection{The Carnot cyclone}
 \label{sec:carnot}
@@ -39,7 +42,7 @@ and entropy from the dissipation of kinetic energy,
  The final descent is approximately moist adiabatic~\cite{emanuel2018progress}.
 
 This is nearly an ideal Carnot cycle, this converts heat energy of the sea surface (see Figure~\ref{fig:heat}) into
-mechanical energy of the winds, doing the majority of the work against the sea surface.
+mechanical energy of the winds, doing the majority of the work against the sea surface, where near the coast it can raise a storm surge.
 
 
 \input{figures/2d_fields/heat.tex}
@@ -55,8 +58,8 @@ The potential intensity (equation 15-7 in \cite{emanuel2018progress}) is,
 
 where $C_d$ is the surface drag coefficient $C_k$ is the dimensionless
 surface exchange coefficient for enthalpy.
-$T_s$ is the sea surface temperature, $T_o$ is the temperature of the
-lower stratosphere at the end of the moist adiabatic rise.
+$T_s$ is the sea surface temperature ($K$), $T_o$ is the temperature of the
+lower stratosphere at the end of the moist adiabatic rise ($K$).
 One can see that the a warmer sea surface, and a cooler lower stratosphere
 would both lead to a higher potential intensity in paragraph~\cite{emanuel1991theory, emanuel2018progress}.
 Further in \ref{eq:PI} the enthalpy per unit mass (equation 15-8 in \cite{emanuel2018progress}) is
@@ -78,14 +81,11 @@ where dissipation of energy in areas apart from the sea surface must become impo
 \input{figures/pi_maximum.tex}
 
 
-Bister~\&~Emanuel~2002 gives an algorithm whereby given the rest of the climate
-there is some maximum intensity that a hurricane could reach  \cite{bister2002low}
-as a product of a development of Emanuel's work~\cite{bister1996development,bister1998dissipative, bister2002low}
-
- One of the main reasons for
-hurricanes failing to reach their potential intensity is that not all of the
+Most TCs do not reach their PI. One reason for this is that not all of the
 water column at the temperature
-of the surface, instead only up to some depth. The depth of warm water
+of the surface, instead only up to some depth. The majority of the cooling of
+the sea surface during a TC occurs due to the
+The depth of warm water
 is much larger at the western boundary currents~\cite{hogg1995western}, which means that if a hurricane
 travels down the axis of the current (e.g. the loop current)
 it can reach a higher intensity than

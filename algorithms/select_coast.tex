@@ -7,7 +7,7 @@
 \KwIn{Grid: boolean grid (True for NaN values (land))}
 \For{indices in Grid}{
   \If {Grid[indices] == False}{
-     \If{ any of Grid[index\_x $\pm$ 1, index\_y $\pm$ 1] are True}
+     \If{ any of Grid[index\_x $\pm$ 1, index\_y]  \textbf{or} Grid[index\_x, index\_y $\pm$ 1]  are True}
         {\textbf{append} indices to List\;}
      }
 }

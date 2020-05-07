@@ -1,30 +1,32 @@
-\paragraph{Linear regression}
+\paragraph{Linear ML models}
 
-\begin{equation}
-\min _{w}\|X w-y\|_{2}^{2}
-\end{equation}
+To do regression with different models, for some set of inputs, $X$, and
+some set of targets, $Y$, we need to choose an objective function:
 
-\paragraph{Lasso Regression}
+\begin{align}
+J_{\mathrm{mlr}} = & \|X w-y\|_{2}^{2} \tag{MLR}, \label{eq:MLR} \\
+J_{\mathrm{lasso}} = &
+\frac{1}{2 n_{\text {samples }}}\|X w-y\|_{2}^{2}+\alpha\|w\|_{1} \tag{LAS}, \label{eq:LAS} \\
+J_{\mathrm{ridge}} = &  \|X w-y\|_{2}^{2}+\alpha\|w\|_{2}^{2} \tag{RID}, \label{eq:RID}
+\end{align}
 
-
-\begin{equation}
-\min _{w} \frac{1}{2 n_{\text {samples }}}\|X w-y\|_{2}^{2}+\alpha\|w\|_{1}
-\end{equation}
-
-The lasso estimate solves for the minimisation of the least squares penalty with
+Where \ref{eq:MLR} is the ordinary minimisation of least squares, that has no
+penalty for the complexity of parameters.
+The lasso objective function adds a penalty~\ref{eq:LAS},
 $\alpha\|w\|_{1}$ added, where $\alpha$ is a constant and $\|w\|_{1}$ is the
 $l_1$-norm of the coefficient vector.
-A coordinate descent algorithm is used to fit the coefficients~\cite{scikit-learn}.
+The ridge objective function~\ref{eq:RID}
+$\alpha\ge0$ controls the amount of shrinkage:
+the larger value of $\alpha$,
+the greater the amount of shrinkage
+and thus the coefficients become more robust to multi-colinearity.
+A coordinate descent algorithm is used to fit the coefficients~\cite{scikit-learn}
+achieving
+$
+\min _{w} (J)
+$
+.
 
-\paragraph{Ridge regression}
-
-\begin{equation}
-\min _{w}\|X w-y\|_{2}^{2}+\alpha\|w\|_{2}^{2}
-\end{equation}
-
-The complexity parameter $\alpha\ge0$ controls the amount of shrinkage:
-the larger value of $\alpha$, the greater the amount of shrinkage
-and thus the coefficients become more robust to colinearity.
-
-RidgeCV implements ridge regression with built in cross validation of the
-alpha parameter,
+To choose the complexity parameter $\alpha$, it is possible to change the
+value, and choose the value that leads to the greatest generalisability
+to unseen data.

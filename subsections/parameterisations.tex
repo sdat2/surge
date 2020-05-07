@@ -3,27 +3,22 @@
 \subsubsection{Sea surface wind stress}
 
 
-Equation X in Y20 is,
+Equation 9 in Y20~\cite{ZannaPreprint} is,
 
 \begin{equation}
- |\tau| = C_d(|U|) \cdot U^2
+ \boldsymbol{\tau} = C_d(|U_{10}|)\cdot \rho_{\mathrm{air}} \cdot U_{10}{}^2  \;{}\mathbf{\hat{U}_{10}}
  \label{eq:tau}
  \end{equation}
 
- It is unclear whether this increase or decreases at high wind speeds
- \cite{powell2003reduced, donelan2004limiting}. Y20~\cite{ZannaPreprint} speculates that $C_d$ may naturally continue
-to increase with windspeed, making Eq.~\ref{eq:tau} closer to cubic.
+ It is unclear whether how $C_d$ changes at high wind speeds
+ \cite{powell2003reduced}, as initially roughness increases
+ due to the waves, but this could decrease~\cite{powell2003reduced}
+ or reach a limit~\cite{donelan2004limiting}.
 
-We can make sense of Equation~\ref{eq:tau} by analogy to the pressure of an ideal
-gas caused by the impact of a molecule of speed $u$, where one factor of
-$u$ comes from the probability of collision, and one from the momentum
-exchanged during each collision.
 
 \subsubsection{Sea surface wind induced heat transfer}
-The uncertainty in this parametrization of this may be an explanation as to why there are
-not enough Safir-Simpson category 4 and 5 in models~\cite{emanuel2005divine}.
 
-\input{figures/param_figs}
+% \input{figures/param_figs}
 
 Equation 4 in \cite{zou2017observation},
 
@@ -32,5 +27,8 @@ Q_{H}=\rho c_{p} C_{H} U\left(\theta-\theta_{0}\right),
 \end{equation}
 
 
-maintenance of tropical cyclones depend exclusively
- on self-induced heat transfer from the ocean through this route.
+TCs depend
+on self-induced heat transfer from the ocean through this route,
+and so this is a source of systematic error, to explain why there are
+not enough Saffir-Simpson category
+4 and 5 in CMIP models~\cite{emanuel2005divine}.

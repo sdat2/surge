@@ -41,17 +41,34 @@ and entropy from the dissipation of kinetic energy,
  approximately isothermally at first, albeit with some loss through radiation.
  The final descent is approximately moist adiabatic~\cite{emanuel2018progress}.
 
-This is nearly an ideal Carnot cycle, this converts heat energy of the sea surface (see Figure~\ref{fig:heat}) into
-mechanical energy of the winds, doing the majority of the work against the sea surface, where near the coast it can raise a storm surge.
+This is nearly an ideal Carnot cycle, this converts heat energy of the sea surface
+(see Figure~\ref{fig:heat}) into
+mechanical energy of the winds, doing the majority of the work against the sea surface,
+ where near the coast it can raise a storm surge.
 
 
 \input{figures/2d_fields/heat.tex}
 
+The minimum central pressure is given by (equation 26 in \cite{emanuel1986air}),
 
-The potential intensity (equation 15-7 in \cite{emanuel2018progress}) is,
+\begin{aligned}
+&\ln \pi_{c s} \notag \\
+&\approx \frac{-\left(\frac{T_{B}-\bar{T}_{\mathrm{out}}}{T_{B}}\right)
+\frac{L q_{a}^{*}}{C_{p} T_{s}}\left(\mathrm{RH}_{c}-\mathrm{RH}_{a}\right)_{s}
++\frac{1}{4} \frac{f^{2} r_{0}^{2}}{C_{p} T_{B}}}{1-\left(\frac{T_{B}
+-\bar{T}_{\mathrm{out}}}{T_{B}}\right)\left(1+\frac{L q_{a}^{*} \mathrm{RH}_{c s}}{R T_{s}}\right)}
+\tag{PI-P}
+\end{aligned}
+
+Figure~\ref{fig:emanuel87}\footnote{Automatically Updated Version: \url{http://wxmaps.org/pix/hurpot}.}
+ shows that the PI theory fitting the measured
+minimum central pressure of the largest storms.
+The potential intensity is conventionally viewed through the
+maximum windspeed a TC can reach (equation 15-7 in \cite{emanuel2018progress}) is,
 
 \begin{equation}
-\left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}} \frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
+\left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}}
+\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
 \tag{PI}
 \label{eq:PI}
 \end{equation}
@@ -64,13 +81,17 @@ One can see that the a warmer sea surface, and a cooler lower stratosphere
 would both lead to a higher potential intensity in paragraph~\cite{emanuel1991theory, emanuel2018progress}.
 Further in \ref{eq:PI} the enthalpy per unit mass (equation 15-8 in \cite{emanuel2018progress}) is
 
+
 \begin{equation}
 k \equiv c_{p} T+L_{v} q,
 \label{eq:enthalpy_per_unit_mass}
 \end{equation}
 
+
+
 where $c_p$ is the heat capacity at constant pressure and $L_{v}$ is the latent heat
-of vaporisation. $k_{0}^{*}$ is the saturation enthalpy at the sea surface~\cite{emanuel2018progress}.\footnote{
+of vaporisation. $k_{0}^{*}$ is the saturation enthalpy at the sea
+surface~\cite{emanuel2018progress}.\footnote{
 There is a positive feedback loop from air cooling adiabatically as it flows down
 the pressure gradient, and therefore increasing the enthalpy disequilibrium
 $k_{0}^{*}-k$, leading to a root below 700 mbar central pressure called a `hypercane'~\cite{emanuel1987dependence}
@@ -78,25 +99,22 @@ where dissipation of energy in areas apart from the sea surface must become impo
 
 }
 
-\input{figures/pi_maximum.tex}
+\input{figures/pi_original.tex}
+
 
 
 Most TCs do not reach their PI. One reason for this is that not all of the
 water column at the temperature
-of the surface, instead only up to some depth. The majority of the cooling of
+of the surface, instead only up to some depth.
+The majority of the cooling of
 the sea surface during a TC occurs due to the
 The depth of warm water
-is much larger at the western boundary currents~\cite{hogg1995western}, which means that if a hurricane
+is much larger at the western boundary currents~\cite{hogg1995western},
+which means that if a hurricane
 travels down the axis of the current (e.g. the loop current)
 it can reach a higher intensity than
 if it travelled 20km to one side.
 
-
-A few super-intense tropical cyclones have been observed, however the community
- trusts the assumptions made in the
-Carnot cyclone model~\cite{camargo2019tropical}.
-One deficiency is treating the bulk parameters
-as constant (§~\ref{sec:param}).
 
 \subsection{Contrast to extratropical cyclones}
 In contrast to TCs,  ECs do not need a trigger, forming

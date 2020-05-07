@@ -11,7 +11,7 @@ The grid is undistorted from a lon-lat
  grid in the southern hemisphere.
 
  The bathymetry used by the ocean engine is based on
- ETOPO2~\cite{lecointre2011definition,noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
+ ETOPO2~\cite{lecointre2011definition, noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
  This is more accurate along the US coastline as it uses
  direct measurements rather than relying on altimetry data~\cite{noaa20062}.
  Table~\ref{tab:mod-symb} introduces the variables taken from NEMO.
@@ -41,8 +41,10 @@ to produce a best guess as to what the salinity and temperature of the ocean is.
 
 \paragraph{CORE2 forcing}
 CORE2 is a set of global air-sea fluxes~\cite{griffies2012datasets,large2009global,
- hurrell2008new, core2, core2expert}.\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
- The primary data source is the NCEP/NCAR R1 reanalysis product, but bias corrected
- with more reliable remote and local sensing data.
+ hurrell2008new}.\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
+ The primary data source is the NCEP/NCAR R1 reanalysis product,
+ but bias corrected with more reliable remote and local sensing data~\cite{core2, core2expert}.
+ The CORE2 output is produced in 6 hour time inputs which are interpolated
+ (see Figure~\ref{fig:katrina}B-D).
 
 \input{figures/katrina.tex}

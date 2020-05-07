@@ -2,7 +2,7 @@
 \centering
 \includegraphics[width=1\linewidth]{../surge/plots/3d_plots/3d_plotnorlean.pdf}
  \caption{High pass filter (lower two panels) makes small difference.}
- \label{fig:tau-tau-resp}
+ \label{fig:tau-tau-r-no}
 \end{figure}
 
 
@@ -21,3 +21,15 @@
   \caption{($\bar{r^2}$)\texttt{*np.square(np.sqrt(c0) + np.sqrt(c1))}. }
    \label{fig:tau-tau-responsiveness}
 \end{figure*}
+
+Figure~\ref{fig:tau-tau-r-no} shows a single example of working out the linear
+responsiveness (or linear predictability).
+
+Figure~\ref{fig:tau-tau-resp} shows that when this same metric is applied along \texttt{eUS}
+for each year in \texttt{tyr}.
+
+Figure~\ref{fig:tau-tau-angle} shows that the angle is highly correlated with
+the bearing of the coast that was defined in §~\ref{sec:convexity}.
+
+Figure~\ref{fig:tau-tau-responsiveness} creates a metric for the
+responsiveness.

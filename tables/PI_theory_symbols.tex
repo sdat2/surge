@@ -1,16 +1,17 @@
 \begin{table}[ht]
 \resizebox{\columnwidth}{!}{%
-\begin{tabular}{l L{5.5cm} l}
+\begin{tabular}{l L{5.5cm}}
 
 \hline \hline
-\textbf{Sym} & \textbf{Name} & \texttt{cn}\\
+\textbf{Sym} & \textbf{Name}\\
 \hline
 $\eta$ & SSH & \texttt{zos} \\
-$\tau_u$ & Sea surface stress along u (Pa) & \texttt{tauuo} \\
-$\tau_v$ & Sea surface stress along v (Pa)& \texttt{tauvo} \\
-$|U|$ & Sea surface windspeed (m s$^{-1}$) & \texttt{sowindsp}\\
-$T_s$ & Sea surface temperature (SST) & \texttt{tos} \\
-$q_s$ & Downwards heat flux & \texttt{hfds}\\
+$C_k$ &  \\
+$C_D$ & Sea surface stress along v (Pa) \\
+$\pi_{\mathrm{cs}}$ & \\
+$|U_{10}|$ & Sea surface windspeed (m s$^{-1}$) \\
+$T_s$ & Sea surface temperature (SST)  \\
+$q_s$ & Downwards heat flux  \\
 \hline \hline
 \end{tabular}
 }
@@ -18,3 +19,9 @@ $q_s$ & Downwards heat flux & \texttt{hfds}\\
 taken from NEMO outputs in this report.}
 \label{tab:pi-symb}
 \end{table}
+
+Equation 21 from \cite{emanuel1986air}
+\begin{equation}
+\ln \frac{\pi_{c}}{\pi_{a}}=-\frac{T_{B}-\bar{T}_{\mathrm{out}}}{T_{B}}
+ \ln \frac{\theta_{e c}}{\theta_{e a}}+\frac{1}{4} \frac{f^{2} r_{0}^{2}}{C_{p} T_{B}}
+\end{equation}

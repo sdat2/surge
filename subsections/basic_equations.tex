@@ -37,30 +37,12 @@ and the conservation of energy,
 Where we have assumed that we are in an inertial frame and the variables are
 labelled as in Table~\ref{tab:fluid_variables}.
 
-\begin{table}[h!]
-    \centering
-    \begin{tabular}{ll}
-        $\rho$ & Density. \\
-        $t$ & Time. \\
-        $\mathbf{u}$ & Velocity. \\
-        $P$ & Pressure. \\
-        $\underline{\underline{\tau}}$ & Deviatronic stress (2nd order tensor). \\
-        $\phi$ & Gravitational potential. \\
-         $h$ & Enthalpy.\\
-         $T$ & Temperature. \\
-         $k$ & Thermal conductivity.\\
-         $c_p$ & Heat capacity.\\
-         $\eta$ & Viscosity. \\
-         $H$ & Heat production density.\\
-    \end{tabular}
-    \caption{Symbols for fluid mechanical equations.}
-    \label{tab:fluid_variables}
-\end{table}
+\input{tables/back-theory-symbols.tex}
 
 \subsubsection{Boussenesq Approximation}
 We can also normally assume that all density variations can be ignored that
  are not on the gravitational term (the Boussenesq approximation),
-  which simplifies the equations considerably as Equation~\ref{eq:Matter} becomes
+  which simplifies the equations considerably as Equation~\ref{eq:Matter} becomes,
 \begin{equation}
     \boldsymbol{\nabla}\cdot\mathbf{u} = 0, \tag{B-Matter}
 \end{equation}
@@ -113,7 +95,8 @@ layer of the water travels to the right of that.
 If the water column is deep enough, with
 assumptions about the friction coefficients of the water column,
 the net transport is 90 degrees to the right of the prevailing wind
-(see Figure~\ref{fig:ekman}).\footnote{\url{https://oceanservice.noaa.gov/education/kits/currents/media/supp_cur05e.html}}
+(see Figure~\ref{fig:ekman}).\footnote{
+\url{https://oceanservice.noaa.gov/education/kits/currents/media/supp_cur05e.html}}
 
 \begin{figure}
 \includegraphics[width=\linewidth]{images/ekman_spiral.png}

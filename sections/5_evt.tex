@@ -1,12 +1,11 @@
 \section{Extreme value theory}
 \label{sec:evt}
 \subsection{Idealised statistical theory}
-The central limit theorem is a well known triumph of classical statistics,
-and it is often useful in the physical sciences where the central value
-is that of interest. However, by its nature the mean SSH will
-not be able to damage the coast (barring significant sea level rise that is not mitigated),
+By its nature the mean SSH will
+not be able to damage the coast
+(barring significant sea level rise that is not mitigated),
 and life and property will only be put
-at risk by the most extreme events.
+at risk by the most extreme events~\cite{taleb2019statistical}.
 
 The extreme value theorem is:
 
@@ -50,17 +49,69 @@ creates the hazard rather than the relative height.
 
 \input{figures/limit-to-thermo.tex}
 
+
+
+\begin{itemize}
+\item
+\(
+\operatorname{GEV}(\mu, \sigma, \xi):
+\)
+\(
+\text{ location, } \mu \in \mathbb{R}
+\text{; scale, } \sigma>0
+\text{; shape, } \xi \in \mathbb{R}.
+\)
+\begin{eqnarray}
+\operatorname{GEV}(x; \mu, \sigma, \xi)=&
+\frac{1}{\sigma} \chi(x)^{\xi+1} e^{-\chi(x)};
+\end{eqnarray}
+\begin{eqnarray}
+\chi(x)=&\left\{\begin{array}{ll}
+\left(1+\xi\left(\frac{x-\mu}{\sigma}\right)\right)^{-1 / \xi} & \text { if } \xi \neq 0 \\
+e^{-(x-\mu) / \sigma} & \text { if } \xi=0
+\end{array}\right.
+\end{eqnarray}
+\item The Gumbel distribution is a special case ($\xi=0$)
+\begin{equation}
+\operatorname{GUM}(x ; \mu, \sigma)=e^{-\frac{x-\mu}{\sigma}-e^{-(x-\mu) / \sigma}}
+\end{equation}
+\end{itemize}
+
+location $\mu$: position of the GEV mean
+Return level: value $\eta$ that is expected to
+be exceeded on average once every $1/p $periods,
+where $1 − p$ is the probability associated with the quantile.
+Find zp such that
+$G(\eta) = 1 − p$.
+Traditionally a GEV where
+$\xi<0$ is called a Weibull
+distribution, and  $\xi>0$ a Fr\'echet.
+
+Figure~\ref{fig:gev-no} fits the generalised extreme value theorem fitted
+on the yearly block maxima for the nearest coastal point to New Orleans.
+Figure~\ref{fig:gev_all_points} shows the fit along all points in \texttt{eUS}
+for \texttt{c50}.
+
+
 \subsection{Comparison to POT GPD}
-In Y20~\cite{ZannaPreprint} they use POT methods, and fit a generalised Pareto distribution.
+In Y20~\cite{ZannaPreprint} they use POT methods,
+and fit a generalised Pareto distribution.
 
 \subsection{Enforcing an asymptote using potential intensity theory }
 As noted in~§~\ref{sec:hurr-theory} there is some maximum size
 that a tropical cyclone might be expected to be able to reach given
 the climate. This gives us information as to the shape of the probability
 distribution beyond what just curve-fitting the tail.
-As shown in Figure~\ref{fig:up-bound-taleb}.
-
+As shown in Figure~\ref{fig:up-bound-taleb} naively fitting
+the GEV to the distribution would be an over-extrapolation of
+the relationship if we have a good physical reason for
+thinking that there is a maximum
+(i.e.~the PI theory §~\ref{sec:hurr-theory}).
 
 \input{figures/return_hypothesis.tex}
+
+\input{figures/pi_maximum.tex}
+
+
 
 \FloatBarrier

@@ -10,13 +10,14 @@ currents and density contrasts (Figures~\ref{fig:zos}).
 
 
 
-While the first moment around the mean is trivial, we also define the third
+While the first moment around the mean is trivial, we also define the third,
+
 \begin{equation}
 \operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
 =\frac{\mathrm{E}\left[(X-\mu)^{3}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}},
 \end{equation}
 
-and fourth (as the excess above the Gaussian)~\cite{taleb2019statistical}
+and fourth as the excess above the Gaussian~\cite{taleb2019statistical},
 
 \begin{equation}
 \operatorname{Kurt}[X]=
@@ -36,10 +37,12 @@ does not reveal any discontinuity in the data in the two year period,
  but Figures~\ref{fig:four-trans-panels}-\ref{fig:mm-hp-lp}
 suggest that this might be caused by model spin up from the
 EN4 initial conditions using the CORE2 forcing.
-On the right of the plots (\ref{fig:ssh_stats_america}A--D) is the Pearson regression coefficient $r_p$,
+On the right of the plots (\ref{fig:ssh_stats_america}A--D)
+is the Pearson regression coefficient $r_p$,
 between the two years for that moment, which shows that the mean and
 standard deviation of a point are relatively static between the years, but the
-higher order moments of skew and kurtosis (\ref{fig:ssh_stats_america}C~\&~D) are more sensitive to the
+higher order moments of skew and kurtosis
+(\ref{fig:ssh_stats_america}C~\&~D) are more sensitive to the
 random incidence of storms along different areas of the coast.
 
 
@@ -92,10 +95,18 @@ have no information not displayed by the positive.
 
 There is a lag, between the two, which becomes anti-phase in the Gulf
 of Tonkin (Northern Vietnam).
-
-Some level of lag is understandable, as the mixed layer takes longer
+Some level of lag is understandable,
+as the mixed layer takes longer
 to heat up than the surface itself.
 
 \input{figures/lag-panels.tex}
+
+Lag correlation is defined as,
+
+\begin{equation}
+r_{k}=
+\frac{\sum_{i=1}^{N-k}\left(X_{i}-\bar{Y}\right)\left(X_{i+k}-\bar{Y}\right)}
+{\sum_{i=1}^{N}\left(X_{i}-\bar{Y}\right)^{2}}.
+\end{equation}
 
 \FloatBarrier

@@ -39,11 +39,19 @@ There are insufficient TCs in climate models, because the processes involved
 in cyclogenesis are hard to resolve in climate models. This may be
 exacerbated by the cold bias (see Seager et~al.~2019~\cite{seager2019strengthening})
 
-\subsection{Model Hysteresis}
+A few super-intense tropical cyclones have been observed, however the community
+ trusts the assumptions made in the
+Carnot cyclone model~\cite{camargo2019tropical}.
+One deficiency is treating the bulk parameters
+as constant (§~\ref{sec:param}).
+
+\subsection{Sea surface Hysteresis}
 The sea surface does not instantly reach its steady state when the sea surface
 stress is applied, and it does not recede from its high level, this leads
 to the regression being quite distorted, as the assumption would be that data
 is iid, when it actually depends significantly on the previous points.
+It might therefore make sense to give whichever ML algorithm
+the series of previous $\eta$ values for some number of lags.
 
 
 \subsection{Summary of Systematic Errors}

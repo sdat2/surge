@@ -3,7 +3,7 @@
 The sea surface height in the model is measured relative to
 a reference Geoid, which is the surface that a fluid would occupy
 in the absence of density contrasts and ocean currents around an
-azimuthally symmetric Earth of the same size.
+azimuthally symmetric Earth of the same size and rotation frequency.
 Some dynamic topography emerges because of the
 currents and density contrasts (Figures~\ref{fig:zos}).
 \input{figures/2d_fields/zos.tex}
@@ -51,33 +51,19 @@ random incidence of storms along different areas of the coast.
 \subsection{Fourier Transform}
 \label{sec:fourier}
 
-
-The ocean is known to have a red-noise spectrum.
-
-The relationship between the temperature and the sea surface temperature.
-
-The Florida current is a likely source of particularly red noise at Miami
-(Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
-
-
-The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
-as the loop current has formed a secondary vortex ring moving Northwards
-in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
-
-\input{figures/2d_fields/vos}
-\input{figures/2d_fields/uos}
+The fourier transform is defined as,
 
 \begin{equation}
-F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x
+F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x,
 \end{equation}
+
+which in discrete form is,
+
+
 \begin{eqnarray}
 \sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=&\sum_{n=0}^{N / 2-1} a_{2 n}
-e^{-2 \pi i k (2 n)/ N}  \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N} \notag
+e^{-2 \pi i k (2 n)/ N}  \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}/ \notag
 \end{eqnarray}
-
-\input{figures/fourier-transform-panels.tex}
-
-\input{figures/choose-thresh.tex}
 
 Fourier transforms of real signals have Hermitian symmetry,
 
@@ -85,19 +71,28 @@ Fourier transforms of real signals have Hermitian symmetry,
 \mathcal{F}{(-g(x))}=\mathcal{F}(g(x))^{*},
 \end{equation}
 
-which implies that the negative frequencies
-have no information not displayed by the positive.
+$\implies$ negative frequencies have no information not in the positive.
 
+
+The ocean is known to have a red-noise spectrum.
+The relationship between the temperature and the sea surface temperature.
+The Florida current is a likely source of particularly red noise at Miami
+(Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
+The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
+as the loop current has formed a secondary vortex ring moving northwards
+in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
+
+\input{figures/2d_fields/vos}
+\input{figures/2d_fields/uos}
+
+
+\input{figures/fourier-transform-panels.tex}
+
+\input{figures/choose-thresh.tex}
 
 
 \subsection{Lag Correlation Plot}
 \label{sec:lag}
-
-There is a lag, between the two, which becomes anti-phase in the Gulf
-of Tonkin (Northern Vietnam).
-Some level of lag is understandable,
-as the mixed layer takes longer
-to heat up than the surface itself.
 
 \input{figures/lag-panels.tex}
 
@@ -105,8 +100,17 @@ Lag correlation is defined as,
 
 \begin{equation}
 r_{k}=
-\frac{\sum_{i=1}^{N-k}\left(X_{i}-\bar{Y}\right)\left(X_{i+k}-\bar{Y}\right)}
-{\sum_{i=1}^{N}\left(X_{i}-\bar{Y}\right)^{2}}.
+\frac{\sum_{i=1}^{N-k}\left(X_{i}
+-\bar{Y}\right)\left(X_{i+k}-\bar{Y}\right)}
+{\sum_{i=1}^{N}\left(X_{i}
+-\bar{Y}\right)^{2}}.
 \end{equation}
+
+There is a lag, between the two,
+which becomes anti-phase in
+Northern Vietnam.
+Some level of lag is understandable,
+as the mixed layer takes longer
+to heat up than the surface itself.
 
 \FloatBarrier

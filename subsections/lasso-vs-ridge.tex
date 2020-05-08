@@ -1,7 +1,7 @@
-\paragraph{Linear ML models}
+\subsection{Linear ML models}
 
 To do regression with different models, for some set of inputs, $X$, and
-some set of targets, $Y$, we need to choose an objective function:
+some set of targets, $Y$, we need to choose an objective function to minimise:
 
 \begin{align}
 J_{\mathrm{mlr}} = & \|X w-y\|_{2}^{2} \tag{MLR}, \label{eq:MLR} \\
@@ -20,13 +20,10 @@ $\alpha\ge0$ controls the amount of shrinkage:
 the larger value of $\alpha$,
 the greater the amount of shrinkage
 and thus the coefficients become more robust to multi-colinearity.
-A coordinate descent algorithm is used to fit the coefficients~\cite{scikit-learn}
-achieving
+A coordinate descent algorithm is used to~\cite{scikit-learn}
 $
 \min _{w} (J)
-$
-.
+$.
 
-To choose the complexity parameter $\alpha$, it is possible to change the
-value, and choose the value that leads to the greatest generalisability
-to unseen data.
+The complexity parameter $\alpha$, can be set to
+the value that leads to the greatest generalisability to unseen data.

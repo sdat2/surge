@@ -19,7 +19,7 @@
 
 \iftrue
 %%TC:ignore
-
+%\input{covid-complaining.tex}
 \subfile{sections/Title_Page}
 \fi
 \iftrue
@@ -63,11 +63,13 @@
 \appendix
 \input{sections/9_Acknowledgements}
 \input{sections/10_supplementary_results.tex}
-\input{appendices/dead_ends.tex}
 \FloatBarrier
 \input{appendices/ref_theory}
 \onecolumn
 \input{appendices/repo_intro.tex}
+
+\input{appendices/dead_ends.tex}
+
 \section{Wordcount}
 The word limit for this thesis was 5000 words
 (excluding abstract, figure captions, references, and appendices).
@@ -75,6 +77,7 @@ For full transparency, this is the full automatic breakdown:
 \wordcount
 %%TC:endignore
 \fi
+
 
 %%%%%%%%%%%%---End of Document---%%%%%%%%%%%%%%%%%%%%
 \end{document}

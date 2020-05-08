@@ -77,7 +77,7 @@ e^{-(x-\mu) / \sigma} & \text { if } \xi=0
 \end{equation}
 \end{itemize}
 
-location $\mu$: position of the GEV mean
+Location $\mu$: position of the GEV mean
 Return level: value $\eta$ that is expected to
 be exceeded on average once every $1/p $periods,
 where $1 − p$ is the probability associated with the quantile.
@@ -92,9 +92,7 @@ on the yearly block maxima for the nearest coastal point to New Orleans.
 Figure~\ref{fig:gev_all_points} shows the fit along all points in \texttt{eUS}
 for \texttt{c50}.
 
-
-\subsection{Comparison to POT GPD}
-In Y20~\cite{ZannaPreprint} they use POT methods,
+In Y20~\cite{ZannaPreprint} they instead use POT methods,
 and fit a generalised Pareto distribution.
 
 \subsection{Enforcing an asymptote using potential intensity theory }
@@ -107,6 +105,22 @@ the GEV to the distribution would be an over-extrapolation of
 the relationship if we have a good physical reason for
 thinking that there is a maximum
 (i.e.~the PI theory §~\ref{sec:hurr-theory}).
+
+
+A hypothesis to explain the observed pattern of return periods is explained in
+Figure~\ref{fig:return_hyp}}, where the PI of hurricanes is used to
+explain the flattening of the extreme value with return period.
+However, absence of evidence is not evidence of absence, and some areas of the US
+coastline such as Galverston and New England experience hurricanes infrequently,
+but as respectively in 1900 and 1908,
+ when they do come they can cause great devastation~\cite{emanuel2005divine}.
+The low TC frequency bias in CMIP models will exacerbate this problem. This will
+appear as the blue curve continued without reaching the true plateau. The period of time
+between T$_0$ and T$_1$ likely depends on the average size of the tropical cyclone storms, and the
+percentage of them which rise to their maximum severity.
+For highly irresponsive places (e.g.~Miami), it is possible that the deviation caused
+by hurricane landfall does not cause a large deviation from the existing EV distribution,
+that is mainly caused by other factors (the Florida current).
 
 \input{figures/return_hypothesis.tex}
 

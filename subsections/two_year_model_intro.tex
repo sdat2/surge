@@ -7,44 +7,42 @@ resolution.
 This is a tripolar ocean grid, designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
 Instead there are two `north' poles, in Russia and Canada,
 with the grid elegantly curving between the two.
-The grid is undistorted from a lon-lat
- grid in the southern hemisphere.
 
- The bathymetry used by the ocean engine is based on
- ETOPO2~\cite{lecointre2011definition, noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
- This is more accurate along the US coastline as it uses
- direct measurements rather than relying on altimetry data~\cite{noaa20062}.
+ The bathymetry used is based on
+ ETOPO2v2~\cite{lecointre2011definition, noaa20062}.\footnote{\url{https://www.ngdc.noaa.gov/mgg/global/etopo2.html}}
+ This is more accurate along the US coastline, using
+ direct measurements rather than altimetry data~\cite{noaa20062}.
  Table~\ref{tab:mod-symb} introduces the variables taken from NEMO.
 
 \input{tables/model-symbols.tex}
 
 \paragraph{Limitations}
 
-Neither of the outputs in~§~\ref{sec:rean-prod}~\&~§~\ref{sec:control-1950-intro}
+Neither of the outputs
 include tides, inundation (the flooding of land), or wave setup.
 The resolution of the models mean that in the region of interest cells are around
-8km wide. Therefore the centre at which the sea surface height is recorded,
+8km wide. Therefore the centre at which the sea surface height (SSH) is recorded,
 is around 4km from the coast.
 
 \subsubsection{2004-5 \texttt{two-year} hourly reanalysis product}
 \label{sec:rean-prod}
-Dr.~Pierre Mathiot kindly ran a global two year ocean simulation with
-hourly outputs for the years 2004-5 (thus including a representation of Katrina as
+Dr.~Pierre Mathiot kindly ran a global two-year ocean model with
+hourly outputs for the years 2004-5 (see Katrina
 in Figure~\ref{fig:katrina}).
 
 \paragraph{EN4 initial conditions}
-EN4 is a product that uses all available ocean profiles
+EN4 is a reanalysis product, starting in 1976, that uses all available ocean profiles
 (through the ARGO program etc.)~\cite{good2013en4, HadObs}
-to produce a best guess as to what the salinity and temperature of the ocean is.
- The start of this reanalysis product is 1976.
+to produce a best guess as to what the salinity, temperature,
+and dynamic heigh of the ocean is.
 
 
 \paragraph{CORE2 forcing}
 CORE2 is a set of global air-sea fluxes~\cite{griffies2012datasets,large2009global,
- hurrell2008new}.\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
- The primary data source is the NCEP/NCAR R1 reanalysis product,
- but bias corrected with more reliable remote and local sensing data~\cite{core2, core2expert}.
- The CORE2 output is produced in 6 hour time inputs which are interpolated
+ hurrell2008new}\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
+ that have been made from the NCEP/NCAR R1 reanalysis product,
+ bias corrected with more reliable sattelite data data~\cite{core2, core2expert}.
+ CORE2 fluxes  are produced in 6 hour time steps which are interpolated
  (see Figure~\ref{fig:katrina}B-D).
 
 \input{figures/katrina.tex}

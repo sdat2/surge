@@ -7,8 +7,8 @@
  \label{sec:fractal}
  The coastline appears to be a self-similar fractal~\cite{mandelbrot1967long,
  richardson1961problem}. This means that it has the same features at all
- scales, so that the length of the coast increases without limit as resolution
- is increased, following the formula:
+ scales, so that the length of the coast increases without limit as resolution $G$
+ is increased,
  \begin{equation}
  L(G)=M G^{1-D},
  \end{equation}
@@ -16,13 +16,13 @@
  and $D>1$ is the fractal dimension~\cite{mandelbrot1967long}.
  A consequence of this is that a coastline has no defined length without
  reference to the resolution at which it is measured.
- This presents some problem when comparing different climate models with different resolutions.
- It has been observed that the fractal dimension changes
+ This will present problems when comparing
+ climate models with different resolutions.
+ The fractal dimension changes
   along the East US coast ($1.11<D<1.20$ in one degree latitude bins)~\cite{jiang1998fractal}
  and this would mean that the relative number of coastal cells between different
- points will also change as the resolution is increased.
- This implies that the only practical way of labeling the points is by
- reference to certain reference locations as listed in
+ points will change as the resolution is increased.
+ Therefore locations are labelled as listed in
  Figures~\ref{fig:america}~\&~\ref{fig:vin-china}.
 
 \subsubsection{Algorithms}
@@ -30,12 +30,9 @@
 Algorithms~\ref{algo:Selection}~\&~\ref{algo:Sort} first extract the coastline
 from the surface slice of the ocean field and then pick out a single chain of
 coastal points between two chosen ends. The list of points can be further
-manually sorted to remove unwanted regions such as large bays
-(e.g.~Chesapeake~bay)
-and the occasional river island (e.g.~Shanghai bay's island). Once this is
-done \texttt{xarray} can be used to quickly extract these points
-from the climate model to make a new NetCDF file that contains all of the
-required fields over a large number of timesteps for those points.
+sorted to remove unwanted regions.
+\texttt{xarray}~\cite{hoyer2017xarray} is then be used to quickly extract
+a series of NetCDF climate files into a single file for these points.
 
 
 \input{algorithms/select_coast.tex}
@@ -43,32 +40,36 @@ required fields over a large number of timesteps for those points.
 
 \subsubsection{Sample coastlines}
 \label{sec:coast-sample}
-The first coastline chosen was the eastern coastline of the mainland
-United States, so that it could be compared with~\cite{ZannaPreprint},
-and because the topography of the NEMO models is most accurate along the
-US coastline (see Figure~\ref{fig:america}).
-Secondly I extracted the coastline from Hue, Northern Vietnam, to China's
-border with North Korea, removing Shanghai bay island (see Figure~\ref{fig:vin-china}).
-Finally we extracted the eastern coastline of Honshu island, Japan.
+The primary coastline extracted was the eastern mainland coastline of the
+United States (\texttt{eUS}),
+so it could be compared to Y20~\cite{ZannaPreprint},
+and because ETOPO2 topography is most accurate along the
+US coast (see Figure~\ref{fig:america}).
+I extracted the coastline from Hue, Vietnam, to China's
+border with North Korea (\texttt{vc}),
+removing Shanghai bay island (see Figure~\ref{fig:vin-china}).
+Finally we extracted the eastern coastline
+of Honshu island, Japan (\texttt{hon}).
 
 
 
 \subsection{Metrics}
 \subsubsection{Motivation}
-A quick look at the coast revealed that certain features stuck out:
+Figure~\ref{fig:ssh_stats_america} shows
 high kurtosis at New Orleans (NO), at the end of a shallowly sloping bay;
 low kurtosis at Miami (MM), at the end of the headland of Florida.
-But it would be interesting to find out what is really the controlling
-factor, or whether either of these are truly predictive of storm surge risk.
 
-To assess this question, it is necessary to quantify these two coastal attributes
-and given that the coast is fractal (§~\ref{sec:fractal}), these metrics must also be defined at
-all scales.
+To assess what controls this,
+it is necessary to quantify these two coastal attributes,
+and given that the coast is fractal (§~\ref{sec:fractal}),
+these metrics must also be defined at all scales.
 
 \subsubsection{Convexity}
 \label{sec:convexity}
-Given a selected coastline, we have a list of points of latitude and longitude.
-We can define the normal bearing to the coast as in Equation~\ref{eq:bearing}.
+
+For each coastline,
+there is a list of latitude and longitude points.
+We can define the normal bearing to the coast,
 
 
 %\begin{figure*}[htb!]
@@ -78,7 +79,8 @@ B_i^{\prime}=\operatorname{arctan} 2
 \label{eq:bearing}
 \end{equation}
 
-with
+with,
+
 \begin{equation}
 S_i = \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot \sin{( B_{j})},
 \end{equation}
@@ -89,17 +91,21 @@ C_i  =  \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot  \cos{(
 with reflective boundary conditions.
 
 An example of this is shown in Figure~\ref{fig:angle_heatmap}} for the
-East~US coastline. We can then define the symmetric derivative of this
+\texttt{eUS}. We define the symmetric derivative of this
 smoothed angle,
 
 \begin{equation}
 \frac{d B_i^{\prime}}{d \mathrm{pt}}
-\equiv \frac{B_{i+1}^{\prime}-B_{i-1}^{\prime}}{2},
+\equiv \frac{B_{i+1}^{\prime}-B_{i-1}^{\prime}}{2}.
 \label{eq:bearing_derivative}
 \end{equation}
 
-where I apologise for a slight abuse of notation. This provides a convexity value for every smoothing length $\sigma$, as
-shown in Figure~\ref{fig:derivative}A-C. The reflective boundary conditions
+This provides a convexity value for every smoothing length $\sigma$,\footnote{
+To overcome the wrapping of the bearing at $2\pi$,
+there is an additional step to add and subtract $2\pi$ from the
+answer and choose the result with the smallest magnitude.
+}
+ as shown in Figure~\ref{fig:derivative}A-C. The reflective boundary conditions
 ensure that the bearing derivative is 0 at either end of the coastline.
 
 
@@ -110,10 +116,11 @@ ensure that the bearing derivative is 0 at either end of the coastline.
 \label{sec:bath-grad}
 The simplest way of working this out is to look at the
 bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
- case (§~\ref{sec:nemo})), and work out where some set of chosen isobaths are.
-Once these isobaths have been selected, the cartesian distance
+ case (§~\ref{sec:nemo})), and define the isobath as
+ points that are both level or below the isobath,
+  and adjacent to a point above the isobath (Figure~\ref{fig:bath}).
+Once these isobaths have been selected, the distance
 within the model grid from every point on
-the coast to that isobath are calculable.
-This provides a distance-to-isobath value for each of the isobaths queried.
+the coast to that isobath are calculated (Figure~\ref{fig:isobath}).
 
 \FloatBarrier

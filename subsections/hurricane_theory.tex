@@ -2,54 +2,29 @@
 \subsection{The Theory of Hurricanes}
 \label{sec:hurr-theory}
 
-\subsubsection{Cyclogenesis}
 \label{sec:cyclogenesis}
 TCs are a finite amplitude instability created by
-wind induced sea heat exchange (WISHE). There is
+wind induced sea heat exchange (WISHE);
+although there is a thermodynamic disequilibrium between the tropical sea
+surface and the atmosphere TCs cannot spontaneously emerge. There is
 a clear separation between a tropical storm and a TC
-in frequency of occurrance against maximum intensity~\cite{emanuel2005divine}.
-`Cyclogenesis is one of the great mysteries of the tropical atmosphere'~\cite{emanuel2018progress};
-although there is thermodynamic disequilibrium between the tropical sea
-surface and the atmosphere TCs cannot spontaneously emerge. As first shown by
-Gray 1975~\cite{gray1975tropical} there are
- diverse phenomena that triggered the growth of TC:
+in frequency of occurance against maximum intensity~\cite{emanuel2005divine}.
 
- In the North Atlantic, the primary triggers are African easterly waves (AEWs),
- that sometimes deepen into tropical depressions and then hurricanes,
- although AEWs can be poorly resolved in models~\cite{tomassini2017interaction}.
- Cyclogenesis can also be caused by a cold front that penetrates the tropics.
 
- There is a tropical cold bias in CMIP models~\cite{camargo2013global},
- possibly caused by the way moisture was dealt (see Seager 2019~\cite{seager2019strengthening}),
- and this may lead to the low TC bias in those models~\cite{tomassini2017interaction}.
-
-\subsubsection{The Carnot cyclone}
 \label{sec:carnot}
 
-The TC can be idealised as a Carnot cycle as in Figure~\ref{fig:hurricane-carnot},
-initially proposed Kleinschmidt,~1951~\cite{kleinschmidt1951grundlagen},
-and then by Emanuel~1986~\cite{emanuel1986air, emanuel1987dependence, lilly1985steady,}.
+
 \input{figures/carnot.tex}
+\input{figures/2d_fields/heat.tex}
 
-
-As shown in Figure~\ref{fig:hurricane-carnot} Enthalpy is acquired from the sea surface,
-and entropy from the dissipation of kinetic energy,
- as the air travels isothermally towards the eyewall.
- At the eyewall the air rises moist adiabatically
- to the lower stratosphere and out to some distance from the storm.
- In a simplified model it then subsides
- approximately isothermally at first, albeit with some loss through radiation.
- The final descent is approximately moist adiabatic~\cite{emanuel2018progress}.
-
-This is nearly an ideal Carnot cycle, this converts heat energy of the sea surface
+TCs are approximately driven by a Carnot cycle as in Figure~\ref{fig:hurricane-carnot}.
+This was initially proposed by Kleinschmidt~1951~\cite{kleinschmidt1951grundlagen},
+and then by Emanuel~1986~\cite{emanuel1986air, emanuel1987dependence, lilly1985steady,}.
+This converts heat energy of the sea surface
 (see Figure~\ref{fig:heat}) into
 mechanical energy of the winds, doing the majority of the work against the sea surface,
  where near the coast it can raise a storm surge.
-
-
-\input{figures/2d_fields/heat.tex}
-
-The minimum central pressure is given by (equation 26 in \cite{emanuel1986air}),
+ The minimum central pressure is, (equation 26 in \cite{emanuel1986air}),
 
 \begin{aligned}
 &\ln \pi_{c s} \notag \\
@@ -103,17 +78,19 @@ where dissipation of energy in areas apart from the sea surface must become impo
 
 
 
-Most TCs do not reach their PI. One reason for this is that not all of the
-water column at the temperature
-of the surface, instead only up to some depth.
+Most TCs do not reach their PI.
+One reason for this is that
+water column is only at the surface temperature
+at some depth (the mixed layer), and colder below.
 The majority of the cooling of
 the sea surface during a TC occurs due to the
-The depth of warm water
-is much larger at the western boundary currents~\cite{hogg1995western},
-which means that if a hurricane
-travels down the axis of the current (e.g. the loop current)
+upwards mixing of this colder water.
+The warm water
+is much deeper at the western boundary currents~\cite{hogg1995western},
+which means that if a TC
+travels down the axis of the current (e.g.~the loop current)
 it can reach a higher intensity than
-if it travelled 20km to one side.
+if it travelled 20km to one side~\cite{emanuel2005divine}.
 
 
 \subsection{Contrast to extratropical cyclones}
@@ -121,7 +98,7 @@ In contrast to TCs,  ECs do not need a trigger, forming
 spontaneously through the baroclinic instability
 in the extratropical atmosphere~\cite{lorenz1960energy}.
 ECs seem to come in a continuous spectrum.
-Given that they cause significantly less damage
-and smaller storm surges, and no theory has been
- set out for calculating there maximum size,
-they will be largely ignored in the rest of this thesis.
+Given that they cause
+significantly less damage, and no theory has been
+ set out for calculating their maximum size,
+they will be ignored in the rest of this thesis.

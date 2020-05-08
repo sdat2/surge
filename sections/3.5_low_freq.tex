@@ -1,16 +1,14 @@
 \section{Preprocessing coastal data}
-\subsection{Coastal point statistics}
-The sea surface height in the model is measured relative to
-a reference Geoid, which is the surface that a fluid would occupy
-in the absence of density contrasts and ocean currents around an
-azimuthally symmetric Earth of the same size and rotation frequency.
-Some dynamic topography emerges because of the
-currents and density contrasts (Figures~\ref{fig:zos}).
+The sea surface height in the model is relative to
+a reference geoid: the surface that a homogeneous static fluid would occupy
+on an azimuthally symmetric Earth of the same size and rotation frequency.
+Dynamic topography emerges because of the
+currents and density contrasts (Figures~\ref{fig:zos}~\&~\ref{fig:ssh_stats_america}A).
 \input{figures/2d_fields/zos.tex}
 
 
 
-While the first moment around the mean is trivial, we also define the third,
+We define the third  moment around the mean,
 
 \begin{equation}
 \operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
@@ -26,43 +24,41 @@ and fourth as the excess above the Gaussian~\cite{taleb2019statistical},
 \end{equation}
 
 
-Initially looking at the statistics of the sea surface height along the
-US coast in Figure~\ref{fig:ssh_stats_america}.
+
 \input{figures/stats_zos}
 
 
-
-Looking at the individual points' SSH (Figure~\ref{fig:individual_zos} in §~\ref{sec:sum-var-stat}),
-does not reveal any discontinuity in the data in the two year period,
+These are useful to summarise the SSH statistics
+for \texttt{eUS} in Figure~\ref{fig:ssh_stats_america}.\footnote{
+The individual points' SSH (Figure~\ref{fig:individual_zos} in §~\ref{sec:sum-var-stat}),
+do not reveal any discontinuity in the data in \texttt{tyr},
  but Figures~\ref{fig:four-trans-panels}-\ref{fig:mm-hp-lp}
-suggest that this might be caused by model spin up from the
-EN4 initial conditions using the CORE2 forcing.
-On the right of the plots (\ref{fig:ssh_stats_america}A--D)
-is the Pearson regression coefficient $r_p$,
+suggest that the displacement might be caused by \texttt{tyr} spin up from the
+initial conditions.
+}
+On the right of panels \ref{fig:ssh_stats_america}A--D
+is the Pearson regression coefficient, $r_p$,
 between the two years for that moment, which shows that the mean and
-standard deviation of a point are relatively static between the years, but the
-higher order moments of skew and kurtosis
-(\ref{fig:ssh_stats_america}C~\&~D) are more sensitive to the
-random incidence of storms along different areas of the coast.
+std~dev of a point are c.~static between the years,
+but the higher order moments of skew and kurtosis
+(\ref{fig:ssh_stats_america}~C~\&~D) are more sensitive to the
+random incidence of storms on the coast.
 
 
-
-
-\subsection{Fourier Transform}
 \label{sec:fourier}
 
-The fourier transform is defined as,
+The Fourier transform is defined as,
 
 \begin{equation}
 F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x,
 \end{equation}
 
-which in discrete form is,
+which in discrete form~\cite{cooley1965algorithm} is,
 
 
 \begin{eqnarray}
 \sum_{n=0}^{N-1} a_{n} e^{-2 \pi i  k n/ N}=&\sum_{n=0}^{N / 2-1} a_{2 n}
-e^{-2 \pi i k (2 n)/ N}  \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}/ \notag
+e^{-2 \pi i k (2 n)/ N}  \\ &+\sum_{n=0}^{N / 2-1} a_{2n+1} e^{-2 \pi i k (2 n+1)/ N}. \notag
 \end{eqnarray}
 
 Fourier transforms of real signals have Hermitian symmetry,
@@ -71,16 +67,33 @@ Fourier transforms of real signals have Hermitian symmetry,
 \mathcal{F}{(-g(x))}=\mathcal{F}(g(x))^{*},
 \end{equation}
 
-$\implies$ negative frequencies have no information not in the positive.
+implies that negative frequencies have no information not in the positive.
 
 
-The ocean is known to have a red-noise spectrum.
+Figures~\ref{fig:zm_fft_zos}~\&~\ref{fig:zm_fft_tos} give the
+Fourier transform spectrums of SSH and SST respectively.
+Figures~\ref{fig:zm_fft_zos} shows that SSH has a red-noise spectrum,
+which is true of the ocean in general, and Figure~\ref{fig:zm_fft_tos}
+shows that SST is dominantly annual (as expected).
 The relationship between the temperature and the sea surface temperature.
 The Florida current is a likely source of particularly red noise at Miami
 (Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
 The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
 as the loop current has formed a secondary vortex ring moving northwards
 in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
+Figures~\ref{fig:no-hp-lp}~\&~\ref{fig:mm-hp-lp} show a high and
+low pass filter applied to specific points, and Figure~\ref{fig:four-trans-panels}.
+
+
+\Delta\eta_{\;\mathrm{lp}}(t) = \int_{\mathbb{R}}W\left(\frac{|f|}
+{|f|_{\mathrm{thresh}}}\right)\int_{\mathbb{R}}e^{2\pi i (t-t^{\prime})f }
+\Delta \eta(t^{\prime})dt^{\prime}df
+\end{equation}
+\begin{equation}
+\Delta\eta_{\;\mathrm{hp}}(t) = \int_{\mathbb{R}}\left(1-W\left(\frac{|f|}
+{|f|_{\mathrm{thresh}}}\right)\right)\int_{\mathbb{R}}e^{2\pi i (t-t^{\prime})f}
+   \Delta \eta(t^{\prime})dt^{\prime}df
+\end{equation}
 
 \input{figures/2d_fields/vos}
 \input{figures/2d_fields/uos}
@@ -90,13 +103,13 @@ in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
 
 \input{figures/choose-thresh.tex}
 
-
-\subsection{Lag Correlation Plot}
 \label{sec:lag}
 
 \input{figures/lag-panels.tex}
 
-Lag correlation is defined as,
+We would like to be able to explain this seasonal cycle in SSH.
+The obvious choice would be to look at SST and SSH, as in Figure~\ref{fig:ssh-sst}
+for \texttt{eUS} for \texttt{tyr}, and do lag correlation, which is defined as:
 
 \begin{equation}
 r_{k}=
@@ -106,11 +119,15 @@ r_{k}=
 -\bar{Y}\right)^{2}}.
 \end{equation}
 
-There is a lag, between the two,
-which becomes anti-phase in
-Northern Vietnam.
-Some level of lag is understandable,
-as the mixed layer takes longer
-to heat up than the surface itself.
+Figure~\ref{fig:lag-plot} (\texttt{eUS}, \texttt{tyr}) tells a simple story of
+SSH lagging slightly behind SST, as the mixed layer takes longer
+to heat up than the surface.
+However Figure~\ref{fig:vc_lag-plot} undermines this as the
+lag becomes anti-phase.
+
+I suggest that Figure~\ref{fig:lpredthresh} justifies removing the low frequency
+component of the signal, as we have a plausible suggestion that the
+low frequency signal is not caused by sea surface stress, and is therefore
+just a source of noise.
 
 \FloatBarrier

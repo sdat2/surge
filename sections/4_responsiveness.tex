@@ -2,21 +2,22 @@
 \label{sec:3_ORCA12_REG.tex}
 \input{subsections/lasso-vs-ridge.tex}
 
-As shown in Figure~19~of~T20~\cite{ZannaPreprint}.
-The threshold could be arbitrary,
-so I chose that the SSH has to be greater than zero,
+\subsection{Thresholding $|U_{10}|^2$ responsiveness}
+
+As shown in Figure~19~of~T20~\cite{ZannaPreprint} (see Figure~\ref{fig:yin-responsiveness}).
+The threshold seems arbitrary,
+so I chose that the $\Delta\eta_{\mathrm{hp}} \ge 0$ (Figure~\ref{fig:simple-responsiveness-results}),
 as it approximately guarantees that the sea surface stress is acting into
-the coast rather than away from it.
+the coast.
 
 
 \subsection{$\tau_u$, $\tau_v$ responsiveness}
 \label{sec:tau-tau}
 This method is quite crude, and could be simply improved.
 Figure~\ref{fig:tau-tau-r-no} shows a single example of working out the linear
-responsiveness (or linear predictability).
-Figure~\ref{fig:tau-tau-resp} shows that when this same metric is applied along \texttt{eUS}
-for each year in \texttt{tyr}. Figure~\ref{fig:tau-tau-responsiveness} creates a metric for the
-responsiveness.
+responsiveness in \texttt{tyr}, which is applied along \texttt{eUS} in
+Figure~\ref{fig:tau-tau-resp}.
+Figure~\ref{fig:tau-tau-responsiveness} creates a more robust metric for the responsiveness.
 
 
 \input{figures/responsiveness-page.tex}
@@ -24,28 +25,29 @@ responsiveness.
 \label{sec:angle}
 
 Figure~\ref{fig:tau-tau-angle} shows that the angle is highly correlated with
-the bearing of the coast that was defined in §~\ref{sec:convexity}.
-The bearing of the regression line can be simply calculated,
-and compared to the bearing of the normal coastline.
-As shown, there is a systematic offset between the two lines,
-which changes between them. This can be explained through the
-classic theory of Ekman transport of the water.
-Ekman~\cite{hope2013hindcast}.
+the bearing of the coast (see~§~\ref{sec:convexity}).
+This bearing is compared to the normal coastline bearing).
+As shown in Figure~\ref{fig:tau-tau-angle}, there is a systematic offset between the two lines,
+with a slight change between them, which can be explained through
+ Ekman transport~\cite{hope2013hindcast}.
 
 
 \label{sec:reg-metrics}
 
 The magnitude of this regression line varies in approximately the same
-way for both methods, showing that there is some underlying property of the
-coastline that both illuminate. In the previous section, I outlined
-a series of metrics.
+way for both\footnote{QUANTIFY!!} (Figures~\ref{fig:simple-responsiveness-results},~\ref{fig:tau-tau-resp}~\&~\ref{fig:tau-tau-responsiveness}),
+showing that there is some underlying property of the
+coastline that both illuminate.
+Figure~\ref{fig:learnt-eus}, uses lasso and ridge regression to
+estimate the relationship between the coastal metrics (§~\ref{sec:convexity}~\&~\ref{sec:bath-grad})
+and either responsiveness metric.
+It is possible that this is a spurious structure, where the fit
+is made possible by giving so many information-less channels to fit against.
+We use \texttt{vc} and \texttt{jap} as in Figure~\ref{fig:learnt-vc},
+to check that this generalises.
 
 \label{sec:generalisability}
 
-It would be possible that this is a spurious structure, where the fit
-is made possible by giving so many information-less channels to fit against.
-Therefore we need to use the other coasts to compare this against.
-We use the Japanese and Chinese coast.
 
 \input{figures/generalisability}
 

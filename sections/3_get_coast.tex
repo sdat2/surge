@@ -31,8 +31,8 @@ Algorithms~\ref{algo:Selection}~\&~\ref{algo:Sort} first extract the coastline
 from the surface slice of the ocean field and then pick out a single chain of
 coastal points between two chosen ends. The list of points can be further
 sorted to remove unwanted regions.
-\texttt{xarray}~\cite{hoyer2017xarray} is then be used to quickly extract
-a series of NetCDF climate files into a single file for these points.
+\texttt{xarray}~\cite{hoyer2017xarray} is then used to quickly extract
+a single NetCDF file for these points from a series of large files.
 
 
 \input{algorithms/select_coast.tex}
@@ -40,14 +40,15 @@ a series of NetCDF climate files into a single file for these points.
 
 \subsubsection{Sample coastlines}
 \label{sec:coast-sample}
-The primary coastline extracted was the eastern mainland coastline of the
-United States (\texttt{eUS}),
+The primary coastline extracted was the eastern mainland US coast (\texttt{eUS}),\footnote{
+Removing Chesapeake Bay, Long Island Sound, and Pamlico Sound.
+}
 so it could be compared to Y20~\cite{ZannaPreprint},
 and because ETOPO2 topography is most accurate along the
 US coast (see Figure~\ref{fig:america}).
 I extracted the coastline from Hue, Vietnam, to China's
-border with North Korea (\texttt{vc}),
-removing Shanghai bay island (see Figure~\ref{fig:vin-china}).
+border with North Korea (\texttt{vc}),\footnote{
+Removing Shanghai bay island.} (see Figure~\ref{fig:vin-china}).
 Finally we extracted the eastern coastline
 of Honshu island, Japan (\texttt{hon}).
 
@@ -71,10 +72,17 @@ For each coastline,
 there is a list of latitude and longitude points.
 We can define the normal bearing to the coast,
 
-
-%\begin{figure*}[htb!]
 \begin{equation}
 B_i^{\prime}=\operatorname{arctan} 2
+\left(\phi_{i+1}-\phi_{i-1},\; \chi_{i+1}-\chi_{i-1}\right),
+\label{eq:bearing}
+\end{equation}
+
+where $\phi_{i}$ is latitude, and $\chi_{i}$ is the longitude of the coastal points.
+This can be smoothed,
+
+\begin{equation}
+B_i=\operatorname{arctan} 2
 \left(S_i,\; C_i\right)
 \label{eq:bearing}
 \end{equation}
@@ -82,21 +90,20 @@ B_i^{\prime}=\operatorname{arctan} 2
 with,
 
 \begin{equation}
-S_i = \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot \sin{( B_{j})},
+S_i = \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot \sin{( B_{j}^{\prime})},
 \end{equation}
 \begin{equation}
-C_i  =  \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot  \cos{( B_{j})},
+C_i  =  \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot  \cos{( B_{j}^{\prime})},
 \end{equation}
 
 with reflective boundary conditions.
 
-An example of this is shown in Figure~\ref{fig:angle_heatmap}} for the
-\texttt{eUS}. We define the symmetric derivative of this
-smoothed angle,
+An example of this is shown in Figure~\ref{fig:angle_heatmap}} for the\texttt{eUS}.
+We define the symmetric derivative of this smoothed angle,
 
 \begin{equation}
-\frac{d B_i^{\prime}}{d \mathrm{pt}}
-\equiv \frac{B_{i+1}^{\prime}-B_{i-1}^{\prime}}{2}.
+\frac{d B_i}{d \mathrm{pt}}
+\equiv \frac{B_{i+1}-B_{i-1}}{2}.
 \label{eq:bearing_derivative}
 \end{equation}
 
@@ -117,8 +124,8 @@ ensure that the bearing derivative is 0 at either end of the coastline.
 The simplest way of working this out is to look at the
 bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
  case (§~\ref{sec:nemo})), and define the isobath as
- points that are both level or below the isobath,
-  and adjacent to a point above the isobath (Figure~\ref{fig:bath}).
+ points that are both level or below a given depth,
+  and adjacent to a point above that depth (Figure~\ref{fig:bath}).
 Once these isobaths have been selected, the distance
 within the model grid from every point on
 the coast to that isobath are calculated (Figure~\ref{fig:isobath}).

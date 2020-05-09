@@ -1,48 +1,73 @@
 \section{Extreme value theory}
 \label{sec:evt}
-\subsection{Idealised statistical theory}
+\subsection{Background}
 By its nature the mean SSH will
 not be able to damage the coast
 (barring significant sea level rise that is not mitigated),
 and life and property will only be put
 at risk by the most extreme events~\cite{taleb2019statistical}.
-
-The extreme value theorem is:
-
-\input{appendices/ftp.tex}
-
-Extreme value theory is the provides the extension of this theory
+Extreme value theory is the provides the necessary tools for this analysis
 to look at the return period of extreme events of a certain value.
-
-Both require domain of attraction condition~\cite{bucher2018horse}:
-
-\begin{enumerate}
-  \item Either $\forall r \in \mathbb{N} \;\exists \;b_r, \gamma\in \mathbb{R},\; a_r>0: $
-    \begin{eqnarray}
-    \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \notag \\
-     \text { for all } 1+\gamma x>0
-    \tag{BM}
-    \end{eqnarray}
-
-  \item Or equivalently, there exists a positive function $\psi=\psi (t):$
-    \begin{eqnarray}
-    \lim _{t \uparrow x^{*}} \frac{1-F(t+\psi(t) x)}{1-F(t)}=(1+\gamma x)^{-1 / \gamma} \notag \\
-    \text { for all } 1+\gamma x>0
-    \tag{POT}
-    \end{eqnarray}
- \end{enumerate}
-
-Normal Choices are POT or Block Maxima, but these strategies require
-large amounts of data to converge~\cite{taleb2019much}.
-
+The two primary EVT methods are Peak over Threshold (POT) and Block Maxima (BM).
+Both of these strategies require
+large amounts of data to converge~\cite{taleb2019much} (e.g.~\texttt{c50}).
 BM leads to Generalised Extreme Value (GEV) distribution,
-      whereas POT leads to Generalised Pareto Distribution (GPD).
+whereas POT\footnote{Y20~\cite{ZannaPreprint} used POT methods. }
+leads to Generalised Pareto Distribution (GPD).
+Both require domain of attraction condition~\cite{bucher2018horse}, which
+for BM is
+$\forall r \in \mathbb{N} \;\exists \;b_r, \gamma\in \mathbb{R},\; a_r>0: $
+    \begin{align}
+    \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \notag \\
+     \text { for all } 1+\gamma x>0,
+    \tag{BM-DAC}
+    \end{align}
+
+which if fulfilled leads to:
+
+
+    \(
+    \operatorname{GEV}(\mu, \sigma, \xi):
+    \)
+
+    \(
+    \text{ location, position of the GEV mean } \mu \in \mathbb{R};
+    \)
+
+    \(
+    \text{scale, } \sigma>0;
+    \)
+
+    \(
+    \text{shape, } \xi \in \mathbb{R}.
+    \)
+
+    \begin{align}
+    \operatorname{GEV}(x; \mu, \sigma, \xi)=&
+    \frac{1}{\sigma} \chi(x)^{1-\xi} e^{-\chi(x)}; \tag{GEV-1}
+    \label{eq:GEV-1}
+    \end{align}
+    \begin{align}
+    \chi(x)=&\left\{\begin{array}{ll}
+    \left(1-\xi\left(\frac{x-\mu}{\sigma}\right)\right)^{1 / \xi} & \text { if } \xi \neq 0 \\
+    e^{-(x-\mu) / \sigma} & \text { if } \xi=0 \tag{GEV-2}
+    \end{array}\right.
+    \label{eq:GEV-2}
+
+    \end{align}
+
+
+    A GEV with $\xi>0$, $\xi=0$, $\xi<0$ are
+    respectively called the Weibull, Gumbel, and Fr\'echet
+    distributions.\footnote{Here I have used the opposite sign convention for
+    the shape, $\xi$, than is more commonly used. Please check against the
+    forms of \ref{eq:GEV-1}~\&~\ref{eq:GEV-2} before interpreting results. }
 
 \subsection{Block maxima GEV}
-It is trivial to extract the highest SSH value in a given year at a given point
-from \texttt{control-1950}.
-It was decided not to subtract the low frequency SSH seasonal cycle from the
-values first, because it is the absolute height of the sea surface which
+The highest SSH value in a given year at a given point
+is extracted from \texttt{control-1950}, yielding 101 values per point.
+It was decided not to subtract the seasonal SSH cycle from these
+values, as it is the absolute height of the sea surface which
 creates the hazard rather than the relative height.
 
 \input{figures/gev-big.tex}
@@ -51,55 +76,51 @@ creates the hazard rather than the relative height.
 
 
 
-\begin{itemize}
-\item
-\(
-\operatorname{GEV}(\mu, \sigma, \xi):
-\)
-\(
-\text{ location, } \mu \in \mathbb{R}
-\text{; scale, } \sigma>0
-\text{; shape, } \xi \in \mathbb{R}.
-\)
-\begin{eqnarray}
-\operatorname{GEV}(x; \mu, \sigma, \xi)=&
-\frac{1}{\sigma} \chi(x)^{\xi+1} e^{-\chi(x)};
-\end{eqnarray}
-\begin{eqnarray}
-\chi(x)=&\left\{\begin{array}{ll}
-\left(1+\xi\left(\frac{x-\mu}{\sigma}\right)\right)^{-1 / \xi} & \text { if } \xi \neq 0 \\
-e^{-(x-\mu) / \sigma} & \text { if } \xi=0
-\end{array}\right.
-\end{eqnarray}
-\item The Gumbel distribution is a special case ($\xi=0$)
-\begin{equation}
-\operatorname{GUM}(x ; \mu, \sigma)=e^{-\frac{x-\mu}{\sigma}-e^{-(x-\mu) / \sigma}}
-\end{equation}
-\end{itemize}
 
-Location $\mu$: position of the GEV mean
-Return level: value $\eta$ that is expected to
-be exceeded on average once every $1/p $periods,
-where $1 − p$ is the probability associated with the quantile.
-Find zp such that
-$G(\eta) = 1 − p$.
-Traditionally a GEV where
-$\xi<0$ is called a Weibull
-distribution, and  $\xi>0$ a Fr\'echet.
+Using my adaptation of \texttt{skextremes}~\cite{skextremes} I fit the
+GEV with an initial guess from \texttt{lmoments}, optimised using
+\texttt{scipy.stats.genextreme} with \texttt{scipy.optimize.fmin\_bfgs}~\cite{2020SciPy-NMeth}.
+For some confidence interval, $\alpha$, the symmetric range of the parameters is
+estimated by the delta method~\cite{coles2001introduction},
+
+\begin{equation}
+[\Delta \sigma , \Delta \mu, \Delta \xi] =
+\mathcal{N}^{-1}(0, [\sigma_e (\sigma), \sigma_e (\mu), \sigma_e (\xi)]; 1-\frac{\alpha}{2})
+\end{equation}
+
+where,
+
+\begin{equation}
+[\sigma_e (\sigma), \sigma_e (\mu), \sigma_e (\xi)] =
+\mathrm{sqrt}\left(\mathrm{diag}\left(\left( \mathrm{Hess}([\sigma, \mu, \xi]) \right)^{-1} \right)\right).
+\end{equation}
+
+We then also work out the uncertainty in each point in the
+return plot fits (Figure~\ref{fig:gev-no}~C).
+
+\begin{align}
+\delta \mathbf{Z} = & \left[ \begin{array}{l}(\sigma\cdot\xi^{-2} \cdot (1-(\mathrm{sT}^{-\xi})
+            \\-\sigma \cdot (\xi^{-1})\cdot (\mathrm{sT}^{-\xi}) \cdot \log(\mathrm{sT}[i])),\\
+            1,\\
+            -(1- \frac{\mathrm{sT}^{-\xi}}{\xi})
+            \end{array} \right]
+\end{align}
+
+\begin{equation}
+\sigma_e(\mathrm{sT2})^{2} = \mathrm{sqrt}\left((\delta \mathbf{Z} \cdot \left( \mathrm{Hess}([\sigma, \mu, \xi]) \right)^{-1} ) \cdot  \delta \mathbf{Z}^{\mathrm{T}}\right)
+\end{equation}
 
 Figure~\ref{fig:gev-no} fits the generalised extreme value theorem fitted
-on the yearly block maxima for the nearest coastal point to New Orleans.
-Figure~\ref{fig:gev_all_points} shows the fit along all points in \texttt{eUS}
+on the yearly block maxima for the nearest coastal point to New Orleans,
+and Figure~\ref{fig:gev_all_points} shows the fit along all points in \texttt{eUS}
 for \texttt{c50}.
 
-In Y20~\cite{ZannaPreprint} they instead use POT methods,
-and fit a generalised Pareto distribution.
-
 \subsection{Enforcing an asymptote using potential intensity theory }
+\label{sec:evt-limit}
+
 As noted in~§~\ref{sec:hurr-theory} there is some maximum size
 that a tropical cyclone might be expected to be able to reach given
-the climate. This gives us information as to the shape of the probability
-distribution beyond what just curve-fitting the tail.
+the climate.
 As shown in Figure~\ref{fig:up-bound-taleb} naively fitting
 the GEV to the distribution would be an over-extrapolation of
 the relationship if we have a good physical reason for
@@ -107,19 +128,31 @@ thinking that there is a maximum
 (i.e.~the PI theory §~\ref{sec:hurr-theory}).
 
 A hypothesis to explain the observed pattern of return periods is explained in
-Figure~\ref{fig:return_hyp}, where the PI of hurricanes is used to
-explain the flattening of the extreme value with return period.
-However, absence of evidence is not evidence of absence, and some areas of the US
-coastline such as Galverston and New England experience hurricanes infrequently,
-but as respectively in 1900 and 1908,
- when they do come they can cause great devastation~\cite{emanuel2005divine}.
-The low TC frequency bias in CMIP models will exacerbate this problem. This will
-appear as the blue curve continued without reaching the true plateau. The period of time
-between T$_0$ and T$_1$ likely depends on the average size of the tropical cyclone storms, and the
-percentage of them which rise to their maximum severity.
-For highly irresponsive places (e.g.~Miami), it is possible that the deviation caused
-by hurricane landfall does not cause a large deviation from the existing EV distribution,
+Figure~\ref{fig:return_hyp_new}, where the PI of hurricanes is used to
+explain the flattening of the extreme
+value with return period (see Figure~\ref{fig:eman-pi}).
+However, absence of evidence is not
+ evidence of absence, and some areas of the US
+coastline such as Galverston and New England experience hurricanes infrequently
+(due to cyclogenesis as in Figure~\ref{fig:genesis}),
+but as respectively in 1900 and 1938,
+when they do come they can cause great devastation~\cite{emanuel2005divine}.
+The low TC frequency bias in CMIP models will exacerbate this problem.
+This will appear as the blue curve continued without reaching the true plateau.
+The period of time between T$_0$ and T$_1$ likely depends
+ on the average size of the tropical cyclone storms,
+and the percentage of them which rise to their maximum severity.
+For highly irresponsive places (e.g.~Miami),
+ it is possible that the deviation caused
+by hurricane landfall does not cause a large
+deviation from the existing EV distribution,
 that is mainly caused by other factors (the Florida current).
+
+A test for this hypothesis would be to use longer control runs from the same
+coastline and model, to check that the deviation is not merely a problem caused
+by chance, due to the length of time that BM takes to converge to GEV.
+
+\input{tables/evt.tex}
 
 \input{figures/return_hypothesis.tex}
 

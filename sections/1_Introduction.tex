@@ -16,7 +16,8 @@ to their formation and growth are within and without the tropics respectively.\f
 Practically they are differentiated using algorithms like \texttt{TSTORMS}
 \url{https://www.gfdl.noaa.gov/tstorms/} as in Y20~\cite{ZannaPreprint}.}
 Because they have lower central pressures and sustain greater winds,
-TCs create more dangerous storm surges~\cite{emanuel2005divine}.
+TCs create more dangerous storm surges~\cite{emanuel2005divine},
+and so ECs are largely ignored in this thesis.
 
 TCs have historically been the
 world's largest physical hazard~\cite{shultz2005epidemiology},
@@ -24,7 +25,7 @@ for economic damage,
 and specifically TC storm surges for lives lost~\cite{shultz2005epidemiology,
 zhang2009tropical, emanuel2005divine}.
 This hazard is increasing as more people live on vulnerable coastlines
-in insufficient buildings~\cite{emanuel2005divine}.
+in substandard buildings~\cite{emanuel2005divine}.
 Anthropogenic climate change (ACC) is expected to exacerbate this,
 as it begins to increase the maximum TC intensity\footnote{
 However the uptick in TCs is not currently above
@@ -37,7 +38,11 @@ Quantifying how this hazard will change is necessary
 so that the public can act with foresight.
 Others have already begun to apply machine learning (ML) techniques to this
 end~\cite{kulp2019new, kulp2018coastaldem, tadesse2020data}.
-
+The drive behind hybrid physical/ML modelling is simple;
+an algorithm that does not respect physical laws
+may fit the data well, \textit{but it is incorrect}.
+It is more likely to generalise poorly to unseen data
+and fail dangerously~\cite{beucler2019achieving}.
 
 \input{tables/abbreviations.tex}
 

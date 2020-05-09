@@ -103,16 +103,17 @@ We define the symmetric derivative of this smoothed angle,
 
 \begin{equation}
 \frac{d B_i}{d \mathrm{pt}}
-\equiv \frac{B_{i+1}-B_{i-1}}{2}.
+\equiv \frac{B_{i+1}-B_{i-1}}{2},
 \label{eq:bearing_derivative}
 \end{equation}
+
+where pt stands for the points along the coast.
 
 This provides a convexity value for every smoothing length $\sigma$,\footnote{
 To overcome the wrapping of the bearing at $2\pi$,
 there is an additional step to add and subtract $2\pi$ from the
 answer and choose the result with the smallest magnitude.
-}
- as shown in Figure~\ref{fig:derivative}A-C. The reflective boundary conditions
+} as shown in Figure~\ref{fig:derivative}A-C. The reflective boundary conditions
 ensure that the bearing derivative is 0 at either end of the coastline.
 
 
@@ -125,7 +126,7 @@ The simplest way of working this out is to look at the
 bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
  case (§~\ref{sec:nemo})), and define the isobath as
  points that are both level or below a given depth,
-  and adjacent to a point above that depth (Figure~\ref{fig:bath}).
+  and adjacent to a point above that depth (Figure~\ref{fig:bath}).\footnote{This was accelerated by 3 orders of magnitude by \texttt{numba}~\cite{lam2015numba}.}
 Once these isobaths have been selected, the distance
 within the model grid from every point on
 the coast to that isobath are calculated (Figure~\ref{fig:isobath}).

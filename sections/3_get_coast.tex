@@ -74,11 +74,13 @@ We can define the normal bearing to the coast,
 
 \begin{equation}
 B_i^{\prime}=\operatorname{arctan} 2
-\left(\phi_{i+1}-\phi_{i-1},\; \chi_{i+1}-\chi_{i-1}\right),
+\left(\phi_{i+1}-\phi_{i-1},\; \chi_{i+1}-\chi_{i-1}\right) +\frac{\pi}{2},
 \label{eq:bearing}
 \end{equation}
 
-where $\phi_{i}$ is latitude, and $\chi_{i}$ is the longitude of the coastal points.
+where $\phi_{i}$ is longitude, and $\chi_{i}$ is the longitude of the coastal points.\footnote{
+There are additional checks to ensure that this cannot point into land, rotating it by $\frac{\pi}{2}$ increments until it does not,
+but these represent less than 0.01\% of \texttt{eUS}.}
 This can be smoothed,
 
 \begin{equation}

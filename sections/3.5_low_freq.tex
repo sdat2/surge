@@ -11,16 +11,16 @@ currents and density contrasts (Figures~\ref{fig:zos}~\&~\ref{fig:ssh_stats_amer
 We define the third  moment around the mean,
 
 \begin{equation}
-\operatorname{Skew}[X]\equiv \mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
-=\frac{\mathrm{E}\left[(X-\mu)^{3}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}},
+\operatorname{Skew}[X]\equiv \mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{3}\right]
+=\frac{\mathbb{E}\left[(X-\mu)^{3}\right]}{\left(\mathbb{E}\left[(X-\mu)^{2}\right]\right)^{3 / 2}},
 \end{equation}
 
 and fourth as the excess above the Gaussian~\cite{taleb2019statistical},
 
 \begin{equation}
 \operatorname{Kurt}[X]=
-\mathrm{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{4}\right]-3
-\equiv \frac{\mathrm{E}\left[(X-\mu)^{4}\right]}{\left(\mathrm{E}\left[(X-\mu)^{2}\right]\right)^{2}}-3.
+\mathbb{E}\left[\left(\frac{X-\mu}{\sigma}\right)^{4}\right]-3
+\equiv \frac{\mathbb{E}\left[(X-\mu)^{4}\right]}{\left(\mathbb{E}\left[(X-\mu)^{2}\right]\right)^{2}}-3.
 \end{equation}
 
 
@@ -82,17 +82,18 @@ The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
 as the loop current has formed a secondary vortex ring moving northwards
 in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
 Figures~\ref{fig:no-hp-lp}~\&~\ref{fig:mm-hp-lp} show a high and
-low pass filter applied to specific points, and Figure~\ref{fig:four-trans-panels}.
+low pass filter applied to specific points, and Figure~\ref{fig:four-trans-panels},
+which are defined as:
 
 
 \Delta\eta_{\;\mathrm{lp}}(t) = \int_{\mathbb{R}}W\left(\frac{|f|}
 {|f|_{\mathrm{thresh}}}\right)\int_{\mathbb{R}}e^{2\pi i (t-t^{\prime})f }
-\Delta \eta(t^{\prime})dt^{\prime}df
+\Delta \eta(t^{\prime})dt^{\prime}df,
 \end{equation}
 \begin{equation}
 \Delta\eta_{\;\mathrm{hp}}(t) = \int_{\mathbb{R}}\left(1-W\left(\frac{|f|}
 {|f|_{\mathrm{thresh}}}\right)\right)\int_{\mathbb{R}}e^{2\pi i (t-t^{\prime})f}
-   \Delta \eta(t^{\prime})dt^{\prime}df
+   \Delta \eta(t^{\prime})dt^{\prime}df.
 \end{equation}
 
 \input{figures/2d_fields/vos}
@@ -123,11 +124,10 @@ Figure~\ref{fig:lag-plot} (\texttt{eUS}, \texttt{tyr}) tells a simple story of
 SSH lagging slightly behind SST, as the mixed layer takes longer
 to heat up than the surface.
 However Figure~\ref{fig:vc_lag-plot} undermines this as the
-lag becomes anti-phase, falsifying this simple hypothesis as 
+lag becomes anti-phase, falsifying this simple hypothesis as
 being generally true.
-
 I suggest that Figure~\ref{fig:lpredthresh} justifies removing the low frequency
 component of the signal, as it supports the hypothesis that the
-low frequency signal is not caused by sea surface stress.
+low frequency signal cannot be predicted by sea surface stress.
 
 \FloatBarrier

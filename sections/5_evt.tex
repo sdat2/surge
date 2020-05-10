@@ -47,14 +47,29 @@ which if fulfilled leads to:
     \frac{1}{\sigma} \chi(x)^{1-\xi} e^{-\chi(x)}; \tag{GEV-1}
     \label{eq:GEV-1}
     \end{align}
+    with,
+    \iffalse
     \begin{align}
+        \chi(x)=&\{
+               \begin{array}{ll}
+                    \left(1- \xi\left(\frac{x-
+                    \mu}{\sigma} \right)\right)^{\frac{1}{\xi}} &
+                     \text { if } \xi \neq 0 \\
+                    e^{-\frac{x-\mu}{\sigma}} &
+                    \text { if } \xi=0 \\
+
+              \end{array}.
+    \tag{GEV-2} \label{eq:GEV-2}
+
+    \end{align}
+    \fi
+\begin{align}
     \chi(x)=&\left\{\begin{array}{ll}
     \left(1-\xi\left(\frac{x-\mu}{\sigma}\right)\right)^{1 / \xi} & \text { if } \xi \neq 0 \\
     e^{-(x-\mu) / \sigma} & \text { if } \xi=0 \tag{GEV-2}
     \end{array}\right.
-    \label{eq:GEV-2}
-
-    \end{align}
+   \label{eq:GEV-2}
+\end{align}
 
 
     A GEV with $\xi>0$, $\xi=0$, $\xi<0$ are
@@ -75,8 +90,6 @@ creates the hazard rather than the relative height.
 \input{figures/limit-to-thermo.tex}
 
 
-
-
 Using my adaptation of \texttt{skextremes}~\cite{skextremes} I fit the
 GEV with an initial guess from \texttt{lmoments}, optimised using
 \texttt{scipy.stats.genextreme} with \texttt{scipy.optimize.fmin\_bfgs}~\cite{2020SciPy-NMeth}.
@@ -95,8 +108,19 @@ where,
 \mathrm{sqrt}\left(\mathrm{diag}\left(\left( \mathrm{Hess}([\sigma, \mu, \xi]) \right)^{-1} \right)\right).
 \end{equation}
 
+\begin{verbatim}
+T = _np.arange(0.1, 500.1, 0.1)
+sT = -_np.log(1. - self.frec / T)
+# return period in (years)
+sT2 = self.distr.isf(self.frec / T)
+# return value in time unit (years)
+# self.distr is a scipy.stats.genextreme obj.
+# stats.genextreme.isf(value/T)
+# is the inverse survival function.
+\end{verbatim}
+
 We then also work out the uncertainty in each point in the
-return plot fits (Figure~\ref{fig:gev-no}~C).
+return plot fits (Figure~\ref{fig:gev-no}C).
 
 \begin{align}
 \delta \mathbf{Z} = & \left[ \begin{array}{l}(\sigma\cdot\xi^{-2} \cdot (1-(\mathrm{sT}^{-\xi})
@@ -107,7 +131,7 @@ return plot fits (Figure~\ref{fig:gev-no}~C).
 \end{align}
 
 \begin{equation}
-\sigma_e(\mathrm{sT2})^{2} = \mathrm{sqrt}\left((\delta \mathbf{Z} \cdot \left( \mathrm{Hess}([\sigma, \mu, \xi]) \right)^{-1} ) \cdot  \delta \mathbf{Z}^{\mathrm{T}}\right)
+\sigma_e(\mathrm{sT2}) = \mathrm{sqrt}\left(\left(\delta \mathbf{Z} \cdot \left( \mathrm{Hess}\left([\sigma, \mu, \xi]\right) \right)^{-1} \right) \cdot  \delta \mathbf{Z}^{\mathrm{T}}\right)
 \end{equation}
 
 Figure~\ref{fig:gev-no} fits the generalised extreme value theorem fitted

@@ -1,17 +1,21 @@
 \begin{figure*}[htb!]
     \centering
+    \vspace{-5pt}
     \includegraphics[width=0.8\linewidth]{../surge/plots/GEV_modelNO.pdf}
-    %\vspace{-25pt}
+    \vspace{-15pt}
    \caption{New Orleans GEV plot adapted from \texttt{skextremes}~\cite{skextremes}
             for \texttt{c50} with $\alpha=0.05$ . Interesting transition
-            - does this represent hurricanes?
+            - does this represent hurricanes? (see Figure~\ref{fig:return_hyp_new})
             The deviation from the fitted distribution
-            is shown in A~\&~C.}
+            is shown in A~\&~C. The parameters above are quoted with 1$\sigma$ error bars.
+            C's error bars are 2$\sigma$.}
     \label{fig:gev-no}
     \includegraphics[width=0.8\linewidth]{../surge/plots/skextreme_second_tactic.pdf}
     \vspace{-15pt}
-   \caption{Confidence intervals not defined near Miami and Eastport.
+   \caption{GEV parameters for \texttt{c50}, \texttt{eUS}.
    The confidence intervals, particularly in $\xi$, show that the fit of the
-   GEV to the data is relatively poor.}
+   GEV to the data is relatively poor. $\xi$ is more likely to be negative
+   in the Gulf of Mexico, which could because of higher
+   TC activity along this coastline (Figure~\ref{fig:top-100}).}
     \label{fig:gev_all_points}
 \end{figure*}

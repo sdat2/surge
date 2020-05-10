@@ -6,7 +6,7 @@
  \subsubsection{Fractal coastline}
  \label{sec:fractal}
  The coastline appears to be a self-similar fractal~\cite{mandelbrot1967long,
- richardson1961problem}. This means that it has the same features at all
+ richardson1961problem}; it has the same features at all
  scales, so that the length of the coast increases without limit as resolution $G$
  is increased,
  \begin{equation}
@@ -16,7 +16,7 @@
  and $D>1$ is the fractal dimension~\cite{mandelbrot1967long}.
  A consequence of this is that a coastline has no defined length without
  reference to the resolution at which it is measured.
- This will present problems when comparing
+ This will impede comparing
  climate models with different resolutions.
  The fractal dimension changes
   along the East US coast ($1.11<D<1.20$ in one degree latitude bins)~\cite{jiang1998fractal}
@@ -78,8 +78,9 @@ B_i^{\prime}=\operatorname{arctan} 2
 \label{eq:bearing}
 \end{equation}
 
-where $\phi_{i}$ is longitude, and $\chi_{i}$ is the longitude of the coastal points.\footnote{
-There are additional checks to ensure that this cannot point into land, rotating it by $\frac{\pi}{2}$ increments until it does not,
+where $\phi_{i}$ is longitude, and $\chi_{i}$ is the latitude of the coastal points.\footnote{
+There are additional checks to ensure that this cannot point into land,
+rotating it by $\frac{\pi}{2}$ increments until it does not,
 but these represent less than 0.01\% of \texttt{eUS}.}
 This can be smoothed,
 
@@ -131,6 +132,10 @@ bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
   and adjacent to a point above that depth (Figure~\ref{fig:bath}).\footnote{This was accelerated by 3 orders of magnitude by \texttt{numba}~\cite{lam2015numba}.}
 Once these isobaths have been selected, the distance
 within the model grid from every point on
-the coast to that isobath are calculated (Figure~\ref{fig:isobath}).
+the coast to that isobath are calculated (Figure~\ref{fig:isobath}).\footnote{
+Naive theoretical upper and lower bounds could be placed on the response of the
+coastline to a wind stress by integrating the isobaths in  Figure~\ref{fig:isobath}
+w.r.t.~Equation \ref{eq:pugh} with a cell converted to 8\pm1~km and wind stress
+assumed constant and along this axis, and $\eta/H$ small.}
 
 \FloatBarrier

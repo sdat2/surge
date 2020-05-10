@@ -1,4 +1,5 @@
 \section{Preprocessing coastal data}
+\label{sec:Preprocessing}
 The sea surface height in the model is relative to
 a reference geoid: the surface that a homogeneous static fluid would occupy
 on an azimuthally symmetric Earth of the same size and rotation frequency.
@@ -50,7 +51,7 @@ random incidence of storms on the coast.
 The Fourier transform is defined as,
 
 \begin{equation}
-F(f)=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x,
+\hat{y}(f) =  \mathcal{F}(y(x))=\int_{-\infty}^{\infty} y(x) e^{-i 2\pi f x} d x,
 \end{equation}
 
 which in discrete form~\cite{cooley1965algorithm} is,

@@ -29,13 +29,12 @@ as it begins to increase the maximum TC intensity\footnote{
 However the uptick in TCs is not currently above
  natural variability~\cite{mendelsohn2012impact}.}
 (see~§~\ref{sec:hurr-theory})~\cite{emanuel2008hurricanes,emanuel2017will, nordhaus2010},
+increased range~\cite{emanuel2008hurricanes, emanuel2017will, fedorov2010tropical, }.
 and to sea level rise placing more areas at risk~\cite{SROCC}.
-The range of TCs may also increase~\cite{emanuel2008hurricanes,
-emanuel2017will, fedorov2010tropical, }.
 
-Quantifying how this hazard will change is necessary
+It is necessary to quantify how this hazard will change
 so that the public can act with foresight.
-Others have already begun to apply machine learning (ML) techniques to this
+Others have already applied machine learning (ML) techniques to this
 end~\cite{kulp2019new, kulp2018coastaldem, tadesse2020data}.
 The motivation for hybrid physical/ML modelling is simple:
 an algorithm that does not respect physical laws
@@ -47,18 +46,19 @@ and \textit{fail dangerously}~\cite{beucler2019achieving}.
 
 This thesis begins to develop new methods of achieving this goal
 as inspired by Yin~et~al.~2020~\cite{ZannaPreprint} (henceforth Y20).
-Initially, by developing algorithms for extracting the coastlines from climate models
+Initially, by developing algorithms for extracting the coastlines from climate models (§~\ref{sec:model-exp})
 and metrics to characterise that coastline in §~\ref{sec:coast}.
 Developing from Y20~\cite{ZannaPreprint}, I compare measures for the
-responsiveness of a stretch of the coastline to wind stress.
+responsiveness of a coastline point to wind stress (§~\ref{sec:responsiveness}).
 I show using extreme value theory (EVT), that the
 distributions of extreme events are controlled by the same factors as
 the responsiveness under normal circumstances.
-Finally, I suggest a
-method of improving a naive EVT fit, using our physical knowledge
-of the thermodynamic limit
-to the maximum intensity of a hurricane~\cite{emanuel1999thermodynamic}
- given a climate (see~§~\ref{sec:hurr-theory})~\cite{emanuel1987dependence,
+Finally, I develop a
+method of improving a naive EVT fit (§~\ref{sec:evt-limit}),
+using the potential intensity of a TC~\cite{emanuel1999thermodynamic}
+(see~§~\ref{sec:hurr-theory})~\cite{emanuel1987dependence,
  emanuel2016predictability}.
 I discuss the merits and deficiencies of these,
-and suggest how they could be built upon in future work (§~\ref{sec:future}).
+and suggest how this could be built upon (§~\ref{sec:future}).
+§~\ref{sec:Preprocessing}--\ref{sec:evt} include methodology
+results and discussion.

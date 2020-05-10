@@ -1,12 +1,12 @@
 \section{Extreme value theory}
 \label{sec:evt}
 \subsection{Background}
-By its nature the mean SSH will
+The mean SSH will
 not be able to damage the coast
 (barring significant sea level rise that is not mitigated),
 and life and property will only be put
-at risk by the most extreme events~\cite{taleb2019statistical}.
-Extreme value theory is the provides the necessary tools for this analysis
+at risk by the most extreme events above that~\cite{taleb2019statistical, Taleb2012AntifragileH}.
+Extreme value theory (EVT) is the provides the necessary tools for this analysis
 to look at the return period of extreme events of a certain value.
 The two primary EVT methods are Peak over Threshold (POT) and Block Maxima (BM).
 Both of these strategies require
@@ -15,7 +15,7 @@ BM leads to Generalised Extreme Value (GEV) distribution,
 whereas POT\footnote{Y20~\cite{ZannaPreprint} used POT methods. }
 leads to Generalised Pareto Distribution (GPD).
 Both require domain of attraction condition~\cite{bucher2018horse}, which
-for BM is
+for BM is:
 $\forall r \in \mathbb{N} \;\exists \;b_r, \gamma\in \mathbb{R},\; a_r>0: $
     \begin{align}
     \lim _{r \rightarrow \infty} F^{r}\left(a_{r} x+b_{r}\right)=\exp \left\{-(1+\gamma x)^{-1 / \gamma}\right\} \notag \\
@@ -93,57 +93,89 @@ creates the hazard rather than the relative height.
 Using my adaptation of \texttt{skextremes}~\cite{skextremes} I fit the
 GEV with an initial guess from \texttt{lmoments}, optimised using
 \texttt{scipy.stats.genextreme} with \texttt{scipy.optimize.fmin\_bfgs}~\cite{2020SciPy-NMeth}.
-For some confidence interval, $\alpha$, the symmetric range of the parameters is
-estimated by the delta method~\cite{coles2001introduction},
+For some confidence interval, $\alpha$, the Gaussian confidence interval of the parameters is
+estimated by the Delta method~\cite{coles2001introduction},
 
 \begin{equation}
 [\Delta \sigma , \Delta \mu, \Delta \xi] =
-\mathcal{N}^{-1}(0, [\sigma_e (\sigma), \sigma_e (\mu), \sigma_e (\xi)]; 1-\frac{\alpha}{2})
+\mathcal{N}^{-1}(1-\frac{\alpha}{2}; 0, [\sigma_e (\sigma), \sigma_e (\mu), \sigma_e (\xi)])
 \end{equation}
 
 where,
 
 \begin{equation}
 [\sigma_e (\sigma), \sigma_e (\mu), \sigma_e (\xi)] =
-\mathrm{sqrt}\left(\mathrm{diag}\left(\left( \mathrm{Hess}([\sigma, \mu, \xi]) \right)^{-1} \right)\right).
+\mathrm{sqrt}\left(\mathrm{diag}\left(\left( \mathrm{Hess}([\sigma, \mu, -\xi]) \right)^{-1} \right)\right).
 \end{equation}
 
-\begin{verbatim}
-T = _np.arange(0.1, 500.1, 0.1)
-sT = -_np.log(1. - self.frec / T)
-# return period in (years)
-sT2 = self.distr.isf(self.frec / T)
-# return value in time unit (years)
-# self.distr is a scipy.stats.genextreme obj.
-# stats.genextreme.isf(value/T)
-# is the inverse survival function.
-\end{verbatim}
+and $\mathcal{N}^{-1}(x; \mu_n, \sigma_n^2)$ is the inverse normal distribution
+with input $x$, and parameters $\mu_n$,\& $\sigma_n^2$.
 
-We then also work out the uncertainty in each point in the
-return plot fits (Figure~\ref{fig:gev-no}C).
+for a period of time $T$, we can define a value $\phi$ (\texttt{sT}):
+
+\begin{equation}
+\phi \equiv - \log(1 - T_{r}/T)
+\end{equation}
+
+where $T_r$ is the sampling time of BM (1 year).
+
+$E$, (\texttt{sT2}) the size of the largest value expected at that time $T$:
+
+\begin{equation}
+\mathbb{P}(X>E) \equiv \frac{T_r}{T}
+\end{equation}
+
+where $\mathbb{P}$ is the probability which we have assumed is
+distributed as a GEV with parameters previously determined.
+
+We then then work out the uncertainty in each point in the
+return plot fits (Figure~\ref{fig:gev-no}C), which is asymptotically
+Gaussian~\cite{doob1935limiting}.
 
 \begin{align}
-\delta \mathbf{Z} = & \left[ \begin{array}{l}(\sigma\cdot\xi^{-2} \cdot (1-(\mathrm{sT}^{-\xi})
-            \\-\sigma \cdot (\xi^{-1})\cdot (\mathrm{sT}^{-\xi}) \cdot \log(\mathrm{sT}[i])),\\
+\delta \mathbf{Z} = & \left[ \begin{array}{l}(\sigma\cdot\xi^{-2} \cdot (1-(\phi^{\xi})
+            \\ \sigma \cdot (\xi^{-1})\cdot (\phi^{\xi}) \cdot \log(\phi)),\\
             1,\\
-            -(1- \frac{\mathrm{sT}^{-\xi}}{\xi})
+            (1- \frac{\phi^{\xi}}{\xi})
             \end{array} \right]
 \end{align}
 
 \begin{equation}
-\sigma_e(\mathrm{sT2}) = \mathrm{sqrt}\left(\left(\delta \mathbf{Z} \cdot \left( \mathrm{Hess}\left([\sigma, \mu, \xi]\right) \right)^{-1} \right) \cdot  \delta \mathbf{Z}^{\mathrm{T}}\right)
+\sigma_e(E) = \mathrm{sqrt}\left(\left(\delta \mathbf{Z} \cdot \left( \mathrm{Hess}\left([\sigma, \mu, -\xi]\right)
+\right)^{-1} \right) \cdot  \delta \mathbf{Z}^{\mathrm{T}}\right)
 \end{equation}
+
+\begin{equation}
+\Delta_e (E) = \mathcal{N}^{-1}(1-\frac{\alpha}{2}; 0, \sigma_e(E))
+\end{equation}
+
+The measured points on the return plot (e.g.~\ref{fig:gev-no}C) are $EV_i$ against $T_i$:
+
+\begin{equation}
+T_i = \frac{Ntotal}{i} \cdot T_r,
+\end{equation}
+
+and,
+
+\begin{equation}
+EV_i = \mathrm{sorted(Block Maxima)}_i.
+\end{equation}
+
+where they have been sorted from smallest to largest.
+
 
 Figure~\ref{fig:gev-no} fits the generalised extreme value theorem fitted
 on the yearly block maxima for the nearest coastal point to New Orleans,
 and Figure~\ref{fig:gev_all_points} shows the fit along all points in \texttt{eUS}
-for \texttt{c50}.
+for \texttt{c50}. As can be seen, points in the Gulf of Mexico generally have  $\xi$<0,
+whereas northwards it becomes progressively more likely that $\xi>0$.
+
 
 \subsection{Enforcing an asymptote using potential intensity theory }
 \label{sec:evt-limit}
 
 As noted in~§~\ref{sec:hurr-theory} there is some maximum size
-that a tropical cyclone might be expected to be able to reach given
+that a TC would be expected to be able to reach given
 the climate.
 As shown in Figure~\ref{fig:up-bound-taleb} naively fitting
 the GEV to the distribution would be an over-extrapolation of
@@ -152,7 +184,7 @@ thinking that there is a maximum
 (i.e.~the PI theory §~\ref{sec:hurr-theory}).
 
 A hypothesis to explain the observed pattern of return periods is explained in
-Figure~\ref{fig:return_hyp_new}, where the PI of hurricanes is used to
+Figure~\ref{fig:return_hyp_new}, where the PI of TCs is used to
 explain the flattening of the extreme
 value with return period (see Figure~\ref{fig:eman-pi}).
 However, absence of evidence is not
@@ -172,16 +204,20 @@ by hurricane landfall does not cause a large
 deviation from the existing EV distribution,
 that is mainly caused by other factors (the Florida current).
 
-A test for this hypothesis would be to use longer control runs from the same
-coastline and model, to check that the deviation is not merely a problem caused
-by chance, due to the length of time that BM takes to converge to GEV.
+Given that
+the error is asymptotically Gaussian in log return period - extreme value space,
+a Gaussian process (GP)~\cite{williams2006gaussian, duvenaud2014automatic}
+could be used to fit the function, fixed so that
+the asymptotic mean at the left hand is the 0, and the right is at the
+estimated plateau value given the responsiveness of the point and the potential intensity.
+
+A test for this hypothesis would be to use longer control runs than \texttt{c50}
+from the same coastline and model, to prove that the deviation is not a problem caused
+by chance, thanks to the length of time that BM takes to converge to GEV.
 
 \input{tables/evt.tex}
 
 \input{figures/return_hypothesis.tex}
-
-\input{figures/pi_maximum.tex}
-
 
 
 \FloatBarrier

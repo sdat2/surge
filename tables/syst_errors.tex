@@ -1,23 +1,27 @@
 \begin{table}[ht]
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{l L{8.5cm}}
-%\hline \hline
+\hline \hline
 \textbf{Effect} & \textbf{Source}\\
 \hline
 ($-$) & Coarsening of time to daily outputs.\\
-($-$) & Lack of cyclogenesis  $\implies$ not enough
-        TCs~\cite{tomassini2017interaction, williams2018met, FurtherInfo}.\\
+($-$) & Lack of cyclogenesis~\cite{tomassini2017interaction, williams2018met, FurtherInfo}.\\
 ($\pm$) & Parameterisation of heat transfer $\implies$ wrong TC strength.\\
 ($\pm$) & Parameterisation of wind stress $\implies$ wrong TC surge.\\
 ($-$) & SSH 4km out from the coast (centre of cell).\\
-($-$) & No non-linear surge-tide interaction.\\
+($-$) & Lacking non-linear surge-tide interaction.\\
 ($-$) & Limited wave build up.\\
-($-$) & Long TC return periods $> 100$~yrs (e.g.~New England).\\
+($-$) & Long TC return periods $> 100$~yrs (e.g.~New England)
+mean that \texttt{c50} is insufficient to capture distribution.\\
 ($\pm$) & Inaccurate bathymetry.\\
-\hline
+($-$) & \texttt{c50} records daily means, but peak value occurs over c.~an hour
+(see Figure~\ref{fig:katrina}).\\
+($+$) & If GEV were fitted naively when there is a PI limit.\\
+\hline \hline
 \end{tabular}
 }
 \caption{Systematic sources of error for the estimate of TC-induced storm surge
-hazard.}
+hazard, where the sign is the effect that this error would have had on our estimate
+of hazard relative to the true hazard.}
 \label{tab:syst_error}
 \end{table}

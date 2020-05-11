@@ -1,8 +1,8 @@
 \section{Preprocessing coastal data}
 \label{sec:Preprocessing}
-The sea surface height in the model is relative to
-a reference geoid: the surface that a homogeneous static fluid would occupy
-on an azimuthally symmetric Earth of the same size and rotation frequency.
+The SSH in the model is relative to
+the reference geoid\footnote{the surface that a homogeneous static fluid would occupy
+on an azimuthally symmetric Earth of the same size and rotation frequency}.
 Dynamic topography emerges because of the
 currents and density contrasts (Figures~\ref{fig:zos}~\&~\ref{fig:ssh_stats_america}A).
 \input{figures/2d_fields/zos.tex}
@@ -72,21 +72,21 @@ implies that negative frequencies have no information not in the positive.
 
 
 Figures~\ref{fig:zm_fft_zos}~\&~\ref{fig:zm_fft_tos} give the
-Fourier transform spectrums of SSH and SST respectively.
+Fourier transforms of demeaned SSH and SST respectively ($\Delta \eta$, $\Delta T$).
 Figures~\ref{fig:zm_fft_zos} shows that SSH has a red-noise spectrum,
-which is true of the ocean in general, and Figure~\ref{fig:zm_fft_tos}
-shows that SST is dominantly annual (as expected).
-The relationship between the temperature and the sea surface temperature.
-The Florida current is a likely source of particularly red noise at Miami
+ true of the ocean in general, and Figure~\ref{fig:zm_fft_tos}
+shows that SST is dominantly annual.
+The Florida current is a likely source of red noise at Miami
 (Figures~\ref{fig:vos}~\&~\ref{fig:uos}).
-The general eddy activity is visible in Figures~\ref{fig:vos}~\&~\ref{fig:uos}
-as the loop current has formed a secondary vortex ring moving northwards
-in Figures~\ref{fig:uos}~to~\ref{fig:vos}.
+In Figures~\ref{fig:uos}~to~\ref{fig:vos}
+the Loop Current has formed a vortex ring moving northwards,
+which could be a source of low frequency noise in SSH for the Gulf of Mexico (GOM).
+
 Figures~\ref{fig:no-hp-lp}~\&~\ref{fig:mm-hp-lp} show a high and
 low pass filter applied to specific points, and Figure~\ref{fig:four-trans-panels},
 which are defined as:
 
-
+\begin{equation}
 \Delta\eta_{\;\mathrm{lp}}(t) = \int_{\mathbb{R}}W\left(\frac{|f|}
 {|f|_{\mathrm{thresh}}}\right)\int_{\mathbb{R}}e^{2\pi i (t-t^{\prime})f }
 \Delta \eta(t^{\prime})dt^{\prime}df,
@@ -109,26 +109,15 @@ which are defined as:
 
 \input{figures/lag-panels.tex}
 
-We would like to be able to explain this seasonal cycle in SSH.
-The obvious choice would be to look at SST and SSH, as in Figure~\ref{fig:ssh-sst}
-for \texttt{eUS} for \texttt{tyr}, and do lag correlation, which is defined as:
-
-\begin{equation}
-r_{k}=
-\frac{\sum_{i=1}^{N-k}\left(X_{i}
--\bar{Y}\right)\left(X_{i+k}-\bar{Y}\right)}
-{\sum_{i=1}^{N}\left(X_{i}
--\bar{Y}\right)^{2}}.
-\end{equation}
-
+To explain this seasonal cycle in SSH, we can see by comparing SST and SSH, as in Figure~\ref{fig:ssh-sst}
+for \texttt{eUS} for \texttt{tyr}, that they may be related,
+and so we use lag correlation on $\Delta\eta_{\;\mathrm{lp}}(t)$ and SST.
 Figure~\ref{fig:lag-plot} (\texttt{eUS}, \texttt{tyr}) tells a simple story of
-SSH lagging slightly behind SST, as the mixed layer takes longer
+SSH lagging 30-50 days behind SST, as the mixed layer takes longer
 to heat up than the surface.
-However Figure~\ref{fig:vc_lag-plot} undermines this as the
-lag becomes anti-phase, falsifying this simple hypothesis as
-being generally true.
-I suggest that Figure~\ref{fig:lpredthresh} justifies removing the low frequency
-component of the signal, as it supports the hypothesis that the
-low frequency signal cannot be predicted by sea surface stress.
+However Figure~\ref{fig:vc_lag-plot} for \texttt{vc} undermines this as the
+lag becomes anti-phase, showing that this is not generally as simple.
+Figure~\ref{fig:lpredthresh} justifies removing the low frequency
+component of the signal, as it cannot be predicted by sea surface stress.
 
 \FloatBarrier

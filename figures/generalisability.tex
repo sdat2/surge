@@ -2,13 +2,16 @@
     \centering
     \includegraphics[width=0.7\linewidth]{../surge/plots/ridge_lasso.pdf}
     \vspace{-15pt}
-   \caption{\texttt{eUS} regression learning.
-    Although not for lasso, and the regression is not consistent.
-            We also need another coast to see if this generalises.}
+   \caption{\texttt{eUS-tyr} shows that high $r^2$ values can be obtained using
+   either \texttt{lasso} or \texttt{ridge}, but this is unsurprising given $>100$
+   features. The regression coefficients learnt are different for the different years
+   and algorithms' responsiveness,
+   (colored as in Figure~\ref{fig:tau-tau-resp}).}
     \label{fig:learnt-eus}
 
     \centering
     \includegraphics[width=0.8\linewidth]{../surge/plots/vc_ridge_lasso.pdf}
-    \caption{The same as above, but for the \texttt{vc} coastline.}
+    \caption{\texttt{vc-tyr} \texttt{lasso} does not use the convexity of the coast,
+             as a feature, and the shape of either is quite different.}
     \label{fig:learnt-vc}
 \end{figure}

@@ -7,7 +7,7 @@
  \label{sec:fractal}
  The coastline appears to be a self-similar fractal~\cite{mandelbrot1967long,
  richardson1961problem}; it has the same features at all
- scales, so that the length of the coast increases without limit as resolution $G$
+ scales, so that the length of the coast increases without limit as resolution, $\frac{1}{G}$,
  is increased,
  \begin{equation}
  L(G)=M G^{1-D},
@@ -49,10 +49,8 @@ US coast (see Figure~\ref{fig:america}).
 I extracted the coastline from Hue, Vietnam, to China's
 border with North Korea (\texttt{vc}),\footnote{
 Removing Shanghai bay island.} (see Figure~\ref{fig:vin-china}).
-Finally we extracted the eastern coastline
-of Honshu island, Japan (\texttt{hon}).
 
-
+\input{tables/places.tex}
 
 \subsection{Metrics}
 \subsubsection{Motivation}
@@ -101,7 +99,7 @@ C_i  =  \sum_{j=i-4\sigma}^{j=i+4\sigma} \mathcal{N}(i, \sigma^{2})\cdot  \cos{(
 
 with reflective boundary conditions.
 
-An example of this is shown in Figure~\ref{fig:angle_heatmap}} for the\texttt{eUS}.
+An example of this is shown in Figure~\ref{fig:angle_heatmap}} for \texttt{eUS}.
 We define the symmetric derivative of this smoothed angle,
 
 \begin{equation}
@@ -125,7 +123,7 @@ ensure that the bearing derivative is 0 at either end of the coastline.
 
 \subsubsection{Bathymetric gradient}
 \label{sec:bath-grad}
-The simplest way of working this out is to look at the
+The simplest method was to use
 bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
  case (§~\ref{sec:nemo})), and define the isobath as
  points that are both level or below a given depth,
@@ -135,7 +133,7 @@ within the model grid from every point on
 the coast to that isobath are calculated (Figure~\ref{fig:isobath}).\footnote{
 Naive theoretical upper and lower bounds could be placed on the response of the
 coastline to a wind stress by integrating the isobaths in  Figure~\ref{fig:isobath}
-w.r.t.~Equation \ref{eq:pugh} with a cell converted to 8\pm1~km and wind stress
+w.r.t.~Equation \ref{eq:pugh} with a cell converted to $8\pm1$~km and wind stress
 assumed constant and along this axis, and $\eta/H$ small.}
 
 \FloatBarrier

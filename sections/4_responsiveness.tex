@@ -4,21 +4,41 @@
 \subsection{Thresholding $|U_{10}|^2$ responsiveness}
 \label{sec:thresh-resp}
 
-As shown in Figure~19~of~T20~\cite{ZannaPreprint} (see Figure~\ref{fig:yin-responsiveness}).
-The threshold seems arbitrary,
-so I chose that the $\Delta\eta_{\mathrm{hp}} \ge 0$ (Figure~\ref{fig:simple-responsiveness-results}),
+As shown in Figure~19~of~T20~\cite{ZannaPreprint} (see Figure~\ref{fig:yin-responsiveness}),
+they define a measure for `efficiency' (I prefer `responsiveness') based on Equation~\ref{eq:pugh},
+by fitting a quadratic to daily wind speed vs.~surge height, with a threshold that they
+vary between locations.
+This threshold seems arbitrary,
+so when I replicated this I chose that the $\Delta\eta_{\mathrm{hp}} \ge 0$,
 as it approximately guarantees that the sea surface stress is acting into
-the coast.
+the coast, and instead linearly fitted hourly $|U_{10}|$ against $\Delta\eta_{\mathrm{hp}}$,
+with and without an intercept at the origin (Figure~\ref{fig:simple-responsiveness-results}).
+The results for areas like Miami are similarly low, and for New Orleans are high,
+so that Figure~\ref{fig:simple-responsiveness-results} seems to qualitatively reproduce the
+results of Figure~\ref{fig:yin-responsiveness}. The lines were fitted on
+2005's data due to it's higher Kurtosis (Figure~\ref{fig:ssh_stats_america}), and tested on
+2004's data.\footnote{Based on the heuristic that
+an ML algorithm performs better if trained on more interesting data.}
+As can be seen in the bottom plot of Figure~\ref{fig:simple-responsiveness-results}
+this generalises reasonably in some points (e.g. NO), but in areas where responsiveness was
+low it generalises poorly.
 
 
 \subsection{$\tau_u$, $\tau_v$ responsiveness}
 \label{sec:tau-tau}
-This method is quite crude, and could be simply improved.
-Figure~\ref{fig:tau-tau-r-no} shows a single example of working out the linear
-responsiveness in \texttt{tyr}, which is applied along \texttt{eUS} in
-Figure~\ref{fig:tau-tau-resp}.
+This method is quite crude, and I attempt to improve it by
+using $\tau_u$ and $\tau_v$ with $\Delta\eta_{\mathrm{hp}}$.
+After applying a number of linear regression algorithms ~\ref{fig:tau-tau-r-no},
+I settle on \texttt{MLR} and \texttt{huber} as being the most reliable (see §~\ref{sec:lin-ml-models}).
+I apply this along \texttt{eUS} in
+Figure~\ref{fig:tau-tau-resp}, where the estimates produces by the
+two different algorithms and trained on either year provide an estimate
+for the confidence envelope.
 Figure~\ref{fig:tau-tau-responsiveness}
-creates a more robust metric for the responsiveness.
+creates a more robust metric for the responsiveness, by
+taking the norm of the linear regression coefficients, and multiplying it
+by the generalisation score, as I found that for \texttt{vc}
+there are areas with v.~low scores and high regression coefficients which are spurious.
 
 \input{figures/responsiveness-indiv.tex}
 
@@ -29,27 +49,26 @@ creates a more robust metric for the responsiveness.
 
 \label{sec:angle}
 
-Figure~\ref{fig:tau-tau-angle} shows that the angle is highly correlated with
-the bearing of the coast (see~§~\ref{sec:convexity}).
-This bearing is compared to the normal coastline bearing).
-As shown in Figure~\ref{fig:tau-tau-angle}, there is a systematic offset between the two lines,
-with a slight change between them, which can be explained through
- Ekman transport~\cite{hope2013hindcast}.
+From either multiple linear regression line,
+it is possible to work out the
+direction that it points, using arctan2,
+Figure~\ref{fig:tau-tau-angle}, and compare it to the bearing of the coast (see~§~\ref{sec:convexity}).
+The difference between the regression direction and
+the bearing might be explained through Ekman transport~\cite{hope2013hindcast}.
 
 
 \label{sec:reg-metrics}
 
-The magnitude of this regression line varies in approximately the same
-way for both\footnote{QUANTIFY!!} (Figures~\ref{fig:simple-responsiveness-results},~\ref{fig:tau-tau-resp}~\&~\ref{fig:tau-tau-responsiveness}),
+The magnitude of this regression line is correlated ($r_p=0.78\pm0.05$\footnote{ for `w.o an intercept' against the four MLR alternatives.}) between the two
+(Figures~\ref{fig:simple-responsiveness-results},\&~\ref{fig:tau-tau-responsiveness}),
 showing that there is some underlying property of the
-coastline that both illuminate.
-Figure~\ref{fig:learnt-eus}, uses lasso and ridge regression to
-estimate the relationship between the coastal metrics (§~\ref{sec:convexity}~\&~\ref{sec:bath-grad})
-and either responsiveness metric.
-It is possible that this is a spurious structure, where the fit
-is made possible by giving so many information-less channels to fit against.
-We use \texttt{vc} and \texttt{jap} as in Figure~\ref{fig:learnt-vc},
-to check that this generalises.
+coastline they illuminate.
+ I use \texttt{lasso} and \texttt{ridge} regression
+to learn the responsiveness for \texttt{vc} and \texttt{eUS} using the metrics of isobath
+distance and coastal convexity (109 features) (§~\ref{sec:convexity}~\&~\ref{sec:bath-grad}).
+These are dissimilar in Figures~\ref{fig:learnt-eus}~\&~\ref{fig:learnt-vc},
+suggesting that the coastal metrics need more development before they can be
+useful predictors.
 
 \label{sec:generalisability}
 

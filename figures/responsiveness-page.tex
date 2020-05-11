@@ -1,16 +1,22 @@
 
 \begin{figure*}
 \centering
- \hspace{-40pt} \includegraphics[width=0.7\linewidth]{../surge/plots/rmlr.pdf}
+ \hspace{-40pt} \includegraphics[width=0.6\linewidth]{../surge/plots/rmlr.pdf}
   \vspace{-15pt}
- \caption{Huber regression generalises less well than MLR.}
+ \caption{A four panel plot to show the estimation of responsiveness
+          of $\Delta\eta_{\mathrm{hp}}$ to $\tau_u$ and $\tau_v$, with the
+          \texttt{MLR} and \texttt{Huber} algorithms. The y-units of A~\&~B are
+           m Pa$^{-1}$.}
  \label{fig:tau-tau-resp}
- \hspace{-40pt} \includegraphics[width=0.4\linewidth]{../surge/plots/reg_angle.png}
+ \hspace{-40pt} \includegraphics[width=0.3\linewidth]{../surge/plots/reg_angle.png}
   \vspace{-15pt}
- \caption{\texttt{np.arctan2(c0, c1)}}
+ \caption{This shows that for the majority of the coastline there is a close
+ corresponce between the normal bearing of the coast and the regression line ($r_p=0.83\pm0.05$).
+ \texttt{np.arctan2(c0, c1)}}
   \label{fig:tau-tau-angle}
-  \hspace{-40pt} \includegraphics[width=0.6\linewidth]{../surge/plots/adj_reg_mag.pdf}
+  \hspace{-40pt} \includegraphics[width=0.5\linewidth]{../surge/plots/adj_reg_mag.pdf}
    \vspace{-15pt}
-  \caption{($\bar{r^2}$)\texttt{*np.square(np.sqrt(c0) + np.sqrt(c1))}. }
+  \caption{A more robust measure of responsiveness magnitude.
+  ($\bar{r^2}$)\texttt{*np.sqrt(np.square(c0) + np.square(c1))}. }
    \label{fig:tau-tau-responsiveness}
 \end{figure*}

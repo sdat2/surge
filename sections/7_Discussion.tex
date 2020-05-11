@@ -5,8 +5,8 @@
 
 Different models have varied systematic biases
 and resolutions. We could measure how
-the responsiveness changes as the resolution decreases. The difference
-between the value at 4km distance (c.~1.6m) of Hurricane Katrina (see Figure~\ref{fig:katrina}),
+the responsiveness changes as the resolution decreases. The value at 4km distance in
+\texttt{tyr} (c.~1.6m) of Hurricane Katrina (see Figure~\ref{fig:katrina}),
 is smaller than the value observed at the coast itself (c.~9m in places).
 It must increase with a bound.
 Combining the coastline outputs with a high resolution indundation model
@@ -42,10 +42,9 @@ TC PI theory is well supported,
 but a few super-intense tropical cyclones have been observed~\cite{camargo2019tropical}.
 This could be a result of treating the parameters $C_k$, $C_D$, as constant in the derivation (§~\ref{sec:param}).
 
-The sea surface does not reach its steady state as soon as sea surface
+The SSH does not reach its steady state as soon as
 stress is applied, which this leads
-to the regression being distorted by this hysteresis.
-It depends significantly on the previous points.
+to the regression being distorted by hysteresis.
 It would therefore make sense to give the ML algorithm
 a series of previous $\eta$ values for different lags.
 

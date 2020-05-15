@@ -1,16 +1,21 @@
 \documentclass[usenames, dvipsnames, handout]{beamer}
 %% comment out these following two lines if you want single slide per page version.
-\usepackage{pgfpages}
-\pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
 
 \input{Theme/beamer_theme.tex}
 
-\title{Using Learning Algorithms to Investigate East~US Storm Surges \vspace{-15pt}}
-\titlegraphic{\includegraphics[height=1.25cm]{Theme/Logos/UCC.png}\hspace{0.5cm}\includegraphics[height=1.25cm]{Theme/Logos/small-bas.png}}
-\author{Simon D.\ A.\ Thomas}
-\institute{University of Cambridge | British Antarctic Survey\\
-\href{mailto:sdat2@cam.ac.uk}{sdat2@cam.ac.uk} | \href{mailto:sithom@bas.ac.uk}{sithom@bas.ac.uk} }
-\date{Collaborating with Dr.s:\\ Dan Jones, Laure Zanna, Pierre Mathiot, \& Rory Bingham } %\today
+\title{Towards Hybrid Storm Surge Hazard Modelling \vspace{-25pt}}
+\titlegraphic{\includegraphics[height=3cm]{../surge/plots/theory.pdf}
+
+%\includegraphics[height=1.25cm]{Theme/Logos/UCC.png}\hspace{0.5cm}\includegraphics[height=1.25cm]{Theme/Logos/small-bas.png}
+}
+\author{Simon Thomas}
+\institute{Collaborating with Dr.s:\\ Dan Jones, Laure Zanna, Pierre Mathiot, \& Rory Bingham
+%University of Cambridge | British Antarctic Survey\\
+%\href{mailto:sdat2@cam.ac.uk}{sdat2@cam.ac.uk} | \href{mailto:sithom@bas.ac.uk}{sithom@bas.ac.uk}
+}
+\date{} %\today
 
 \immediate\write18{texcount -nc -inc -merge -sum -q presentation.tex > wordcount/pres_wordcount.tex}
 
@@ -30,8 +35,9 @@
 %\input{pres-sec/end.tex}
 %\input{pres-sec/therm.tex}
 %\input{pres-sec/fourier.tex}
-\input{pres-sec/lag.tex}
+%\input{pres-sec/lag.tex}
 %\input{pres-sec/write-up-plan.tex}
+\input{pres-sec/viva.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%--------Bibliography-----%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

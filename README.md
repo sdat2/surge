@@ -25,9 +25,11 @@ Convert the pdf slides to powerpoint slides.
 
 > python3 output/convert.py
 
-To change the style of algorithms, change the algorithms/algorithm.tex file.
+To change the style of algorithms,
+change the algorithms/algorithm.tex file.
 
-To change the .bib files included change the references/references.tex file.
+To change the .bib files included
+change the references/references.tex file.
 
 *Requirements*
 

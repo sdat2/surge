@@ -4,8 +4,7 @@
 I was able to use two outputs~§~\ref{sec:rean-prod}~\&~§~\ref{sec:control-1950-intro}
 of use the NEMO ocean engine~\cite{madec2015nemo}, which uses the tripolar ORCA12 grid,
 with a  $\frac{1}{12}^{\circ}$
-resolution.
-ORCA12 is designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
+resolution, designed so that no coordinate singularities are in the ocean~\cite{madec1996global}.
 
 
  The bathymetry is from
@@ -20,14 +19,14 @@ ORCA12 is designed so that no coordinate singularities are in the ocean~\cite{ma
 
 Neither output
 include tides, inundation, or wave setup.
-The resolution of the models mean that cells are around
-8km wide, therefore with sea surface height (SSH) recorded around 4km from the coast.
+The resolution means that cells are around
+8km wide, therefore the sea surface height (SSH)
+is recorded around 4km from the coast.
 
 \subsubsection{2004-5 \texttt{two-year} hourly reanalysis product}
 \label{sec:rean-prod}
 Dr.~Pierre Mathiot kindly ran a global ocean model with
-hourly outputs for the years 2004-5 (see Katrina
-in Figure~\ref{fig:katrina}).
+hourly outputs for 2004-5 (\texttt{tyr}) (see Figure~\ref{fig:katrina}).
 
 \paragraph{EN4 initial conditions}
 EN4 is a reanalysis product, starting in 1976,
@@ -39,7 +38,7 @@ to produce a best guess as to what the properties of the ocean are.
 CORE2 is a set of global air-sea fluxes in 6 hour time steps which are interpolated between~\cite{griffies2012datasets,large2009global,
  hurrell2008new}\footnote{\url{https://climatedataguide.ucar.edu/climate-data/corev2-air-sea-surface-fluxes}}
  (see Figure~\ref{fig:katrina}B-D).
- These been made from the NCEP/NCAR R1 reanalysis product,
- bias corrected with more reliable satellite data data~\cite{core2, core2expert}.
+ These were made from the a reanalysis product,
+ bias corrected with satellite data~\cite{core2, core2expert}.
 
 \input{figures/katrina.tex}

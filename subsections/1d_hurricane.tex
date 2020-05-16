@@ -1,8 +1,10 @@
 \subsection{1D model with TC PI theory}
 \label{sec:1d-hurr}
 To explore the impact that an increased amount of greenhouse gasses might have
-on the system, consider a single layer model of the atmosphere, described by the
+on the system, consider a single layer model of the atmosphere (see Figure~\ref{fig:1d-atm}), described by the
 set of four simultaneous equations.
+
+\input{figures/1d-atm.tex}
 
 \begin{eqnarray}
 F_{\mathrm{solar}} =& F_{\mathrm{atm}} + F_{\mathrm{ground}}\tau_{\mathrm{IR}}\\
@@ -39,6 +41,13 @@ so that the temperature of the atmosphere (approximately equivalent to $T_{o}$)
 decreases as the amount of greenhouse gases are increased.
 
 
-One can then use \ref{eq:PI} and see that as the nominator has increased, and the
+One can then use,
+\begin{equation}
+\left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}}
+\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
+\tag{PI}
+\end{equation}
+
+ and see that as the nominator has increased, and the
 denominator has decreased, the potential intensity is expected to increase with the
 amount of greenhouse gases, $\tau_{\mathrm{IR}}$, in the atmosphere.

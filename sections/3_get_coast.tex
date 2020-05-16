@@ -130,10 +130,18 @@ bathymetry netCDF file that the model was run with (ETOPO2v2-derived in this
   and adjacent to a point above that depth (Figure~\ref{fig:bath}).\footnote{This was accelerated by 3 orders of magnitude by \texttt{numba}~\cite{lam2015numba}.}
 Once these isobaths have been selected, the distance
 within the model grid from every point on
-the coast to that isobath are calculated (Figure~\ref{fig:isobath}).\footnote{
+the coast to that isobath are calculated (Figure~\ref{fig:isobath}).
+
 Naive theoretical upper and lower bounds could be placed on the response of the
 coastline to a wind stress by integrating the isobaths in  Figure~\ref{fig:isobath}
-w.r.t.~Equation \ref{eq:pugh} with a cell converted to $8\pm1$~km and wind stress
-assumed constant and along this axis, and $\eta/H$ small.}
+w.r.t.~Equation \ref{eq:pugh},
+\begin{equation}
+\frac{\eta}{\tau} \approx \int \frac{d x}{H(x)\cdot g \cdot \rho_{\text {water}}},
+\end{equation}
+with a cell converted to $9.15\pm1$~km and wind stress
+assumed constant and along this axis, and $\eta/H$ small.
+
+
+
 
 \FloatBarrier

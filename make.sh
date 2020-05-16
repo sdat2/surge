@@ -3,7 +3,7 @@
 # https://tex.stackexchange.com/questions/140845/how-can-i-ignore-latex-error-while-compiling
 
 # options: [main, proposal, presentation]
-filename=presentation #report # main # presentation
+filename=report #presentation #report # main # presentation
 
 mv aux/${filename}.lo* aux/${filename}.aux aux/${filename}.ilg .
 mv aux/${filename}.ind aux/${filename}.toc .

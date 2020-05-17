@@ -1,0 +1,54 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Theme/linkcolors}
+
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage[dvipsnames]{color}
+\RequirePackage{hyperref}
+% Define Colours
+\definecolor{cambridgeblue}{RGB}{163, 193, 173}
+\definecolor{oxfordblue}{RGB}{0, 32, 68}
+\definecolor{glassgrey}{rgb}{220, 220, 220}
+
+\hypersetup{
+    colorlinks=true,
+    allcolors=MidnightBlue, %oxfordblue,
+    footnotecolor=MidnightBlue,
+    citecolor=BrickRed,
+    linkcolor=oxfordblue, %MidnightBlue,
+    anchorcolor=oxfordblue,
+    filecolor=magenta,
+    urlcolor=BrickRed,
+}
+
+
+\RequirePackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+
+\lstset{style=mystyle}
+
+%
+%\makeatletter
+%\def\p@figure{\color{oxfordblue}}
+%\def\p@equation{\itshape\color{oxfordblue}}
+%\makeatother

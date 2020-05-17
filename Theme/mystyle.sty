@@ -1,69 +1,18 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{Theme/mystyle}
-\RequirePackage[disable]{todonotes} % disable this before submission
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
-\RequirePackage[margin=2.5cm, headheight=15pt, includeheadfoot]{geometry}
 \RequirePackage{graphics}
 \RequirePackage{graphicx}
 \RequirePackage{dpfloat}
 \RequirePackage{placeins}
-\input{algorithms/algorithm.tex}
-\RequirePackage{subfiles}  % to be able to put document in sections
 \RequirePackage{footnote}
 \RequirePackage{hyperref}
 \RequirePackage{xpatch}
 \RequirePackage{url}
-\RequirePackage{siunitx}   % make values etc.
 \RequirePackage{capt-of}   % or use the larger `caption` package
-\RequirePackage{tcolorbox}   % to have colored tables
 \RequirePackage{tikz}
-\RequirePackage{fancyhdr}    % use fancyhdr to customize hdrs & ftrs
-\renewcommand{\headrulewidth}{0pt}   % suppress rule across top(fancyhdr default)
 \RequirePackage{afterpage}
-\RequirePackage[dvipsnames]{xcolor}
-\RequirePackage[dvipsnames]{color}
-\RequirePackage{hyperref}
-\hypersetup{
-    colorlinks=true,
-    citecolor=BrickRed,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=BrickRed,
-}
+\usetikzlibrary{positioning, calc}
+\usepackage{fontawesome}
 \RequirePackage{listings}
-\definecolor{codegreen}{rgb}{0,0.6,0}
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-\lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegreen},
-    keywordstyle=\color{magenta},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=4
-}
-\lstset{style=mystyle}
-\RequirePackage[
-  bibstyle=nature, %nice style, doesn't put ---- for repeated authors
-  citestyle=numeric,
-  isbn=true,
-  doi=true,
-  sorting=none,
-  url=true,
-  urldate = long,
-  % defernumbers=true,
-  bibencoding=utf8,
-  backend=bibtex
-]{biblatex}

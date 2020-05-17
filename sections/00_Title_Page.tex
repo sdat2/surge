@@ -110,10 +110,11 @@
  \input{tables/assumed-oceanographic-terms.tex}
  Hazard is defined as,
  \begin{equation*}
- \mathrm{Hazard}\equiv \int \mathrm{risk}(E)  \cdot \mathrm{harm}(E)\; dE,
+ \mathrm{Hazard}\equiv \int_{\mathcal{S}} \int \mathrm{risk}(E, S)  \cdot \mathrm{harm}(E, S)\; dE\; dS,
  \end{equation*}
  where risk is the probability of an extreme event, level $E$,
- and harm is the amount of damage at that $E$.
+ and harm is the amount of damage at that $E$, and $S$ is the position
+ in the region $\mathcal{S}$.
   \thispagestyle{empty}
 %]
 

@@ -1,0 +1,175 @@
+\subsection{Moist thermodynamics}
+\label{sec:moist-thermodynamics}
+
+The law of thermodynamics for a PV system is,
+
+\begin{equation}
+d U=T d S-P d V,
+\end{equation}
+
+which can be adapted to the moist form, as in
+Appendix 1 Emanuel 1986~\cite{emanuel1986air}.
+
+\begin{equation}
+T d s^{*}=d u+p d \alpha-L d q^{*}
+\end{equation}
+
+where $u$ isn the internal energy, $L$ is the heat of vaporisation,
+and $q^{*}$ is the saturation mixing ration.
+We also define the saturated  moist enthalpy,
+
+\begin{equation}
+h^{*} \equiv u+p \alpha-L q^{*},
+\end{equation}
+
+and can therefore show that,
+
+\begin{equation}
+d h^{*}=T d s^{*}+\alpha d p.
+\end{equation}
+
+This implies that,
+
+\begin{equation}
+\begin{array}{l}
+\left(\partial h^{*} / \partial p\right)_{s^{*}}=\alpha, \\
+\left(\partial h^{*} / \partial s^{*}\right)_{p}=T,
+\end{array}
+\end{equation}
+
+As $q^{*}$ is only a function of temperature and pressure,
+$h^{*}$ is a state variable. Therefore it is a function of
+any of other two state variables. For $p$ and $s^{*}$,
+
+\begin{equation}
+\left(\frac{\partial}{\partial s^{*}}\right)_{p}\left(\frac{\partial h^{*}}{\partial p}\right)_{s^{*}}=\left(\frac{\partial}{\partial p}\right)_{s^{*}}\left(\frac{\partial h^{*}}{\partial s^{*}}\right)_{p},
+\end{equation}
+
+which implies,
+
+\begin{equation}
+\left(\frac{\partial \alpha}{\partial s^{*}}\right)_{p}=\left(\frac{\partial T}{\partial p}\right)_{s^{*}}.
+\end{equation}
+
+\paragraph{Tropical cyclone derivation}
+
+From Section 3 Emanuel 1986~\cite{emanuel1986air}.
+Air rushes inwards along the isotherm from $r_{0}$ acquiring
+incremental latent heat
+
+\begin{equation}
+\Delta Q_{1}=\int_{\theta_{e a}}^{\theta_{e}} C_{p} T_{B} d \ln \theta_{e}=C_{p} T_{B} \ln \frac{\theta_{e}}{\theta_{e a}},
+\end{equation}
+
+Where $\theta_{e a}$ is the equivalent potential temperature at
+$r_{0}$. The air ascends at constant entropy to the lower stratosphere
+at a large radius. The air loses enough total heat through radiation cooling
+to return to ambient temperature $\theta_{e}$ so
+
+\begin{equation}
+\Delta Q_{2}=\int_{\theta_{e}}^{\theta_{a a}} C_{p} T_{\mathrm{out}} d \ln \theta_{e}=-C_{p} \bar{T}_{\mathrm{out}} \ln \frac{\theta_{e}}{\theta_{e a}},
+\end{equation}
+
+where $\bar{T}_{\mathrm{out}}$ is given by,
+
+\begin{equation}
+\bar{T}_{\mathrm{out}} \equiv \frac{1}{\ln \theta_{e}^{*} / \theta_{e a}} \int_{\mathrm{ln} \theta_{e a}}^{\ln \theta_{e}} T_{\mathrm{out}} d \ln \theta_{e}^{*}.
+\end{equation}
+
+the total heating is therefore
+
+\begin{equation}
+\Delta Q=\Delta Q_{1}+\Delta Q_{2}=C_{p} T_{B} \epsilon \ln \frac{\theta_{e}}{\theta_{e a}},
+\end{equation}
+
+where $\epsilon$
+$
+\epsilon \equiv\left(T_{B}-s\bar{T}_{\text {out }}\right) / T_{B}
+$
+is the thermodynamic efficiency and $T_b$ is the temperature at the top of the
+boundary layer. By the first law of thermodynamics, the total heating
+must balance the work done,
+
+\begin{equation}
+\Delta Q=W_{P B L}+W_{0}
+\end{equation}
+
+where $W_{PBL}$ and $W_0$ are the work done in the boundary layer and outflow
+respectively. $W_0$ is proportional to the kinetic energy required to
+bring the angular momentum of the outflow back to the ambient value:
+
+\begin{equation}
+\begin{aligned}
+W_{0} &=\frac{1}{2} \Delta V^{2}=\frac{1}{2}\left[\left(\frac{M}{r_{1}}
+-\frac{1}{2} f r_{1}\right)^{2}-\left(\frac{M_{0}}{r_{1}}-\frac{1}{2} f r_{1}\right)^{2}\right] \\
+&=\frac{1}{2}\left[\frac{M^{2}-M_{0}^{2}}{r_{1}^{2}}+f\left(M_{0}-M\right)\right]
+\end{aligned}
+\end{equation}
+
+where we have used,
+
+\begin{equation}
+M \equiv r V+\frac{1}{2} f r^{2}
+\end{equation}
+
+where $r_1$ is the large radius at which the exchange place, so that,
+
+\begin{equation}
+\lim _{r_{1} \rightarrow \infty} W_{0}=\frac{1}{2} f\left(M_{0}-M\right)=\frac{1}{4} f^{2}\left(r_{0}^{2}-r^{2}\right)-\frac{1}{2} f r V.
+\end{equation}
+
+Which can be then used to infer the work done in the boundary layer:
+
+\begin{equation}
+W_{\mathrm{PBL}}=C_{p} T_{B} \epsilon \ln \frac{\theta_{e}}{\theta_{e a}}+\frac{1}{2} f r V-\frac{1}{4} f^{2}\left(r_{0}^{2}-r^{2}\right)
+\end{equation}
+
+
+we can then use Bernoulli's equation,
+
+\begin{equation}
+p+\frac{1}{2} \rho V^{2}+\rho g h=\text { constant },
+\end{equation}
+
+and the Exner function is used in place of pressure:
+
+\begin{equation}
+\pi=\left(p / p_{0}\right)^{R / C_{p}}.
+\end{equation}
+
+where $C_p$ is the heat capacity at constant pressure,
+$p_{0}$ is the ambient pressure, to see that,
+
+\begin{equation}
+\frac{1}{2}
+V^{2}+C_{p} T_{B} \ln \pi+W_{\mathrm{PBL}}=0 \quad \text { at } \quad z=0.
+\end{equation}
+
+
+Using the gradient wind equation,
+
+\begin{equation}
+\alpha \frac{\partial p}{\partial r}=\frac{V^{2}}{r}+f V=\frac{M^{2}}{r^{3}}-\frac{1}{4} f^{2} r
+\end{equation}
+
+an expression for the pressure is then,
+
+\begin{equation}
+\begin{array}{r}
+\ln \pi+\frac{1}{2} r \frac{\partial \ln \pi}{\partial r}+\epsilon \ln \frac{\theta_{e}}{\theta_{e a}}-\frac{1}{4} \frac{f^{2}}{C_{p} T_{B}}\left(r_{0}^{2}-r^{2}\right)=0 \\
+\text { at } z=0
+\end{array}
+\end{equation}
+
+There is a further correction term decreasing the central pressure,
+created by removing angular momentum and heat at finite $r_1$
+rather than the limit as $r_1\to\infty$:
+
+\begin{equation}
+\delta \ln \pi=\frac{-\frac{1}{8} \frac{f^{2} r_{0}^{4}}{r_{1}^{2}}}{C_{p} T_{B}\left[1-\epsilon\left(1+\frac{L q_{a}^{*} \mathrm{RH}_{s}}{R T_{s}}\right)\right]},
+\end{equation}
+
+which is insignificant when $r_1=r_0$, and only important if $r_0$ is very large.
+
+
+\input{tables/hurricane-scales.tex}

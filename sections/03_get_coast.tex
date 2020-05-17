@@ -23,7 +23,7 @@
  and this would mean that the relative number of coastal cells between different
  points will change as the resolution is increased.
  Therefore locations are labelled as listed in
- Figures~\ref{fig:america}~\&~\ref{fig:vin-china}.
+ Figures~\ref{fig:america}~\&~\ref{fig:vin-china} and Table~\ref{tab:places-ab}.
 
 \subsubsection{Algorithms}
 \label{sec:coast-algorithms}
@@ -76,10 +76,21 @@ B_i^{\prime}=\operatorname{arctan} 2
 \label{eq:bearing}
 \end{equation}
 
-where $\phi_{i}$ is longitude, and $\chi_{i}$ is the latitude of the coastal points.\footnote{
+where $\phi_{i}$ is longitude, and $\chi_{i}$ is the latitude of the coastal points\footnote{
 There are additional checks to ensure that this cannot point into land,
 rotating it by $\frac{\pi}{2}$ increments until it does not,
 but these represent less than 0.01\% of \texttt{eUS}.}
+and where \begin{equation}
+\operatorname{arctan} 2(y, x)=\left\{\begin{array}{ll}
+\arctan \left(\frac{y}{x}\right) & \text { if } x>0 \\
+\arctan \left(\frac{y}{x}\right)+\pi & \text { if } x<0 \text {, } y \geq 0 \\
+\arctan \left(\frac{y}{x}\right)-\pi & \text { if } x<0 \text {, } y<0 \\
++\frac{\pi}{2} & \text { if } x=0 \text {, } y>0 \\
+-\frac{\pi}{2} & \text { if } x=0 \text {, } y<0 \\
+\text { undefined } & \text { if } x=0 \text {, } y=0.
+\end{array}\right.
+\end{equation}
+
 This can be smoothed,
 
 \begin{equation}
@@ -135,11 +146,24 @@ the coast to that isobath are calculated (Figure~\ref{fig:isobath}).
 Naive theoretical upper and lower bounds could be placed on the response of the
 coastline to a wind stress by integrating the isobaths in  Figure~\ref{fig:isobath}
 w.r.t.~Equation \ref{eq:pugh},
+
 \begin{equation}
-\frac{\eta}{\tau} \approx \int \frac{d x}{H(x)\cdot g \cdot \rho_{\text {water}}},
+\frac{\partial \eta}{\partial x}
+\approx \frac{\tau}{\rho_{0} g H},
+\notag
 \end{equation}
-with a cell converted to $9.15\pm1$~km and wind stress
-assumed constant and along this axis, and $\eta/H$ small.
+
+assuming that $\tau$ is constant and down the axis of minimum distance from the isobath,
+from the 1000m contour to the coast, and that $\frac{\eta}{H} \ll 1$ then,
+
+
+\begin{equation}
+\frac{\eta}{\tau} \approx \int \frac{d x}{H(x)\cdot g \cdot \rho_{\text {water}}}.
+\end{equation}
+
+where $x$ is the distance down the axis, so that a cell is converted to $9.15\pm1$~km.
+As will be shown in Figure~\ref{fig:tau-tau-responsiveness}, this expression, whilst
+naive, closely fits the data.
 
 
 

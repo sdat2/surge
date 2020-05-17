@@ -27,36 +27,36 @@ any mistakes are my own.}
 %TC:ignore
 
 %\input{covid-complaining.tex}
-\subfile{sections/Title_Page}
+\subfile{sections/00_Title_Page}
 \fi
 \iftrue
- \input{sections/0_Abstract}
+ \input{sections/00_Abstract}
 
 %TC:endignore
 
 %%%%%%%%%%%---Real Report---%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{sections/1_Introduction}
+\input{sections/01_Introduction}
 %\FloatBarrier
 \fi
 \iftrue
-\input{sections/2_background_models}
+\input{sections/02_background_models}
 \FloatBarrier
 \fi
 
 
-\input{sections/3_get_coast.tex}
+\input{sections/03_get_coast.tex}
 
 \iftrue
-\input{sections/3.5_low_freq.tex}
-\input{sections/4_responsiveness.tex}
+\input{sections/03.5_low_freq.tex}
+\input{sections/04_responsiveness.tex}
 %\FloatBarrier
-\input{sections/5_evt}
+\input{sections/05_evt}
 %\FloatBarrier
-%\input{sections/6_Application}
-\input{sections/7_Discussion}
+%\input{sections/06_Application}
+\input{sections/07_Discussion}
 \FloatBarrier
-\input{sections/8_Conclusion}
+\input{sections/08_Conclusion}
 %\FloatBarrier
 
 %%%%%%%%%%%%----End Real Report---%%%%%%%%%%%%%%%%%%%
@@ -68,7 +68,7 @@ any mistakes are my own.}
 \normalsize
 %%%%%%%%%%%----Start Appendices---%%%%%%%%%%%%%%%%%%%%%
 \appendix
-\input{sections/9_Acknowledgements}
+\input{sections/09_Acknowledgements}
 \input{sections/10_supplementary_results.tex}
 \FloatBarrier
 \input{appendices/ref_theory}

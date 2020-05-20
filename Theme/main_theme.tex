@@ -1,12 +1,19 @@
+\usepackage[utf8]{inputenc}
 \newcommand{\mytitle}{Towards Hybrid Storm Surge Hazard Modelling}
 \newcommand{\penname}{Simon~D.~A.~Thomas}
 \newcommand{\supervisor}{\\Supervisor:\\  Dr. Dan Jones,\\ British Antarctic Survey}
-\newcommand\thanksmessage{Thanks to Dr.~Laure Zanna (New York University)
+\newcommand{\thanksmessage}{Thanks to Dr.~Laure Zanna (New York University)
                           [advice and co-supervision],
                           Dr.~Pierre Mathiot (Met Office) [data],
                           and Dr.~Rory Bingham (Bristol) [advice].
                           None of these have seen this thesis;
                           any mistakes are my own.}
+\newcommand\words{4983}
+\newcommand\pages{22}
+\newcommand\abwords{150}
+\usepackage{moreverb} % for verbatim ouput % Count of words
+\immediate\write18{texcount -nc -inc -merge -sum -q report.tex > wordcount/wordcount.tex}
+\newcommand\wordcount{ \verbatiminput{wordcount/wordcount.tex}}
 \usepackage{Theme/mystyle}
 \usepackage{Theme/linkcolors}
 \usepackage{Theme/referencing}
@@ -14,5 +21,4 @@
 \graphicspath{{images/}{../images/}}
 \input{references/references.tex}
 \input{Theme/pagelayout.tex}
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \input{algorithms/algorithm.tex}

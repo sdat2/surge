@@ -8,7 +8,7 @@ wind induced sea heat exchange (WISHE);
 although there is a thermodynamic disequilibrium between the tropical sea
 surface and the atmosphere TCs cannot spontaneously emerge. There is
 a clear separation between a tropical storm and a TC
-in frequency of occurance against maximum intensity~\cite{emanuel2005divine}.
+in frequency of occurrence against maximum intensity~\cite{emanuel2005divine}.
 
 
 \label{sec:carnot}
@@ -33,7 +33,7 @@ maximum windspeed (equation 15-7 in \cite{emanuel2018progress}) is,
 
 \begin{equation}
 \left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}}
-\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
+\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k_b\right),
 \tag{PI}
 \label{eq:PI}
 \end{equation}
@@ -41,14 +41,16 @@ maximum windspeed (equation 15-7 in \cite{emanuel2018progress}) is,
 where $C_d$ is the surface drag coefficient $C_k$ is the
  enthalpy surface exchange coefficient.
 $T_s$ is the sea surface temperature ($K$), $T_o$ is the temperature of the
-lower stratosphere at the end of the moist adiabatic rise ($K$).
+tropopause at the end of the moist adiabatic rise ($K$), $T_b$ is
+the temperature at the top of the planetary boundary layer.
 One can see that the a warmer sea surface, and a cooler lower stratosphere
-would both lead to a higher potential intensity (§~\ref{sec:1d-hurr})~\cite{emanuel1991theory, emanuel2018progress}.
-Further in \ref{eq:PI} the enthalpy per unit mass (equation 15-8 in \cite{emanuel2018progress}) is
-
+would both lead to a higher potential intensity
+(§~\ref{sec:1d-hurr})~\cite{emanuel1991theory, emanuel2018progress}.
+In \ref{eq:PI} the enthalpy per unit mass, $k$,
+(equation 15-8 in \cite{emanuel2018progress}) is
 
 \begin{equation}
-k \equiv c_{p} T+L_{v} q,
+k \equiv c_{p} T +L_{v} q,
 \label{eq:enthalpy_per_unit_mass}
 \end{equation}
 

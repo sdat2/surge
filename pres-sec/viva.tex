@@ -9,14 +9,24 @@
 \item Taleb 2019 (T19,~\cite{taleb2019statistical}) -- Extreme Value Theory (EVT).
 \item Yin et al.~2020 (Y20,~\cite{ZannaPreprint}) -- Inspiration.
 \end{itemize}
-\paragraph{Storm surges are created by ( w.o. Tide-surge interaction):}
+\paragraph{Storm surges are created by (w.o.~tide-surge interaction):}
 \begin{itemize}
 \item  Wind stress creates $\sim 80$\% of a surge. In steady state\footnote{from Pugh, 1987~\cite{pugh1987tides} p.~89~\&~199.},
+
+\begin{minipage}{0.45\linewidth}
 \begin{equation}
 \frac{\partial \eta}{\partial x}
-\approx \frac{\tau}{\rho_{0} g H}.
+\approx \frac{\tau}{\rho_{0} g H},
+\notag
 \label{eq:pugh}
 \end{equation}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+\begin{equation}
+\sim\implies \frac{\eta}{\tau} \approx \int \frac{d x}{H(x)\cdot g \cdot \rho_{\text {water}}}.
+\notag
+\end{equation}
+\end{minipage}
 \item Wave buildup $\sim 15$\% (not captured).
 \item Pressure pull-up $\sim 5$\% (not recorded).
 \end{itemize}
@@ -64,7 +74,7 @@ $\uparrow$~Bearing \& $\downarrow$~Convexity \texttt{eUS}.
 \begin{minipage}{0.3\linewidth}
 \raggedright
 {$\leftarrow$ Regressing
-     $\Delta\eta_{\mathrm{hp}}$ to $\tau_u$ and $\tau_v$.}
+  \Large{~~~X:~$\boldsymbol{\tau}$,~~~~Y:~$\eta_{\;\mathrm{hp}}$}}
 \hspace{50pt}
 
 \raggedleft
@@ -97,8 +107,6 @@ $\uparrow$~Bearing \& $\downarrow$~Convexity \texttt{eUS}.
 NO GEV plot \texttt{skextremes}~\cite{skextremes}
         for \texttt{c50}.
          A~\&~C show bad fit?
-        %Parameters with 1$\sigma$ error.
-        %C's error bars are 2$\sigma$.
 
 \end{frame}
 
@@ -136,7 +144,7 @@ $\mu$ and responsiveness: $r_p=0.44\pm0.02$, p$<10^{-30}$.
 \begin{minipage}{0.45\linewidth}
 \begin{equation}
 \left|\mathbf{V}_{s}\right|^{2}=\frac{C_{k}}{C_{D}}
-\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k\right),
+\frac{T_{s}-T_{o}}{T_{o}}\left(k_{0}^{*}-k_b\right),
 \tag{PI}
 \label{eq:PI}
 \end{equation}
@@ -160,7 +168,7 @@ k \equiv c_{p} T+L_{v} q,
     \textit{Figure 15.1 from T19~\cite{taleb2019statistical} p.~279}
    \end{minipage} \begin{minipage}{0.45\textwidth}
    \includegraphics[width=1\linewidth]{../surge/plots/GEV_pi_plateau_NO.pdf}
-   Attempt at enforcing a GP asymptote of 2m for NO.
+   Attempt at enforcing a GP asymptote of 1.9m for NO.
    %1$\sigma$ and 2$\sigma$ envelopes shown.
    %\label{fig:gp-plateau}
    \end{minipage}
@@ -177,10 +185,9 @@ and ERA-Interim data 1979-2016~\cite{dee2011era, berrisford2009era}.
 \includegraphics[height=2cm]{images/NASA-KATRINA-SIDEON.jpg}
 \begin{itemize}
 \item Extract the coastline, and characterise it quantitatively.
-\item Show that the responsiveness behaves as expected.
-\item Use extreme value theory to estimate hazard.
-\item Make risk tractable through physical constraints.
-\item (Oceanography looks like CM-physics).
+\item Responsiveness behaves simply.
+\item Block maxima to estimate hazard.
+\item Hazard made tractable through physical constraints.
 \end{itemize}
 \centering
 \includegraphics[height=3cm]{../surge/plots/theory.pdf}

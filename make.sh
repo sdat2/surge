@@ -3,7 +3,7 @@
 # https://tex.stackexchange.com/questions/140845/how-can-i-ignore-latex-error-while-compiling
 
 # options: [main, proposal, presentation]
-filename=report #presentation #report # main # presentation
+filename=presentation #presentation #report # main # presentation
 
 mv aux/${filename}.lo* aux/${filename}.aux aux/${filename}.ilg .
 mv aux/${filename}.ind aux/${filename}.toc .
@@ -30,3 +30,4 @@ mv *.pdf output/
 
 # git remote set-url origin https://github.com/sdat2/surge.git
 # git remote set-url origin https://git.overleaf.com/5db73e7598296c0001d6ce28
+python output/convert.py # output/presentation.pdf

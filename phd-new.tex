@@ -1,0 +1,237 @@
+\documentclass[usenames, dvipsnames]{article}      % article class
+\usepackage[utf8]{inputenc}
+\newcommand{\mytitle}{Hybrid tropical cyclone hazard modelling}
+\newcommand{\penname}{Simon~Thomas}
+\usepackage{moreverb}
+\input{Theme/pagelayout}
+\usepackage{Theme/mystyle}
+\usepackage{Theme/linkcolors}
+\usepackage{Theme/referencing}
+\usepackage{Theme/globals}
+\graphicspath{{images/}{../images/}}
+\input{references/references.tex}
+\addbibresource{phd.bib}
+\renewcommand{\familydefault}{\sfdefault}
+
+% \input{Theme/pagelayout.tex}
+\input{algorithms/algorithm.tex}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\def\labelitemi{--}
+
+\title{\vspace*{-100pt}\textbf{\mytitle}\vspace{-15pt}}
+\date{\vspace{-10pt}\today \vspace{-15pt}}
+\author{A Proposal for a PhD project 
+at the AI4ER CDT program\\
+Simon Thomas
+}
+
+\usepackage[fontsize=12pt]{fontsize}
+\begin{document}
+\maketitle
+
+\vspace{-10pt}% \vspace{-5pt}
+
+\footnotesize{
+This proposal is the result of my own work and includes nothing which is the outcome of work done in collaboration, except where specifically indicated in the text and/or bibliography.}
+
+\vspace{-10pt}
+
+\subsection*{ Motivation}
+
+Tropical cylones are heat engines 
+running between the sea surface and the tropopause
+(\cite{emanuel1986air, emanuel1987dependence}). 
+The work that they produce create waves, 
+and piles up the water into a mound at the centre of the storm. 
+At landfall, this mound of water topped with waves creates
+a storm surge, defined as a water level that 
+far exceeds that expected given the tide.
+
+
+Tropical cyclones have been the
+largest physical hazard for economic 
+damage~(\cite{Chavas2013U.S.Perspective}),
+and their storm surges kill the most
+people~(\cite{shultz2005epidemiology,Mayo2019PredictingResilience}).
+
+A problem in this field is that the
+complicated physical storm surge models that
+are used are too expensive 
+to produce a large number of extreme event outputs.
+However, to model extreme event distributions rigorously
+you need a large number of extreme
+events~(\cite{taleb2019statistical}).
+It would seem to be a better trade off to have larger 
+amounts of less precise data so that you could reliably
+fit the extreme value distribution.
+To produce this data, we could use an ML model
+which could reduce the reduce the 
+computational complexity by 2 orders of magnitude
+(e.g.~\cite{Guo2021Data-drivenNetworks}).
+However, adding physical knowledge normally improves generalisability
+(e.g.~\cite{beucler2019achieving}) and this is sometimes
+known as \textbf{hybrid} physics/ML.
+Implementing this is discussed below.
+
+\vspace{-10pt}
+
+\subsection*{Extreme value theory (3~months)}
+
+Can we improve an extreme value fit by 
+using more informative physical covariates?
+
+\begin{itemize}
+    \item Dataset: US East coast destruction as a result of historical
+    Tropical Cyclones (normalised as \% of local property)
+    \item Model: Generalised Pareto distribution for the events
+    above a given threshold as in \cite{Chavas2013U.S.Perspective}.
+    \item Measure of success: reduction of the size of the
+    residuals between the empirical distribution and the model
+    output distribution.
+\end{itemize}
+
+\vspace{-10pt}
+
+\subsection*{Emulation of the ADCIRC/SWAN 
+            storm surge model (8~months)}
+Can we emulate an expensive storm surge model? How? Does a hybrid
+physics/ML method work best?~\cite{Kashinath2021Physics-informedModelling, Guo2021Data-drivenNetworks}
+
+\begin{itemize}
+    \item Dataset: ADCIRC/SWAN runs of
+    storm surges from Talea Mayo,
+    and any additional runs of the model if this is insufficient
+    to train the ML method.
+    \begin{itemize}
+        \item Split into training/test data.
+    \end{itemize}
+    \item Input: Sea surface wind vector, 
+    bathymetry (depths at each point).
+    \item Target: Sea surface height at each point in the domain.
+    \item Model:
+    \begin{itemize}
+        \item A: Convolutional neural network (CNN) as in \cite{Guo2021Data-drivenNetworks}.
+        %\begin{itemize}
+        %    \item ReLu activation function as %in~\cite{beucler2019achieving}
+        %\end{itemize}
+        \item B: Hybrid model CNN (after A) with:
+        \begin{itemize}
+            \item EITHER: Penalty function for violation 
+                of conservation of mass (e.g.~\cite{beucler2019achieving}).
+            \item OR: Constraints added to the architecture
+            (e.g.~\cite{beucler2019achieving}).
+        \end{itemize}
+        \item C: SLOSH model (a simpler physical baseline).
+    \end{itemize}
+
+    \item Measures of success: 
+    \begin{itemize}
+        \item RMSE between the prediction and the target for the
+        test data.
+        \item Computational cost in terms of seconds to produce prediction using test data.
+    \end{itemize}
+\end{itemize}
+
+The setup in A~\&~B will be quite similar to
+\cite{beucler2019achieving}, where we can see
+whether the inclusion of physical constraints or penalties
+improve the ability of the system to generalise.
+Model C is there to provide another fair baseline.
+
+
+\subsection*{Writing up first year report (1~month)}
+
+Summarise the results of the first two stages.
+
+\subsection*{Historical downscaling (9~months)}
+
+Can whichever emulation method(s) has worked the best 
+in the first year be used to downscale from 
+model scale (a few km) to real surge size
+at the coast?
+
+
+\begin{itemize}
+    \item Dataset: ECMWF ERA5 reanalysis
+        (\cite{Zuo2019TheAssessment}) product 
+        \& East US tidal gauges~(\cite{CO-OPSCurrents}), 
+        selecting the more extreme events above 
+        a threshold of windspeed.
+    \item Input: Sea surface wind vector from ECMWF ERA5 reanalysis
+    (\cite{Zuo2019TheAssessment}).
+    \item Output: Sea surface 
+        height at each sea surface point
+        in the domain.
+    \item Target: Sea surface height at the US tidal
+        gauges~(\cite{CO-OPSCurrents}).
+    \item Measure of success: RMSE between model prediction
+        and the tidal gauge readings during events
+        above the chosen threshold. 
+\end{itemize}
+
+\subsection*{CMIP6 downscaling (9~months)}
+
+Can this model(s) be used to downscale cheaply from climate models?
+
+\begin{itemize}
+    \item Input: CMIP6 ensemble members sea surface wind vectors.
+        For Models with output which is 
+        similar enough to ECMWF for it to be plausible that
+        it will generalise.
+    \item Model: The model(s) that has been verified
+        in the previous step.
+    \item Output: Sea surface height (SSH) along the
+        East US
+        coastline maximum during each event storm
+        event above a threshold in each extreme event.
+\end{itemize}
+
+From this output we could then:
+
+\begin{enumerate}
+ \item Fit a Generalised Pareto distribution of each ensemble 
+       member (90 years of non-stationary data).
+    
+ \item However, given that this data is highly non-stationary,
+    it might make more sense to fit the generalised extreme
+    value distribution across all ensemble members for a given
+    experiment over say each decade (c.~53 ensembles\footnote{
+    I was able to easily extract 53 ensemble members on
+    Pangeo~(\cite{Abernathey2017})
+    for the MRes} x10 years $\approx$ 530 years of
+    data  (although not identically
+    distributed given different model biases)).
+\end{enumerate}
+
+For the second possibility, we could attempt to remove 
+the different model biases from each ensemble member.
+This would probably require looking at how biased they were in
+the  historical period, and then assuming that some aspect of this is stationary.
+
+
+\subsubsection*{Final output (if all this were to work well)}
+
+\begin{itemize}
+    \item A return level curve for each point along the
+    East US coast,
+    for each decade of the century, 
+    for each CMIP6 experiment
+    (SSP585 etc.).
+\end{itemize}
+
+Example headline: \textbf{``by reducing CO2 emissions 
+by W\% the chance of a storm surge above Xm
+ at Y in 2050-60 will reduce
+by Z\% ($\pm$ A\%)''}\footnote{Where W is the difference between two 
+SSP CMIP6 experiments.}
+
+
+\subsection*{Writing up PhD (6 months)}
+
+Writing up the thesis and tying up any loose ends. Push any publishable work through, and publicise any useful results or
+code.
+
+\printbibliography
+
+\end{document}
